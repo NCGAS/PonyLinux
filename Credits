@@ -1,0 +1,31 @@
+I'd like to thank the following Q&A pages for helping me hone my bash-fu:
+
+https://stackoverflow.com/questions/1250079/how-to-escape-single-quotes-within-single-quoted-strings
+https://www.cyberciti.biz/faq/bash-for-loop/
+https://unix.stackexchange.com/questions/293940/bash-how-can-i-make-press-any-key-to-continue
+http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_03.html
+https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
+https://unix.stackexchange.com/questions/39291/run-a-command-that-is-shadowed-by-an-alias
+https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash
+https://unix.stackexchange.com/questions/191694/how-to-put-a-newline-special-character-into-a-file-using-the-echo-command-and-re
+https://stackoverflow.com/questions/5014632/how-can-i-parse-a-yaml-file-from-a-linux-shell-script
+https://stackoverflow.com/questions/11087499/bash-how-do-you-capture-stderr-to-a-variable/11087523
+https://serverfault.com/questions/146745/how-can-i-check-in-bash-if-a-shell-is-running-in-interactive-mode
+
+I didn't use the select functionality, but it seems cool:
+https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
+
+This stuff was straight up crazy, and I didn't get it working:
+https://superuser.com/questions/184307/bash-create-anonymous-fifo
+https://unix.stackexchange.com/questions/334543/capture-the-output-of-a-shell-function-without-a-subshell
+
+This helped me with getting the ponylist together:
+https://superuser.com/questions/380772/removing-ansi-color-codes-from-text-stream
+
+Making sure ls works with color:
+https://www.cyberciti.biz/faq/how-to-turn-on-or-off-colors-in-bash/
+
+Other notes.
+I think it will be hard to orchestrate the proper sourcing/unsourcing of the files needed after the tutorial is run. Getting it to start automatically will be tricky.
+
+Big thanks to the Ponysay team for making this so much more fun!
