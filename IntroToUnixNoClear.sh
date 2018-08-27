@@ -21,7 +21,7 @@ function checkProgress(){
 function cdtut(){
     ponysay -b round -F pinkie 'Hi! I'\'$'ll be your instructor for the lesson on getting around in Unix.\nYou might be used to a window environment that has fancy things like mouse access and menus. \nIt might be hard to get used to doing things without windows, but a hero like you should have no problem!'
     read -p "Press enter to continue"
-    clear
+
 
     ponysay -b round -F pinkiebounce $'What you are looking at now is called a shell - it'\'$'s a program that lets you interact with the underlying computer operating system. \n\nThe specific shell you are using is called Bash, and it has its own kind of language. You issue commands to the bash shell and it executes those commands. \n\nSome commands don'\'$'t seem to do anything after you hit enter! \nThey just return a new line and show some stuff followed by a $ character. This is called a prompt, because it is prompting you to tell it what to do. \n\nNo output is usually a good sign in Unix! If a command fails, it usually tells you.'
     read -p "Press enter to continue"
@@ -30,7 +30,7 @@ function cdtut(){
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd
-#    clear
+
 
     ponysay -b round -F pinkiebounce $'To move to a different location, you will use the cd command. CD stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nDirectories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.'
     read -p "Press enter to continue"
@@ -57,7 +57,7 @@ function cdtut(){
     cd
     pwd
     read -p "Press enter to continue"
-    clear
+
     ponysay -b round -F pinkacopter "Great job! You are done with the first section. Good luck, $name!"
     read -n 1 -r -p "Press any key to continue"
     echo "cdtutdone:  (Done)" >> ~/.unixTut/config
@@ -66,17 +66,17 @@ function cdtut(){
 function dirtut(){
     ponysay -b round -F rainbow 'Hi there. I'\'$'ll be teaching you more gory details about directories. \n\nSo you learned how to cd around, huh? But how do you know where to go, or what commands you can run?'
     read -p "Press enter to continue"
-    clear
+
 
     ponysay -b round -F rainbowfirm $'The first thing you want to learn, is what directories come standard in Unix.\n\n If you do cd .. until you get dizzy, you will end up in the mega-parent directory. This directory is called the root directory, and it is denoted by a forward slash: /. \n\nThe root directory is like the base of a tree, and all other directories radiate out of it. Since directories are hierarchical, you can think of it like a tree with thick branches that split off into smaller and smaller ones, all the way down to the leaves.\n\nYou noticed that your location always starts with a / when you do pwd, right?'
     echo "Your current location:"
     pwd
     read -p "Press enter to continue"
-    clear
+
 
     ponysay -b round -F rainbowsalute $'Inside the root directory, there are a few folders you should know about. One is the /bin directory, which contains commands that you might want to run, like bash itself. Bin stands for binary, which is the format that many commands are in - binary machine code which is ready to talk to the operating system directly. Binary files are hard to read by humans.\n\nAnother good directory to know is /usr/local, which has code in it customized to this computer. \n\nThe /lib and /lib64 directories contain libraries, which are software codes that are intended to be put inside other code and work in a modular way. \n\n The /tmp directory is a place you might end up putting temporary files that are generated while a command runs.\n\n/etc, /var, /proc, and /sbin are usually locked down to only admins - they contain operating system files. '
     read -p "Press enter to continue"
-    clear
+
 
     ponysay -b round -F rainbowfly $'Okay, so now you know a little bit about the structure of Unix directories. How do you find out what'\'$'s in them? The next command you should know is ls'
     getInput 'ls' "Make sure it's a lowercase L followed by s. You don't need anything after it."
@@ -86,11 +86,11 @@ function dirtut(){
     #done
     ls
     read -p "Press enter to continue"
-    clear
+
 
     ponysay -b round -F rainbowhurricane 'Great job, '$name'! Now get out there and be victorious!'
     read -n 1 -r -p "Press any key to continue"
-    clear
+
 # more about ~, and how it doesn't have /~
 # more about ls
 #which
@@ -100,7 +100,7 @@ function dirtut(){
 function usertut(){
     ponysay -b round -F applejack 'Hi, '$name'. I'\'$'m going to teach you all about users in Unix.\n\nWell, you are using it right now, so you are a Unix user! \n\nOne thing about Unix is that spaces are a big issue. It'\'$'s really hard to include spaces in directory names, file names, and commands. \n\nThe same applies to user names; the computer won'\'$'t refer to you by Firstname Lastname like would be polite. Instead, your username is all lowercase and 8 or so characters long. You logged in, so maybe you already know it, but to find your username, type the id command.'
     read -n 1 -r -p "Press any key to continue"
-    clear
+
     menu
 #id
 #permissions
@@ -111,7 +111,7 @@ function usertut(){
 function opentut(){
     ponysay -b round -F fluttershy 'Hello '$name', I'\'$'m going to tell you about opening files in Unix.'
     read -n 1 -r -p "Press any key to continue"
-    clear
+
     menu
 #less
 #nano
@@ -131,7 +131,7 @@ function complicated(){
 function srchtut(){
     ponysay -b round -F twilight 'Hi '$name', let'\'$'s go through how you can find files, directories, and content!'
     read -n 1 -r -p "Press any key to continue"
-    clear
+
     menu
 #find
 #grep
@@ -143,10 +143,10 @@ function battle(){
     read -n 1 -r -p "Press any key to continue"
     ponysay -b round -F shiningarmor 'You will need to cd into the dungeon first. Cd into a folder called dungeon. '
     read -p "Press enter to continue"
-#    clear
+
     ponysay -b round -F shiningarmorguard 'You will be on your own, working on the actual system. We won'\'$'t be able to guide you directly, but if you ever need help remembering how to run the scripts, just type in:\nguide\nto come back to this place and learn a bit more.'
     read -p "Press enter to continue"
-#    clear
+
     ponysay -b round -F  shiningarmorwedding 'Ok, let me make sure everything is prepared for you. Please bring back our Princess, safe and sound!'
 
     read -n 1 -r -p "Press any key to continue"
@@ -197,35 +197,35 @@ function getInput(){
 }
 
 function intro(){
-    clear
+
     read -p "$(ponysay -b round -F rarity 'Hello! What is your name, friend?')" variable1
     echo "name: $variable1" > ~/.unixTut/config
     name=$variable1
     ponysay -b round -F rarity "I'ts a pleasure to meet you, $variable1."
     read -p "Press enter to continue"
     #sleep 1
-    clear
+
     ponysay -b round -F strawberrycream  'My lady, I have terrible news! The Princess has been kidnapped and is now locked in a dungeon!'
     read -p "Press enter to continue"
     #sleep 1
-    clear
+
     ponysay -b round -F raritycomplaining 'Oh, Woe! Oh, what terrible news!'
     read -p "Press enter to continue"
     #sleep 1
-    clear
+
     ponysay -b round -F raritydrama 'What will we do? Who will possibly save the Princess?'
     read  -p "Press enter to continue"
     #sleep 1
-    clear
+
     ponysay -b round -F rarityponder "Wait, you just showed up! You are right on time to be volunteered as the Princess's hero!"
     read -p "Press enter to continue"
     #sleep 1
-    clear
+
     menu 1
 }
 
 function menu(){
-    clear
+
     string="Welcome back, $name! Ready to do some more training?"
     if [[ $1 = 1 ]]; then
 	string="Alright, hero-in-training, Let's get you prepared to save the Princess! What would you like to learn first?"
@@ -233,7 +233,7 @@ function menu(){
     ponysay -b round -F rarity ${string}$'\n\t1.) Getting around '${cdtutdone}$'\n\t2.) Directories '${dirtutdone}$'\n\t3.) Users and permissions '${usertutdone}$'\n\t4.) Opening and Navigating files '${opentutdone}$'\n\t5.) I am ready to face the dungeon!\n\t6.) I wanna do the intro over again.\n\t7.) Quit'
 
     read -p $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' variable1
-    clear
+
     case $variable1 in
 	1)
 	    cdtut
