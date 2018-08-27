@@ -151,7 +151,7 @@ function battle(){
 
     read -n 1 -r -p "Press any key to continue"
     if [[ ! -e dungeon ]]; then
-	buildPrincessDungeon.sh &
+	bash buildPrincessDungeon.sh &
 	PID=$!
 	echo "Preparing dungeon.."
 	while [ -d /proc/$PID ]
