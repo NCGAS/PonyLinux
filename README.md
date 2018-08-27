@@ -14,4 +14,7 @@ I had to run:
 Then I was ready to launch my own script:
   * cd unixTut
   * bash IntroToUnix.sh
-  
+
+The pony files look like crap on the Jetstream web shell, so change the font around until it looks smooth. The settings are on the right:
+
+[Jetstream screenshot](JetstreamFont.png) 
