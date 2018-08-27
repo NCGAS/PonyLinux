@@ -25,32 +25,32 @@ function cdtut(){
 
     ponysay -b round -F pinkiebounce $'What you are looking at now is called a shell - it'\'$'s a program that lets you interact with the underlying computer operating system. \n\nThe specific shell you are using is called Bash, and it has its own kind of language. You issue commands to the bash shell and it executes those commands. \n\nSome commands don'\'$'t seem to do anything after you hit enter! \nThey just return a new line and show some stuff followed by a $ character. This is called a prompt, because it is prompting you to tell it what to do. \n\nNo output is usually a good sign in Unix! If a command fails, it usually tells you.'
     read -p "Press enter to continue"
-
+    clear
     ponysay -b round -F pinkie $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. That'\'$'s where you sleep, so it makes sense that that is where you wake up! You can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd
-#    clear
-
+    clear
     ponysay -b round -F pinkiebounce $'To move to a different location, you will use the cd command. CD stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nDirectories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.'
     read -p "Press enter to continue"
+    clear
     ponysay -b round -F pinkie $'Directories inside the current directory are called subdirectories. The directory that contains your current location is called the parent directory. \n\nIn the bash shell, the current directory can be denoted by a shorthand of one dot, or period: ".". The parent is two dots: "..". There isn'\'$'t a three dot shorthand though. \n\nTo go up a directory, you would use the cd command followed by two dots. You should try it! '
     getInput 'cd ..' "Make sure you have a space between cd and the two dots."
     cd ..
     echo "Nothing happened, so it worked! You are currently in:"
     pwd
-
+    clear
     ponysay -b round -F pinkiebounce $'Sometimes, you want to backtrack to where you just were. For this, you can use the minus sign, or dash. Try it:'
     getInput 'cd -' "Make sure you have just one dash."
     echo "Now you backtracked to:"
     cd -
     #pwd
-
+    clear
     ponysay -b round -F pinkiesilly $'You can only backtrack one step. If you keep typing in cd -, you'\'$'ll just bounce back and forth between two directories. See?'
     getInput 'cd -' "Make sure you have just one dash."
     echo "And now you are back to:"
     cd -
-
+    clear
     ponysay -b round -F pinkie $'Have you seen a squiggly line, like ~? This special character stands for your home directory in Unix. You can use with the cd command to, like:\ncd ~\nThere is an even easier way, though. The cd command, by itself, with nothing after it, also takes you back home. No matter how lost you are, or how hard you party, you can always get home with just cd.'
     getInput 'cd' "Don't give up!"
     echo "Now you are back home!"
@@ -119,7 +119,7 @@ function opentut(){
 # navigating
 #man pages
 }
-function complicated(){
+function complextut(){
     menu
 #pipes
 #stderr
@@ -139,14 +139,16 @@ function srchtut(){
 #tail
 }
 function battle(){
+    clear
     ponysay -b round -F shiningarmor 'Alright, '$name', so you'\'$'re feeling ready to explore the dungeon? \n\nGood! Let me give you just a few more pointers before you head out there, hero.'
     read -n 1 -r -p "Press any key to continue"
     ponysay -b round -F shiningarmor 'You will need to cd into the dungeon first. Cd into a folder called dungeon. '
+    clear
     read -p "Press enter to continue"
-#    clear
+    clear
     ponysay -b round -F shiningarmorguard 'You will be on your own, working on the actual system. We won'\'$'t be able to guide you directly, but if you ever need help remembering how to run the scripts, just type in:\nguide\nto come back to this place and learn a bit more.'
     read -p "Press enter to continue"
-#    clear
+    clear
     ponysay -b round -F  shiningarmorwedding 'Ok, let me make sure everything is prepared for you. Please bring back our Princess, safe and sound!'
 
     read -n 1 -r -p "Press any key to continue"
