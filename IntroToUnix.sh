@@ -26,15 +26,15 @@ function cdtut(){
     ponysay -b round -F pinkiebounce $'What you are looking at now is called a shell - it'\'$'s a program that lets you interact with the underlying computer operating system. \n\nThe specific shell you are using is called Bash, and it has its own kind of language. You issue commands to the bash shell and it executes those commands. \n\nSome commands don'\'$'t seem to do anything after you hit enter! \nThey just return a new line and show some stuff followed by a $ character. This is called a prompt, because it is prompting you to tell it what to do. \n\nNo output is usually a good sign in Unix! If a command fails, it usually tells you.'
     read -p "Press enter to continue"
     clear
-    ponysay -b round -F pinkie $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. That'\'$'s where you sleep, so it makes sense that that is where you wake up! You can always find out where you are by typing in pwd and hitting enter. Now you try it.'
+    ponysay -b round -F pinkie $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up! You can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd
     clear
-    ponysay -b round -F pinkiebounce $'To move to a different location, you will use the cd command. CD stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nDirectories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.'
+    ponysay -b round -F pinkiebounce $'Directories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.\n\nDirectories inside the current directory are called subdirectories. The directory that contains your current location is called the parent directory. \n\nIn the bash shell, the current directory can be denoted by a shorthand of one dot, or period: ".". The parent is two dots: "..". There isn'\'$'t a three dot shorthand though.'
     read -p "Press enter to continue"
     clear
-    ponysay -b round -F pinkie $'Directories inside the current directory are called subdirectories. The directory that contains your current location is called the parent directory. \n\nIn the bash shell, the current directory can be denoted by a shorthand of one dot, or period: ".". The parent is two dots: "..". There isn'\'$'t a three dot shorthand though. \n\nTo go up a directory, you would use the cd command followed by two dots. You should try it! '
+    ponysay -b round -F pinkie $'To move to a different location, you will use the cd command. cd stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nTo go up a directory, you would use the cd command followed by two dots. You should try it! '
     getInput 'cd ..' "Make sure you have a space between cd and the two dots."
     cd ..
     echo "Nothing happened, so it worked! You are currently in:"
@@ -141,9 +141,9 @@ function srchtut(){
 function battle(){
     clear
     ponysay -b round -F shiningarmor 'Alright, '$name', so you'\'$'re feeling ready to explore the dungeon? \n\nGood! Let me give you just a few more pointers before you head out there, hero.'
-    read -p "Press any key to continue"
-    ponysay -b round -F shiningarmor 'You will need to cd into the dungeon first. Cd into a folder called dungeon. '
+    read -p "Press enter to continue"
     clear
+    ponysay -b round -F shiningarmor 'You will need to cd into the dungeon first. Cd into a folder called dungeon. '
     read -p "Press enter to continue"
     clear
     ponysay -b round -F shiningarmorguard 'You will be on your own, working on the actual system. We won'\'$'t be able to guide you directly, but if you ever need help remembering how to run the scripts, just type in:\nguide\nto come back to this place and learn a bit more.'
@@ -151,11 +151,11 @@ function battle(){
     clear
     ponysay -b round -F  shiningarmorwedding 'Ok, let me make sure everything is prepared for you. Please bring back our Princess, safe and sound!'
 
-    read -p "Press any key to continue"
+    read -p "Press enter to continue"
     if [[ ! -e dungeon ]]; then
-	bash buildPrincessDungeon.sh &
+	bash buildPrincessDungeon.sh > /dev/null 2>&1 &
 	PID=$!
-	echo "Preparing dungeon.."
+	printf "Preparing dungeon.."
 	while [ -d /proc/$PID ]
 	do
 	    printf "."
@@ -163,7 +163,7 @@ function battle(){
 	done
 	wait
     fi
-    echo "You make your final preparations. You look back on your new friends and hope that you won't let them down. The dungeon looms ominously in front of you - easily a ten-story stone structure made of what once must have been beautiful limestone, it is now blackened and foreboding. A chill wind pushes you forward to meet your fate. Will you save the day?"
+    echo -e "\nYou make your final preparations. \nYou look back on your new friends and hope that you won't let them down. \nThe dungeon looms ominously in front of you - easily a ten-story stone structure made of what once must have been beautiful limestone, it is now blackened and foreboding. \nA chill wind pushes you forward to meet your fate. Will you save the day?"
     . ponyrun.sh
     
     exit 0

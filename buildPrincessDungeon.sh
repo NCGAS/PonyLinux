@@ -58,10 +58,11 @@ function buildSubdir {
 	cd ..
     fi
 }
-
+mkdir -p dungeon
+cd dungeon
 globaldepth=2
 breadth=2
 buildSubdir $globaldepth $breadth
-
+cd ..
 exit 0
 
