@@ -26,10 +26,11 @@ function cdtut(){
     ponysay -b round -F pinkiebounce $'What you are looking at now is called a shell - it'\'$'s a program that lets you interact with the underlying computer operating system. \n\nThe specific shell you are using is called Bash, and it has its own kind of language. You issue commands to the bash shell and it executes those commands. \n\nSome commands don'\'$'t seem to do anything after you hit enter! \nThey just return a new line and show some stuff followed by a $ character. This is called a prompt, because it is prompting you to tell it what to do. \n\nNo output is usually a good sign in Unix! If a command fails, it usually tells you.'
     read -p "Press enter to continue"
     clear
-    ponysay -b round -F pinkie $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up! You can always find out where you are by typing in pwd and hitting enter. Now you try it.'
+    ponysay -b round -F pinkie $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd
+    read -p "Press enter to continue"
     clear
     ponysay -b round -F pinkiebounce $'Directories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.\n\nDirectories inside the current directory are called subdirectories. The directory that contains your current location is called the parent directory. \n\nIn the bash shell, the current directory can be denoted by a shorthand of one dot, or period: ".". The parent is two dots: "..". There isn'\'$'t a three dot shorthand though.'
     read -p "Press enter to continue"
@@ -46,7 +47,7 @@ function cdtut(){
     cd -
     #pwd
     clear
-    ponysay -b round -F pinkiesilly $'You can only backtrack one step. If you keep typing in cd -, you'\'$'ll just bounce back and forth between two directories. See?'
+    ponysay -b round -F pinkiesilly $'You can only backtrack one step. If you keep typing in cd -, you'\'$'ll just bounce back and forth between two directories. Check it out:'
     getInput 'cd -' "Make sure you have just one dash."
     echo "And now you are back to:"
     cd -
@@ -58,7 +59,7 @@ function cdtut(){
     pwd
     read -p "Press enter to continue"
     clear
-    ponysay -b round -F pinkacopter "Great job! You are done with the first section. Good luck, $name!"
+    ponysay -b round -F pinkiecannon "Great job! You are done with the first section. Good luck, $name!"
     read -n 1 -r -p "Press any key to continue"
     echo "cdtutdone:  (Done)" >> ~/.unixTut/config
     menu
