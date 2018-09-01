@@ -141,7 +141,7 @@ function srchtut(){
 function battle(){
     clear
     ponysay -b round -F shiningarmor 'Alright, '$name', so you'\'$'re feeling ready to explore the dungeon? \n\nGood! Let me give you just a few more pointers before you head out there, hero.'
-    read -n 1 -r -p "Press any key to continue"
+    read -p "Press any key to continue"
     ponysay -b round -F shiningarmor 'You will need to cd into the dungeon first. Cd into a folder called dungeon. '
     clear
     read -p "Press enter to continue"
@@ -151,7 +151,7 @@ function battle(){
     clear
     ponysay -b round -F  shiningarmorwedding 'Ok, let me make sure everything is prepared for you. Please bring back our Princess, safe and sound!'
 
-    read -n 1 -r -p "Press any key to continue"
+    read -p "Press any key to continue"
     if [[ ! -e dungeon ]]; then
 	bash buildPrincessDungeon.sh &
 	PID=$!
@@ -263,9 +263,9 @@ function menu(){
 checkProgress
 greet="Welcome to Unix!"
 if [[ $name ]]; then
-    greet="Hi, $name!"
+    greet="Greetings, $name!"
 fi
-read -p "$(ponysay -b round -F stevenmagnet ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.')" variable1
+read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.')" variable1
 #echo "got $variable1"
 
 if [[ $variable1 = *"q"* || $variable1 = *"Q"* ]]; then

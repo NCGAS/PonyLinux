@@ -1,14 +1,5 @@
 #!/bin/bash
-if tty -s && [ -z "$PS1" ] && [ -t 0 ] && [ -t 1 ]; then
-    echo "there is a ps1.."
-   # if tty -s; then echo interactive; fi
-   # if [ -t 0 ] ; then
-#	echo stdin is a terminal
-#    fi
-#    if [ -t 1 ] ; then
-#	echo stdout is a terminal
-#    fi
-fi
+
 alias cd=cdp
 alias ls=lsp
 alias flee=escape
@@ -40,10 +31,27 @@ function lsp(){
     result="$(\ls $@ 2>&1)"
     #echo "$result"
     if [[ ! "$result" ]]; then
-	echo "You can't look behind locked doors. Maybe try finding a key first?"
-    elif  [[ "$result" && "$result" = *"Permission"* ]];then
-	echo "It's pitch black, you can't see anything!"
-    elif  [[ "$result" && "$result" = *"No such"* ]];then
+	testForEmpty="$(\ls -lah $@ 2>&1)"
+	if [[ "$testForEmpty" = *"Permission"* ]];then
+	    echo "You can't look behind locked doors. Maybe try finding a key first?"	   
+	else
+	    num=$(echo "$testForEmpty" | wc -l)	    
+	    if [[ $num > 3 ]]; then
+		echo "There are no doors or obvious items, but maybe there are some secret hiding places in here."
+	    else
+		echo "The room appears empty and bare."
+		#echo " There are $num items."
+	    fi
+	fi
+    elif  [[ "$result" = *"Permission"* ]];then
+	
+	testForEmpty="$(\ls $@ 2>&1)"
+	if [[ ! "$testForEmpty" ]];then
+	    echo "You can't look behind locked doors. Maybe try finding a key first?"	   
+	else
+	    echo "It's pitch black, you can't see anything!"
+	fi
+    elif  [[ "$result" = *"No such"* ]];then
 	echo "That place doesn't exist. Where exactly are you trying to look? Try spelling it out a bit slower."
     else
 	cat Description 2>/dev/null
