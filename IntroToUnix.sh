@@ -40,6 +40,7 @@ function cdtut(){
     cd ..
     echo "Nothing happened, so it worked! You are currently in:"
     pwd
+    read -p "Press enter to continue"
     clear
     ponysay -b round -F pinkiebounce $'Sometimes, you want to backtrack to where you just were. For this, you can use the minus sign, or dash. Try it:'
     getInput 'cd -' "Make sure you have just one dash."
@@ -51,8 +52,9 @@ function cdtut(){
     getInput 'cd -' "Make sure you have just one dash."
     echo "And now you are back to:"
     cd -
+    read -p "Press enter to continue"
     clear
-    ponysay -b round -F pinkie $'Have you seen a squiggly line, like ~? This special character stands for your home directory in Unix. You can use with the cd command to, like:\ncd ~\nThere is an even easier way, though. The cd command, by itself, with nothing after it, also takes you back home. No matter how lost you are, or how hard you party, you can always get home with just cd.'
+    ponysay -b round -F pinkie $'Have you seen a squiggly line, like ~? This special character, called a tilde, stands for your home directory in Unix. You can use with the cd command to, like:\ncd ~\nThere is an even easier way, though. The cd command, by itself, with nothing after it, also takes you back home. No matter how lost you are, or how hard you party, you can always get home with just cd.'
     getInput 'cd' "Don't give up!"
     echo "Now you are back home!"
     cd
