@@ -42,7 +42,7 @@ function cdtut(){
     pwd
     read -p "Press enter to continue"
     clear
-    ponysay -b round -F pinkiebounce $'Sometimes, you want to backtrack to where you just were. For this, you can use the minus sign, or dash. Try it:'
+    ponysay -b round -F pinkiebounce $'Sometimes, you want to backtrack to where you just were. For this, you can use cd with the minus sign, or dash. Try it:'
     getInput 'cd -' "Make sure you have just one dash."
     echo "Now you backtracked to:"
     cd -
@@ -176,7 +176,7 @@ function getInput(){
     cmd=$1
     retry=$2
     local tries=2
-#    strcmd='Type in this command: '${cmd}$' \n $ '
+    strcmd='Type in this command: '${cmd}$' \n $ '
 #    echo "strcmd:"
 #    echo $strcmd
 #    strret=$retry' Try the command: '${cmd}$' \n $ '
