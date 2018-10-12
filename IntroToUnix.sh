@@ -141,6 +141,14 @@ function srchtut(){
 #head
 #tail
 }
+function execute(){
+    ponysay -b round -F applejack 'Hi, '$name'! are you ready to swim on your own? Remember, to get back to the tutorial, type exit (or use the shortcut, the control key + d)'
+    read -n 1 -r -p "Press enter key to continue"
+    bash --init-file <(echo "ls; pwd")
+    clear
+    menu
+}
+
 function battle(){
     clear
     ponysay -b round -F shiningarmor 'Alright, '$name', so you'\'$'re feeling ready to explore the dungeon? \n\nGood! Let me give you just a few more pointers before you head out there, hero.'
@@ -167,9 +175,9 @@ function battle(){
 	wait
     fi
     echo -e "\nYou make your final preparations. \nYou look back on your new friends and hope that you won't let them down. \nThe dungeon looms ominously in front of you - easily a ten-story stone structure made of what once must have been beautiful limestone, it is now blackened and foreboding. \nA chill wind pushes you forward to meet your fate. Will you save the day?"
-    . ponyrun.sh
-    
-    exit 0
+    thisDir=$(dirname "$(readlink -f "$0")")
+    bash --init-file <(echo ". ~/.bash_profile; . ${thisDir}/ponyrun.sh; cd ${thisDir}/dungeon; echo 'You enter the dungeon. To escape, type exit (or use the shortcut, control key + d). If you need a hint at any point, type hint.'")    
+    menu
 }
 
 function getInput(){
@@ -206,6 +214,7 @@ function intro(){
     read -p "$(ponysay -b round -F rarity 'Hello! What is your name, friend?')" variable1
     echo "name: $variable1" > ~/.unixTut/config
     name=$variable1
+    export PONYUSER="$name"
     ponysay -b round -F rarity "I'ts a pleasure to meet you, $variable1."
     read -p "Press enter to continue"
     #sleep 1
@@ -261,11 +270,15 @@ function menu(){
 	7)
 	    exit 0
 	    ;;
+	8)
+	    execute
+	    ;;
     esac
 }
 checkProgress
 greet="Welcome to Unix!"
 if [[ $name ]]; then
+    export PONYUSER="$name"
     greet="Greetings, $name!"
 fi
 read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.')" variable1
