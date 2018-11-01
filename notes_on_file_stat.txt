@@ -1,0 +1,213 @@
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%Sm %N" *
+Oct 12 17:58:14 2018 Credits
+Oct 12 17:58:14 2018 IntroToUnix.sh
+Oct 12 17:58:14 2018 IntroToUnixNoClear.sh
+Oct 12 17:58:14 2018 JetstreamFont.png
+Oct 12 17:58:14 2018 LICENSE
+Oct 12 17:58:14 2018 README.md
+Oct 12 17:58:14 2018 buildPrincessDungeon.sh
+Oct 12 17:58:14 2018 ponylist
+Oct 12 17:58:14 2018 ponyrun.sh
+Oct 12 18:20:57 2018 sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ emacs sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%Sa %N" *
+Oct 12 17:58:14 2018 Credits
+Oct 12 18:29:36 2018 IntroToUnix.sh
+Oct 12 17:58:14 2018 IntroToUnixNoClear.sh
+Oct 12 17:58:14 2018 JetstreamFont.png
+Oct 12 17:58:14 2018 LICENSE
+Oct 12 17:58:14 2018 README.md
+Oct 12 17:58:14 2018 buildPrincessDungeon.sh
+Oct 12 17:58:14 2018 ponylist
+Oct 12 17:58:14 2018 ponyrun.sh
+Oct 12 18:30:38 2018 sneak.txt
+Oct 12 18:30:35 2018 sneak.txt~
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%Sm %N" *
+Oct 12 17:58:14 2018 Credits
+Oct 12 17:58:14 2018 IntroToUnix.sh
+Oct 12 17:58:14 2018 IntroToUnixNoClear.sh
+Oct 12 17:58:14 2018 JetstreamFont.png
+Oct 12 17:58:14 2018 LICENSE
+Oct 12 17:58:14 2018 README.md
+Oct 12 17:58:14 2018 buildPrincessDungeon.sh
+Oct 12 17:58:14 2018 ponylist
+Oct 12 17:58:14 2018 ponyrun.sh
+Oct 12 18:30:38 2018 sneak.txt
+Oct 12 18:20:57 2018 sneak.txt~
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%SB %N" *
+Oct 12 17:58:14 2018 Credits
+Oct 12 17:58:14 2018 IntroToUnix.sh
+Oct 12 17:58:14 2018 IntroToUnixNoClear.sh
+Oct 12 17:58:14 2018 JetstreamFont.png
+Oct 12 17:58:14 2018 LICENSE
+Oct 12 17:58:14 2018 README.md
+Oct 12 17:58:14 2018 buildPrincessDungeon.sh
+Oct 12 17:58:14 2018 ponylist
+Oct 12 17:58:14 2018 ponyrun.sh
+Oct 12 18:30:38 2018 sneak.txt
+Oct 12 18:20:57 2018 sneak.txt~
+Carries-MacBook-Pro:unixTut cganoteadmin$ emacs checkTimes.sh
+
+[1]+  Stopped                 emacs checkTimes.sh
+Carries-MacBook-Pro:unixTut cganoteadmin$ fg
+emacs checkTimes.sh
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+checkTimes.sh: line 5: [: too many arguments
+File Credits has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File IntroToUnix.sh has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File IntroToUnixNoClear.sh has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File JetstreamFont.png has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File LICENSE has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File README.md has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File buildPrincessDungeon.sh has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File checkTimes.sh has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File ponylist has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File ponyrun.sh has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File sneak.txt has not been accessed since birth
+checkTimes.sh: line 5: [: too many arguments
+File sneak.txt~ has not been accessed since birth
+Carries-MacBook-Pro:unixTut cganoteadmin$ fg
+-bash: fg: current: no such job
+Carries-MacBook-Pro:unixTut cganoteadmin$ fg
+-bash: fg: current: no such job
+Carries-MacBook-Pro:unixTut cganoteadmin$ emacs checkTimes.sh
+
+[1]+  Stopped                 emacs checkTimes.sh
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:29:36 2018
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE has not been accessed since birth
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:35:15 2018
+File checkTimes.sh~ was born on Oct 12 18:34:48 2018 but modified on Oct 12 18:35:03 2018
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ was born on Oct 12 18:20:57 2018 but modified on Oct 12 18:30:35 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ touch LICENSE
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:29:36 2018
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:36:20 2018
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:36:21 2018
+File checkTimes.sh~ was born on Oct 12 18:34:48 2018 but modified on Oct 12 18:35:03 2018
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ was born on Oct 12 18:20:57 2018 but modified on Oct 12 18:30:35 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ fg
+emacs checkTimes.sh
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh has not been accessed since birth
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:36:20 2018
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:36:45 2018
+File checkTimes.sh~ has not been accessed since birth
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ has not been accessed since birth
+Carries-MacBook-Pro:unixTut cganoteadmin$ touch LICENSE
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh has not been accessed since birth
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:36:57 2018
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:36:45 2018
+File checkTimes.sh~ has not been accessed since birth
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ has not been accessed since birth
+Carries-MacBook-Pro:unixTut cganoteadmin$ touch LICENSE
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh has not been accessed since birth
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:37:19 2018
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:36:45 2018
+File checkTimes.sh~ has not been accessed since birth
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ has not been accessed since birth
+Carries-MacBook-Pro:unixTut cganoteadmin$ less sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh has not been accessed since birth
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:37:19 2018
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:36:45 2018
+File checkTimes.sh~ has not been accessed since birth
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ has not been accessed since birth
+Carries-MacBook-Pro:unixTut cganoteadmin$ emacs sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ bash checkTimes.sh
+File Credits has not been accessed since birth
+File IntroToUnix.sh has not been accessed since birth
+File IntroToUnixNoClear.sh has not been accessed since birth
+File JetstreamFont.png has not been accessed since birth
+File LICENSE was born on Oct 12 17:58:14 2018 but modified on Oct 12 18:37:19 2018
+File README.md has not been accessed since birth
+File buildPrincessDungeon.sh has not been accessed since birth
+File checkTimes.sh was born on Oct 12 18:35:12 2018 but modified on Oct 12 18:36:45 2018
+File checkTimes.sh~ has not been accessed since birth
+File ponylist has not been accessed since birth
+File ponyrun.sh has not been accessed since birth
+File sneak.txt has not been accessed since birth
+File sneak.txt~ has not been accessed since birth
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat sneak.txt
+16777220 35946144 -rw-r--r-- 1 cganoteadmin staff 0 17 "Oct 12 18:38:42 2018" "Oct 12 18:38:42 2018" "Oct 12 18:38:43 2018" "Oct 12 18:38:42 2018" 4096 8 0 sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ nano sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat sneak.txt
+16777220 35946144 -rw-r--r-- 1 cganoteadmin staff 0 24 "Oct 12 18:40:24 2018" "Oct 12 18:40:33 2018" "Oct 12 18:40:33 2018" "Oct 12 18:38:42 2018" 4096 8 0 sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ emacs sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat sneak.txt
+16777220 35946148 -rw-r--r-- 1 cganoteadmin staff 0 18 "Oct 12 18:40:55 2018" "Oct 12 18:40:55 2018" "Oct 12 18:40:57 2018" "Oct 12 18:40:55 2018" 4096 8 0 sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%SB" sneak.txt
+Oct 12 18:40:55 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%SB" sneak.txt
+Oct 12 18:40:55 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ nano sneak.txt
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%SB" sneak.txt
+Oct 12 18:40:55 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%Sa" sneak.txt
+Oct 12 18:44:02 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%Sm" sneak.txt
+Oct 12 18:44:11 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$ man stat
+Carries-MacBook-Pro:unixTut cganoteadmin$ stat -f "%Sc" sneak.txt
+Oct 12 18:44:11 2018
+Carries-MacBook-Pro:unixTut cganoteadmin$
