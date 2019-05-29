@@ -1,0 +1,5 @@
+To install, a few different options exist for you:
+
+Add the current directory to your path. Don't move the contents of the Sections around, since the program will look for files in there relative to this directory.
+
+Ponysay relies on Python3 to work. Make sure it's in your path as well.
