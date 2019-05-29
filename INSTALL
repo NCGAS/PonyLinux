@@ -3,3 +3,15 @@ To install, a few different options exist for you:
 Add the current directory to your path. Don't move the contents of the Sections around, since the program will look for files in there relative to this directory.
 
 Ponysay relies on Python3 to work. Make sure it's in your path as well.
+
+I added ponysay as a git submodule. If you used git clone to get the unixTut files, you will need to do:
+git submodule init
+git submodule update
+This should pull in the ponysay files and you can refer to the instructions in that folder.
+
+Try this first:
+---------------------
+cd ponysay
+python3 setup.py --freedom=partial install --private
+export PATH=~/.local/bin:$PATH
+ponysay "testing"

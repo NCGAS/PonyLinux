@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-function cdtut(){
+
+echo "tut dir is ${UNIXTUT}"
+source ${UNIXTUT}/Utilities.sh
+
+#exit $?
+
     ponysay -b round -F pinkie 'Hi! I'\'$'ll be your instructor for the lesson on getting around in Unix.\nYou might be used to a window environment that has fancy things like mouse access and menus. \nIt might be hard to get used to doing things without windows, but a hero like you should have no problem!'
     read -p "Press enter to continue"
     clear
@@ -19,7 +24,7 @@ function cdtut(){
     ponysay -b round -F pinkie $'To move to a different location, you will use the cd command. cd stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nTo go up a directory, you would use the cd command followed by two dots. You should try it! '
     getInput 'cd ..' "Make sure you have a space between cd and the two dots."
     cd ..
-    echo "Nothing happened, so it worked! You are currently in:"
+    echo "No errors were printed, so it worked! You are currently in:"
     pwd
     read -p "Press enter to continue"
     clear
@@ -79,5 +84,3 @@ function dirtut(){
 # more about ls
 #which
 
-    menu
-}
