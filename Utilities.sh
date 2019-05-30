@@ -1,4 +1,54 @@
 #!/usr/bin/env bash
+#######
+##  This file declares functions that are sort of universal!
+#######
+
+export MINLINES=44
+
+function checkProgress(){
+    if [[ -e ~/.unixTut/config ]]; then
+        #sleep 2
+        echo -n '' > ~/.unixTut/sourceTmpVars
+        sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' ~/.unixTut/config >> ~/.unixTut/sourceTmpVars
+        . ~/.unixTut/sourceTmpVars
+        #sleep 5
+    else
+        mkdir -p ~/.unixTut
+        touch ~/.unixTut/config
+    fi
+    if [[ $name ]]; then
+	export PONYUSER="$name"
+    fi
+}
+
+function gotest(){
+echo -e "$1"
+cat "$1"
+
+}
+
+function ponygo(){
+    #ponyname="$1"
+    #ponytext="$2"
+    getWrap
+    ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
+    read -p "Press enter to continue"
+    clear
+
+}
+function ponygo(){
+    #ponyname="$1"
+    #ponytext="$2"
+    getWrap
+    ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
+    read -p "Press enter to continue"
+    clear
+}
+
+function ponyNoClear(){
+    getWrap
+    ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
+}
 
 function getInput(){
     cmd=$1
@@ -27,4 +77,12 @@ function getInput(){
 	tries=$((tries + 1))
 	read -p "$strret" variable1
     done    
+}
+# This function sets the width of the text for the speech bubbles for the ponysay --wrap param!
+function getWrap() {
+    wrapsize=$(( $(tput columns) * 3 / 4 ))
+    if (( $wrapsize < 40 )); then
+	wrapsize=40
+    fi
+    export PONYWRAP=$wrapsize
 }

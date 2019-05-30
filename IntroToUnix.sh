@@ -1,24 +1,17 @@
 #!/usr/bin/env bash
 
+## Declare some Globals!
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+source Utilities.sh
 export UNIXTUT=$(pwd -P $(dirname "$BASH_SOURCE"))
-echo "unixtut is $UNIXTUT"
+#echo "unixtut is $UNIXTUT"
+
+## Declare some Functions!
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function cleanUp(){
     #perl -p -ibkp -e "s/^source ~./unixTut/ponyrun.sh.*$//" ~/.bashrc
     #rm -rf ~/.unixTut
     echo "Removing game files."
-}
-
-function checkProgress(){    
-    if [[ -e ~/.unixTut/config ]]; then
-	#sleep 2	
-	echo -n '' > ~/.unixTut/sourceTmpVars
-	sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' ~/.unixTut/config >> ~/.unixTut/sourceTmpVars
-	. ~/.unixTut/sourceTmpVars
-	#sleep 5
-    else
-	mkdir -p ~/.unixTut
-	touch ~/.unixTut/config
-    fi
 }
 
 function execute(){
@@ -91,7 +84,12 @@ function getInput(){
 
 function intro(){
     clear
-    read -p "$(ponysay -b round -F rarity 'Hello! What is your name, friend?')" variable1
+    string="Hello! What is your name, friend?"
+    lines=$(tput lines)
+    if [[ $lines < $MINLINES ]]; then
+	string="${string} And by the way, your screen is not big enough... try resizing the window so you have a bit more vertical space. You currently have $lines lines and we recommend $MINLINES."
+    fi
+    read -p "$(ponysay -b round -F rarity $string)" variable1
     echo "name: $variable1" > ~/.unixTut/config
     name=$variable1
     export PONYUSER="$name"
@@ -120,26 +118,32 @@ function intro(){
 
 function menu(){
     clear
+    big=""
+    lines=$(tput lines)
+    if [[ $lines < $MINLINES ]]; then
+	big=" And by the way, your screen is not big enough... try resizing the window so you have a bit more vertical space. You currently have $lines lines and we recommend $MINLINES."
+    fi
     string="Welcome back, $name! Ready to do some more training?"
     if [[ $1 = 1 ]]; then
 	string="Alright, hero-in-training, Let's get you prepared to save the Princess! What would you like to learn first?"
     fi 
+    string=${string}${big}
     ponysay -b round -F rarity ${string}$'\n\t1.) Getting around '${cdtutdone}$'\n\t2.) Directories '${dirtutdone}$'\n\t3.) Users and permissions '${usertutdone}$'\n\t4.) Opening and Navigating files '${opentutdone}$'\n\t5.) I am ready to face the dungeon!\n\t6.) I wanna do the intro over again.\n\t7.) Quit'
 
     read -p $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' variable1
     clear
     case $variable1 in
 	1)
-	    bash "${UNIXTUT}/Section_One/cdTut.sh"
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh"
             ;;
 	2)
-	    dirtut
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/dirTut.sh"
 	    ;;
 	3)
-	    usertut
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/userTut.sh"
 	    ;;
 	4)
-	    opentut
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/openTut.sh"
 	    ;;
 	5)
 	    battle
@@ -155,13 +159,17 @@ function menu(){
 	    ;;
     esac
 }
+
+## Here's where the program kinda starts
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 checkProgress
 greet="Welcome to Unix!"
 if [[ $name ]]; then
-    export PONYUSER="$name"
+    #export PONYUSER="$name"
     greet="Greetings, $name!"
 fi
-read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.')" variable1
+read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es, then enter, to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.\n\n')" variable1
 #echo "got $variable1"
 
 if [[ $variable1 = *"q"* || $variable1 = *"Q"* ]]; then
