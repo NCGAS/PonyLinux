@@ -4,7 +4,8 @@
 #######
 
 export MINLINES=44
-
+export bold=$(tput bold)
+export normal=$(tput sgr0)
 function checkProgress(){
     if [[ -e ~/.unixTut/config ]]; then
         #sleep 2

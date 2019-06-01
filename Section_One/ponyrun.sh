@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias cd=cdp
 alias ls=lsp
@@ -26,23 +26,25 @@ function moneymoneymoney()
 }
 function ouch()
 {
-    re='^[0-9]+$'
-    if [[ "$1" =~ $re ]] ; then
-	export HEALTH=$((HEALTH - $1))
-	if [ "$HEALTH" -le 0 ]; then
-	    echo "The last thought that goes through your mind before you lose consciousness is a deep sense of self disappointment and failure."
-	    pause=0
-	    while [ $pause -lt 7 ]; do
-		sleep 1
-		echo -n "."
-		let pause=pause+1
-	    done
-	    exit 0
+    if [[ "$1" != 0 ]]; then
+	re='^[0-9]+$'
+	if [[ "$1" =~ $re ]] ; then
+	    export HEALTH=$((HEALTH - $1))
+	    if [ "$HEALTH" -le 0 ]; then
+		echo "The last thought that goes through your mind before you lose consciousness is a deep sense of self disappointment and failure."
+		pause=0
+		while [ $pause -lt 7 ]; do
+		    sleep 1
+		    echo -n "."
+		    let pause=pause+1
+		done
+		exit 1
+	    fi
+	    echo "Ouch! You lost $1 health!"	
 	fi
-	echo "Ouch! You lost $1 health!"	
-    fi
-
+    fi    
 }
+
 function cdp(){
     #echo $1
     #stat $1
@@ -55,6 +57,8 @@ function cdp(){
     if [[ $ec == 0 ]]; then
 	\cd $1
 	echo "You open the door. It creaks a little as it swings open."
+	ouchies=$(perl -0777 -ne 'print m/(\d+) damage[ .!]/ ? $1 : 0;' Description)
+	ouch $ouchies
     elif [[ $result && $result = *"Permission"* ]];then
     #local lss="$(ls -ld "$1")"
     #if [ "${lss:5:1}" = "x" ]; then
@@ -93,9 +97,15 @@ function lsp(){
     elif  [[ "$result" = *"No such"* ]];then
 	echo "That place doesn't exist. Where exactly are you trying to look? Try spelling it out a bit slower."
     else
-	cat Description 2>/dev/null
-	#echo "$result"
-	\ls --color=tty $@
+	#cat Description 2>/dev/null	
+	fold -sw $(tput columns) <Description 2>/dev/null	
+	#echo "Checking term... $TERM"
+	if [[ $TERM = 'tty' ]]; then
+	    \ls --color=tty $@
+	else
+	    echo "$result"
+	    #\ls $@
+	fi
     fi
 }
 

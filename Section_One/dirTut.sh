@@ -34,8 +34,9 @@ clear
 
 ponysay -b round -F rainbowhurricane 'Great job, '$PONYUSER'! Now get out there and be victorious!'
 read -n 1 -r -p "Press any key to continue"
-clear
 
+clear
+echo "dirtutdone:  (Done)" >> ~/.unixTut/config
 # more about ~, and how it doesn't have /~
 # more about ls
 #which

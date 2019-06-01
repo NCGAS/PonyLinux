@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
 me="$( cd "$(dirname "$0")" ; cd ../ ; pwd -P )"
 #echo "me is $me"
+echo "tut dir is ${UNIXTUT}"
 source ${UNIXTUT:-$me}/Utilities.sh
-#echo "tut dir is ${UNIXTUT}"
+
 if [[ -z $PONYUSER ]]; then
     checkProgress
 fi
 #echo "name is $PONYUSER"
 
-    ponysay -b round -F pinkie 'Hi! I'\'$'ll be your instructor for the lesson on getting around in Unix.\nYou might be used to a window environment that has fancy things like mouse access and menus. \nIt might be hard to get used to doing things without windows, but a hero like you should have no problem!'
+    ponysay -b round -F pinkie 'Hi! I'\'$'ll be your instructor for the lesson on getting around in Unix.'
     read -p "Press enter to continue"
     clear
     getWrap
-    ponysay --balloon round --wrap $PONYWRAP -F pinkiebounce $'What you are looking at now is called a shell - it'\'$'s a program that lets you interact with the underlying computer operating system. \n\nThe specific shell you are using is called Bash, and it has its own kind of language. You issue commands to the bash shell and it executes those commands. \n\nSome commands don'\'$'t seem to do anything after you hit enter! \nThey just return a new line and show some stuff followed by a $ character. This is called a prompt, because it is prompting you to tell it what to do. \n\nNo output is usually a good sign in Unix! If a command fails, it usually tells you.'
-    read -p "Press enter to continue"
-    clear
-    getWrap
-    ponysay -b round --wrap $PONYWRAP -F pinkie $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
+    ponygo pinkiebounce $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd

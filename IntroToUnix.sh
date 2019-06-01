@@ -2,9 +2,9 @@
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-source Utilities.sh
-export UNIXTUT=$(pwd -P $(dirname "$BASH_SOURCE"))
-#echo "unixtut is $UNIXTUT"
+export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && pwd -P)
+source ${UNIXTUT}/Utilities.sh
+echo "unixtut is $UNIXTUT"
 
 ## Declare some Functions!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,10 +34,10 @@ function battle(){
     read -p "Press enter to continue"
     clear
     ponysay -b round -F  shiningarmorwedding 'Ok, let me make sure everything is prepared for you. Please bring back our Princess, safe and sound!'
-
+    whereami=$(pwd)
     read -p "Press enter to continue"
     if [[ ! -e dungeon ]]; then
-	bash buildPrincessDungeon.sh > /dev/null 2>&1 &
+	/usr/bin/env bash ${UNIXTUT}/Section_One/buildPrincessDungeon.sh $whereami > /dev/null 2>&1 &
 	PID=$!
 	printf "Preparing dungeon.."
 	while [ -d /proc/$PID ]
@@ -48,9 +48,13 @@ function battle(){
 	wait
     fi
     echo -e "\nYou make your final preparations. \nYou look back on your new friends and hope that you won't let them down. \nThe dungeon looms ominously in front of you - easily a ten-story stone structure made of what once must have been beautiful limestone, it is now blackened and foreboding. \nA chill wind pushes you forward to meet your fate. Will you save the day?"
-    thisDir=$(dirname "$(readlink -f "$0")")
-    bash --init-file <(echo ". ~/.bash_profile; . ${thisDir}/ponyrun.sh; cd ${thisDir}/dungeon; echo 'You enter the dungeon. To escape, type exit (or use the shortcut, control key + d). If you need a hint at any point, type hint.'")    
-    menu
+    #thisDir=$(dirname "$(readlink -f "$0")")
+    bash --init-file <(echo ". ~/.bash_profile; . ${UNIXTUT}/Section_One/ponyrun.sh; cd ${whereami}/dungeon; echo 'You enter the dungeon. To escape, type exit (or use the shortcut: control key + d). If you need a hint at any point, type hint or guide for a cheatsheet.'")    
+    if [[ $? ]]; then
+	shamemenu
+    else
+	menu
+    fi
 }
 
 function getInput(){
@@ -118,6 +122,7 @@ function intro(){
 
 function menu(){
     clear
+    #checkProgress
     big=""
     lines=$(tput lines)
     if [[ $lines < $MINLINES ]]; then
@@ -135,9 +140,11 @@ function menu(){
     case $variable1 in
 	1)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh"
+            menu
             ;;
 	2)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/dirTut.sh"
+            menu
 	    ;;
 	3)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/userTut.sh"
@@ -160,6 +167,14 @@ function menu(){
     esac
 }
 
+#' This comment is just to fix my annoying bash parser. Nothign to see hwere folks
+
+function shamemenu(){
+    clear
+    ponygo redheart $'We barely got you out of there! You look like you'\'$'ve been through some rough patches! \n\n We were able to heal you... but we still need your help! Can you get back in there, hero?\n\nPlease help us '${bold}'FIND'${normal}$' the Princess! I'\'$'m just a doctor, but I might recommend using search techniques instead of walking around in such a dangerous place!\n'
+menu
+}
+
 ## Here's where the program kinda starts
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -169,7 +184,8 @@ if [[ $name ]]; then
     #export PONYUSER="$name"
     greet="Greetings, $name!"
 fi
-read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es, then enter, to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.\n\n')" variable1
+read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es, then enter, to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.')" variable1
+
 #echo "got $variable1"
 
 if [[ $variable1 = *"q"* || $variable1 = *"Q"* ]]; then
