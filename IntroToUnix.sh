@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+trap 'echo "To exit, please choose the quit option from the menu."; menu' INT
+
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && pwd -P)
@@ -139,8 +141,7 @@ function menu(){
     clear
     case $variable1 in
 	1)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh"
-            menu
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh" && menu
             ;;
 	2)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/dirTut.sh"

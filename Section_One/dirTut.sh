@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
+# Tried the following which did not help:
+#-m
+#trap 'echo "Taking you back to the main menu!"; exit 0' INT
 
 me="$( cd "$(dirname "$0")" ; cd ../ ; pwd -P )"
 #echo "me is $me"
