@@ -6,6 +6,7 @@
 export MINLINES=44
 export bold=$(tput bold)
 export normal=$(tput sgr0)
+
 function checkProgress(){
     if [[ -e ~/.unixTut/config ]]; then
         #sleep 2
@@ -37,7 +38,7 @@ function ponygo(){
     clear
 
 }
-function ponygo(){
+function ponytest(){
     #ponyname="$1"
     #ponytext="$2"
     getWrap
@@ -68,13 +69,14 @@ function getInput(){
 	    echo "So close! You added fancy stuff to the end. Keep it simple."
 	elif [[ $variable1 = *"$cmd" ]];then
 	    echo "So close!. There's something in front of the command where there shouldn't be. Look carefully."
+	else
+	    echo "${retry} Attempt $tries of 3:"
 	fi
 	if [[ $tries > 3 ]]; then
 	    echo "You gave it a few tries. It's ok, I'll show you how to do it."
 	    echo " $ $cmd"
 	    break
 	fi
-	echo "Attempt $tries of 3:"
 	tries=$((tries + 1))
 	read -p "$strret" variable1
     done    

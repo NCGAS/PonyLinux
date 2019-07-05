@@ -16,6 +16,8 @@ python3 setup.py --freedom=partial install --private
 export PATH=~/.local/bin:$PATH
 ponysay "testing"
 
+You can also add a prefix if that helps:
+python3 setup.py --freedom=partial install --private  --prefix=target/install/directory --without-info
 
 Troubleshooting
 --------------------

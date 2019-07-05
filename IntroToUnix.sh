@@ -135,34 +135,42 @@ function menu(){
 	string="Alright, hero-in-training, Let's get you prepared to save the Princess! What would you like to learn first?"
     fi 
     string=${string}${big}
-    ponysay -b round -F rarity ${string}$'\n\t1.) Getting around '${cdtutdone}$'\n\t2.) Directories '${dirtutdone}$'\n\t3.) Users and permissions '${usertutdone}$'\n\t4.) Opening and Navigating files '${opentutdone}$'\n\t5.) I am ready to face the dungeon!\n\t6.) I wanna do the intro over again.\n\t7.) Quit'
+    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Users and permissions '${usertutdone}$'\n\t5.) Opening and Navigating files '${opentutdone}$'\n\t6.) I am ready to face the dungeon!\n\t7.) I wanna do the intro over again.\n\t8.) Quit'
 
-    read -p $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' variable1
+    read -p $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
+    # Todo: strip out non-printing characters from variable1!
     clear
-    case $variable1 in
+    #echo "You said $rawInput"
+#perl -p -e 's/$'
+#cleanInput=$(cat $rawIput | tr -d '\011\012\015\009\010\012\013\015\032\040\176')
+#echo "That is $cleanInput"
+    case $rawInput in
 	1)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh" && menu
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/gentleTut.sh" && menu
             ;;
 	2)
+	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh" && menu
+            ;;
+	3)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/dirTut.sh"
             menu
 	    ;;
-	3)
+	4)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/userTut.sh"
 	    ;;
-	4)
+	5)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/openTut.sh"
 	    ;;
-	5)
+	6)
 	    battle
 	    ;;
-	6)
+	7)
 	    intro
 	    ;;
-	7)
+	8)
 	    exit 0
 	    ;;
-	8)
+	9)
 	    execute
 	    ;;
     esac
@@ -178,7 +186,11 @@ menu
 
 ## Here's where the program kinda starts
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+which ponysay >> /dev/null
+if (( $? != 0 )); then
+    echo "Uh-oh. A critical game component, ponysay, is not installed or not in the PATH. Please read the install instructions in the INSTALL file to get up to speed."
+    exit 1
+fi
 checkProgress
 greet="Welcome to Unix!"
 if [[ $name ]]; then
