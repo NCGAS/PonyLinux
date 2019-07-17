@@ -1,0 +1,3 @@
+[submodule "ponysay"]
+	path = ponysay
+	url = https://github.com/erkin/ponysay

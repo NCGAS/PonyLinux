@@ -1,7 +1,9 @@
 I'd like to thank the following Q&A pages for helping me hone my bash-fu:
 
+Bash basics:
 https://stackoverflow.com/questions/1250079/how-to-escape-single-quotes-within-single-quoted-strings
 https://www.cyberciti.biz/faq/bash-for-loop/
+https://stackoverflow.com/questions/59838/check-if-a-directory-exists-in-a-shell-script
 https://unix.stackexchange.com/questions/293940/bash-how-can-i-make-press-any-key-to-continue
 http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_03.html
 https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
@@ -11,6 +13,12 @@ https://unix.stackexchange.com/questions/191694/how-to-put-a-newline-special-cha
 https://stackoverflow.com/questions/5014632/how-can-i-parse-a-yaml-file-from-a-linux-shell-script
 https://stackoverflow.com/questions/11087499/bash-how-do-you-capture-stderr-to-a-variable/11087523
 https://serverfault.com/questions/146745/how-can-i-check-in-bash-if-a-shell-is-running-in-interactive-mode
+https://www.cyberciti.biz/faq/finding-bash-shell-array-length-elements/
+https://stackoverflow.com/questions/4774054/reliable-way-for-a-bash-script-to-get-the-full-path-to-itself
+https://unix.stackexchange.com/questions/122845/using-a-b-for-variable-assignment-in-scripts
+
+This is for the issue when I split out the individual pages, ctrl+c would kill the whole thing, when I wanted it to return to menu:
+https://unix.stackexchange.com/questions/80975/preventing-propagation-of-sigint-to-parent-process
 
 I didn't use the select functionality, but it seems cool:
 https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
@@ -24,6 +32,30 @@ https://superuser.com/questions/380772/removing-ansi-color-codes-from-text-strea
 
 Making sure ls works with color:
 https://www.cyberciti.biz/faq/how-to-turn-on-or-off-colors-in-bash/
+
+tput
+https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
+
+The beauty of fold (cat with text wrap):
+https://unix.stackexchange.com/questions/25173/how-can-i-wrap-text-at-a-certain-column-size
+
+Multiple commands using args from a file:
+https://stackoverflow.com/questions/13939038/how-do-you-run-a-command-for-each-line-of-a-file
+
+Converting images to Unix-ready:
+https://github.com/stefanhaustein/TerminalImageViewer
+
+A neat overview of how to tweak the interactive shell:
+http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
+
+Bash colors:
+https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+Perl one-liner for grabbing whole files:
+https://riptutorial.com/perl/example/16725/slurp-file-in-one-liner
+Perl ternary operator:
+https://stackoverflow.com/questions/10503643/perl-one-liner-if-else-logic
+
 
 Other notes.
 I think it will be hard to orchestrate the proper sourcing/unsourcing of the files needed after the tutorial is run. Getting it to start automatically will be tricky.
