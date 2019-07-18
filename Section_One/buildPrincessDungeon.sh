@@ -80,6 +80,12 @@ function buildSubdir {
 		else
 		    cp ${monsterdir}/Princess .
 		    chmod a+x Princess
+		    ln -s Princess "princess"
+		    ln -s Princess "the princess"
+		    ln -s Princess "the Princess"
+		    ln -s Princess "The Princess"
+		    ln -s Princess "The princess"
+		    ln -s Princess "the Princess"
 		    echo $princess >> Description		   
 		    ((princessplaced++))
 		fi
@@ -109,11 +115,11 @@ function buildSubdir {
 		    chmod a+x .treasure
 		    echo '}' >> .treasure
 		fi
-		if (( $globaldepth - $depth == 2 )); then
+		if (( $globaldepth - $depth == 0 )); then
 		    here=$(pwd)
 		    locked="$locked $here"
 		fi
-		if (( $globaldepth - $depth == 3 )); then
+		if (( $globaldepth - $depth == 0 )); then
 		    darked="$darked $here"
 		fi
 	    else
@@ -146,18 +152,18 @@ breadth=2
 # Since we consume monsters, a small initial number is more likely to have monsters in the upper end of the dungeon.
 monsterodds=$#monsters
 # Treasure is not consumed, so this number shouldn't be too high. 
-treasureodds=20
+treasureodds=5
 monsterodds=10
 nummonsters=${#monsters[@]}
 monsterindex=0
 princessplaced=0
 buildSubdir $globaldepth $breadth
 for dir in $darked; do
-chmod a-r .
+chmod a-r $dir
 done
 
 for dir in $locked; do
-chmod a-x .
+chmod a-x $dir
 done
 
 cd ..

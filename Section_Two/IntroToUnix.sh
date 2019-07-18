@@ -148,13 +148,13 @@ function menu(){
 #echo "That is $cleanInput"
     case $rawInput in
 	1)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/gentleTut.sh" && menu
+	    /usr/bin/env bash "${UNIXTUT}/Section_Two/fileedit.sh"
             ;;
 	2)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh" && menu
+	    /usr/bin/env bash "${UNIXTUT}/Section_Two/regex.sh" && menu
             ;;
 	3)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/dirTut.sh"
+	    /usr/bin/env bash "${UNIXTUT}/Section_Two/awksed.sh" && menu
             menu
 	    ;;
 	4)
