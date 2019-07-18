@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F ahuizotl $(tput bold)'Grrrrr!!'
+echo "You open the door to catch a glimpse of snapping white teeth gleaming in contrast to the dark gloom. Soft glowing red light from a pair of eyes reveals the outline of a sinister, wolflike monster. The creature regards you as though you were a fly to be swatted. Before you have a chance to collect yourself, it pounces, biting through your armor!" | fold -sw $(tput columns) 
+ouch 15
+}

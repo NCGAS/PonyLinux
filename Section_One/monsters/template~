@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay <monstername> "Grrrr!"
+echo "monster description" | fold -sw $(tput columns) 
+ouch 15
+}

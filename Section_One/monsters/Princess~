@@ -1,0 +1,6 @@
+function monsterrun(){
+ponysay celestia "Thank you, hero, for rescuing me from this terrible place!"
+echo "The Princess, free from the magic-suppressing qualities of the cold iron cell, works her magic to open a portal to escape. A door opens up called 'portal' and you are free to step through it at your leisure. Once through, you can get back to your friends waiting outside." | fold -sw $(tput columns) 
+ln -s $DUNGEON portal
+moneymoneymoney 30
+function monsterrun(){

@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
-declare -a goodies=(""
-"treasure 20"
-""
-""
-""
-"treasure 100"
-""
-""
-""
-""
-""
-""
-""
-"monster ahuizotl"
+me="$( cd "$(dirname "$0")" ; pwd -P )"
+echo "me is $me"
+monsterdir=${me}/monsters
+echo "tut dir is $monsterdir"
+#if [[ -z $PONYUSER ]]; then
+#    checkProgress
+#fi
+#echo "name is $PONYUSER"
+export DUNGEON=$(pwd)
+# Monsters are in a folder (called monsters) with the names below. We should try not to use any given one more than once.
+# To implement a new monster, copy the monster template file in the monsters folder to a new name and put the name in the list below.
+declare -a monsters=("azzy"
+"coon"
+"fido"
+"manti"
+"owl"
 )
 
 declare -a floors=(
@@ -29,7 +31,7 @@ declare -a floors=(
 "A small stream flows through the center of this passageway. The soft burble of running water is soothing and, after so much thirst-inducing walking, drinking a bit of the water seems mighty tempting. As you lean close there's something about the scent of the water that warns you away though, perhaps another source would be better. As you walk along you see to either side, doors marked Door_ followed by three random seeming letters and numbers."
 "A dark, musty hall lurks before you. Seemingly endless, featureless doors loom ahead through the gloom. It smells dank and moldy, like you are in the basement of an old building that occasionally floods. The floor has a fine layer of silt, causing your footsteps to scrape and shuffle as you walk. You feel doubt that you will ever find the Princess by groping randomly through these endless halls."
 "This hall is lined with timber, the whole thing managing to seem positively warm and inviting compared to some of the passages you've seen. The scent of pine pervades the space as your light reflects warmly off the timber to reveal doors on either side of the hall marked Door_ followed by three random seeming letters and numbers."
-"You open the door to catch a glimpse of snapping white teeth gleaming in contrast to the dark gloom. Soft glowing red light from a pair of eyes reveals the outline of a sinister, wolflike monster. The creature regards you as though you were a fly to be swatted. Before you have a chance to collect yourself, it pounces, dealing you 15 damage! What do you do? You can go back or try to dash around it, through another set of identical-looking doors marked Door_ followed by three random seeming letters and numbers."
+"You see a large lair with bones piled in dark corners. The air is foul with the smell of death. On the far side is a set of identical-looking doors marked Door_ followed by three random seeming letters and numbers."
 "This hallway has an inch or two of water on the floor, like you are walking under a leaky water main. You hear the steady sound of dripping water, playing like the ominous background music of a horror movie. There are doors to your left and right, marked Door_ followed by three random seeming letters and numbers."
 "You open the door and step into a dark hallway. The black walls are pocked and pitted, as though they were limestone eroded by ages of acidic rain. There is a disconcerting stickiness to the floor, like the floor of a dive bar. As you reach out to steady yourself, your hand drifts through a mat of cobwebs. Invisible threads stick to your face as you walk, and there is the sound of skittering from the ceiling. You turn to look at the sound, but you see only darkness."
 "As you walk through the door, your feet slip out from under you and you tumble into a pit, taking 5 damage from the fall. It looks like there are enough stones from a wall or ceiling cave-in long ago, that you can pile them into a makeshift stairway out of the pit. As you climb out, bruised and scratched from moving rocks, the shaky floor ahead of you solidifies into a smooth hallway. The low light reveals a set of doors, marked Door_ followed by three random seeming letters and numbers."
@@ -39,15 +41,18 @@ declare -a floors=(
 "The way before you is pitch black. As you probe forward with your foot, your solid-seeming footing gives way to a slick surface and you find yourself sliding down a chute. You land in a pile of pillows which cough feathers out the seams as you scramble over them. There are doors ahead of you which appear to be upholstered in silk, marked Door_ followed by three random seeming letters and numbers."
 "The hallway before you curves to the left, and as you follow it it keeps curving to the left. You feel like it must hit itself at some point, but it never does. You do what feels like 3 rotations and there is finally a wall with some doors. You wonder if you are going about this dungeon the right way as you look at the doors marked Door_ followed by three random seeming letters and numbers."
 "A set of stairs bend upward before you, getting steeper and steeper as you ascend. A faint wind pulls cloyingly at your clothes as the wide, wooden stairs give way to metal-railed industrial-looking steps, then to a ladder that you would expect to find in a sewer drain, then finally to a rickety rope-and-wood-dowel ladder that you remember building for a treehouse in your childhood. It sways in the wind and you cling to it as you look down and realize the ground is far below you. Terror grips you and you can't move your body. Just as you hear the sound of creaking rope strands tearing apart from age and strain, you see before you a wide tree branch in an impossibly large tree. You step onto the platform of the treehouse, and there are child-sized wooden doors on the treehouse, marked Door_ followed by three random seeming letters and numbers."
-"Driving rain greets you as you open the door to the next room. You don't see anything through the sheet of water angrily pelting you from somewhere above. You run full-tilt to get to the other side, but you find yourself drenched to the bone. Your teeth chatter as you are soaked through-and-through, cold, and the clammy dungeon walls offer no respite or shelter. You take 5 damage as your blood chills, and you run faster to try to keep warm. Just as you think to turn back, you see an awning ahead and dive for it. Under the awning, the sound of rain fades and you find yourself warm and dry once more. You wonder if this is the right way to be looking for the Princess. There are doors in front of you, painted in pastel colors and marked Door_ followed by three random seeming letters and numbers."
+"Driving rain greets you as you open the door to the next room. You don't see anything through the sheet of water angrily pelting you from somewhere above. You run full-tilt to get to the other side, but you find yourself drenched to the bone. Your teeth chatter as you are soaked through-and-through, and the clammy dungeon walls offer neither respite nor shelter. You take 5 damage as your blood chills, and you run faster to try to keep warm. Just as you think to turn back, you see an awning ahead and dive for it. Under the awning, the sound of rain fades and you find yourself warm and dry once more. You wonder if this is the right way to be looking for the Princess. There are doors in front of you, painted in pastel colors and marked Door_ followed by three random seeming letters and numbers."
 "You open the door and find yourself knocked flat to the ground by strong wind whipping from around the room. The sound of ripping wood, stone, and metal from above makes you look up to see a hole in the window of this dungeon hall. Glass lines the floor where it looked like a boulder was chucked through the wall. A black cloud outside has touched down on the ground and in a moment you take in the terrible beauty of the tornadic storm. Hail starts pelting you sideways from the hole in the wall and you run to the other side. Part of the wall here has collapsed inward but you squeeze under it to get out of the stinging ice storm. You take 5 damage from being struck by ice and debris. You see damaged doors marked Door_ followed by three random seeming letters and numbers."
 )
 
-
 more="A perfectly normal dungeon hallway extends before you. At the end of the hall there are perfectly normal dungeon doors, marked Door_ followed by three random seeming letters and numbers. You feel a little like you are losing your mind in here."
-start="You look around as the large, ponderous dungeon doors close behind you. There's an unsettling finality to the way they shut, but your job is to perform a rescue. Whoever built this dungeon had an odd sense of naming rooms. Each door is labeled Door_ followed by three random seeming letters and numbers."
-
+start="You look around as the large, ponderous dungeon doors close behind you. There's an unsettling finality to the way they shut, but your job is to perform a rescue. As you make your way into the hall, you kick something metal across the floor. It looks like some kind of key. You pocket it away for safe keeping and look around. Whoever built this dungeon had an odd sense of naming rooms. Each door is labeled Door_ followed by three random seeming letters and numbers."
+deadend="You walk into a room which is round, with even stone blocks making up the walls. It looks like the only door out of this room is the one you came from."
+princess="Your weariness and battered body seem to fade away from your worries as soon as you step into this room. The one you were trying so desperately to find stands before you. The Princess, even though she is locked in a small cell with little amenity, radiates such splendor that is takes you a moment to realize that you have succeeded. You run to her aide, unlocking the iron door to her cell with the key you found when you entered the dungeon. With a tired smile, she thanks you graciously and leans on your proferred shoulder as you make haste to retreat from this awful place." 
+locked=""
+darked=""
 numDescriptions=${#floors[@]}
+RANDOM=$$
 function buildSubdir {
     local depth=$1
     local breadth=$2
@@ -68,14 +73,48 @@ function buildSubdir {
 	    echo "ndex is $ndex"
 	    local ndex=$((ndex + (i - 1)))
 	    echo "ndex is now $ndex"
-	    if (( $ndex < $numDescriptions )); then
+	    if (( $depth == 1 )); then
+		echo "$ndex, $i, $depth, $breadth" >> Description
+		if (( $princessplaced >= 1 )); then
+		    echo $deadend >> Description
+		else
+		    cp ${monsterdir}/Princess .
+		    chmod a+x Princess
+		    echo $princess >> Description		   
+		    ((princessplaced++))
+		fi
+	    elif (( $ndex < $numDescriptions )); then
 		echo "$ndex, $i, $depth, $breadth" >> Description
 		echo "${floors[ndex]}" >> Description
-		if (( ${goodies[ndex]} =~ '^monster' )); then
-		    echo "monster at index $ndex"
-		    ponysay -b round -F ahuizotl $(tput bold)'Grrrrr!!'>>.monster
-		elif (( ${goodies[ndex]} =~ '^treasure')); then
+		monstertest=$((RANDOM % $monsterodds))
+		echo "rolling randomly $monstertest"		
+		#if (( $monsterindex < $nummonsters)); then
+		if (( $monstertest == 0 )); then
+		    echo "monster at index $ndex rolling randomly $monstertest"
+		    monsterid=$((RANDOM % $nummonsters))
+		    cp ${monsterdir}/${monsters[$monsterid]} .monster
+		    chmod a+x .monster
+			#((monsterodds--)) # it gets more likely with time
+			#((monsterindex++))
+		        #fi
+		fi
+                treasuretest=$((RANDOM % $treasureodds))
+                echo "rolling randomly $treasuretest"
+		if (( $treasuretest == 0)); then
+		    echo 'function moneyrun(){' >> .treasure
 		    echo "treasure at index $ndex"
+		    treasure=$((RANDOM%100+10))
+		    echo "cat $monsterdir/chest" >> .treasure
+		    echo "moneymoneymoney $treasure" >> .treasure		    
+		    chmod a+x .treasure
+		    echo '}' >> .treasure
+		fi
+		if (( $globaldepth - $depth == 2 )); then
+		    here=$(pwd)
+		    locked="$locked $here"
+		fi
+		if (( $globaldepth - $depth == 3 )); then
+		    darked="$darked $here"
 		fi
 	    else
 		echo "We wrote $numDescriptions descs, and ndex is $ndex"
@@ -91,6 +130,7 @@ function buildSubdir {
 	cd ..
     fi
 }
+
 # TODO: Ask if user wants dungeon rebuilt.
 if [[ -d "dungeon" ]]; then
     exit 0
@@ -99,9 +139,27 @@ mkdir -p dungeon
 echo $?
 cd dungeon
 echo "${start}" >> Description
+cp ${monsterdir}/start .monster
 globaldepth=6
 breadth=2
+# There is a one in $monsterodds chance that a given dir will have a monster. 
+# Since we consume monsters, a small initial number is more likely to have monsters in the upper end of the dungeon.
+monsterodds=$#monsters
+# Treasure is not consumed, so this number shouldn't be too high. 
+treasureodds=20
+monsterodds=10
+nummonsters=${#monsters[@]}
+monsterindex=0
+princessplaced=0
 buildSubdir $globaldepth $breadth
+for dir in $darked; do
+chmod a-r .
+done
+
+for dir in $locked; do
+chmod a-x .
+done
+
 cd ..
 exit 0
 
