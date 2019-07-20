@@ -56,8 +56,11 @@ https://riptutorial.com/perl/example/16725/slurp-file-in-one-liner
 Perl ternary operator:
 https://stackoverflow.com/questions/10503643/perl-one-liner-if-else-logic
 
+Random number generator
+http://tldp.org/LDP/abs/html/randomvar.html
 
 Other notes.
 I think it will be hard to orchestrate the proper sourcing/unsourcing of the files needed after the tutorial is run. Getting it to start automatically will be tricky.
 
 Big thanks to the Ponysay team for making this so much more fun!
+

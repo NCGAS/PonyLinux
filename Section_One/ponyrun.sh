@@ -126,7 +126,7 @@ function cdp(){
     if [[ "$1" = "portal" ]]; then
 #    if (( $1 == "*portal*" )); then
 	export SUCCESS=true
-	exit 0
+	exit 3
     fi
     #stat $1
     #\cd $1 2>&1 > $PIPE
