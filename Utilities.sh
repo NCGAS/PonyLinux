@@ -7,6 +7,11 @@ export MINLINES=44
 export bold=$(tput bold)
 export normal=$(tput sgr0)
 
+function checkColumns(){
+cols=${COLUMNS:-50}
+echo $cols
+}
+
 function checkProgress(){
     if [[ -e ~/.unixTut/config ]]; then
         #sleep 2
@@ -83,7 +88,7 @@ function getInput(){
 }
 # This function sets the width of the text for the speech bubbles for the ponysay --wrap param!
 function getWrap() {
-    wrapsize=$(( $(tput columns) * 3 / 4 ))
+    wrapsize=$(( $(checkColumns) * 3 / 4 ))
     if (( $wrapsize < 40 )); then
 	wrapsize=40
     fi

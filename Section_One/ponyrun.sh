@@ -27,6 +27,11 @@ alias ls-lah=oops
 export bold=$(tput bold)
 export normal=$(tput sgr0)
 
+function checkColumns(){
+    cols=${COLUMNS:-50}
+    echo $cols
+}
+
 function use(){
     echo "Using items is very limited. Maybe just try typing in the name of the item itself?"
 }
@@ -40,29 +45,29 @@ function load(){
     export TREASURE=$((TREASURE + 50))
 }
 function oops(){
-    echo "Oops, make sure you have a space after the command and before any dashes or other arguments." | fold -sw $(tput columns)
+    echo "Oops, make sure you have a space after the command and before any dashes or other arguments." | fold -sw $(checkColumns)
 }
 
 function look(){
-    echo "Use the "$bold"ls"$normal" command to look around. Try running "$bold"help"$normal" for more details!" | fold -sw $(tput columns)
+    echo "Use the "$bold"ls"$normal" command to look around. Try running "$bold"help"$normal" for more details!" | fold -sw $(checkColumns)
 }
 function walk(){
-    echo "In Unix, you move around by changing directories using the "$bold"cd"$normal" command. There isn't a sense of north, south, east, west, but the available directories you can go to are listed using "$bold"ls"$normal". To go back a directory (sometimes referred to as 'up' a directory), type "$bold"cd .."$normal | fold -sw $(tput columns)
+    echo "In Unix, you move around by changing directories using the "$bold"cd"$normal" command. There isn't a sense of north, south, east, west, but the available directories you can go to are listed using "$bold"ls"$normal". To go back a directory (sometimes referred to as 'up' a directory), type "$bold"cd .."$normal | fold -sw $(checkColumns)
 }
 
 function start(){
-    echo "Welcome to the dungeon! Type "$bold"help"$normal" for some tips on moving around." | fold -sw $(tput columns)
+    echo "Welcome to the dungeon! Type "$bold"help"$normal" for some tips on moving around." | fold -sw $(checkColumns)
 }
 
 function halp(){
-    echo "Welcome to the ponylinux dungeon! Muahahah...ahem. Here are some hints to help you with the basics." | fold -sw $(tput columns)
-    echo "If your bottom bar doesn't show up well, type light or dark to toggle it." | fold -sw $(tput columns)
-    echo -e "To move around, use the "$bold"cd"$normal" command, followed by where you want to go. To go back through the door you came from, type:\n\t"$bold"cd .."$normal"\nTo go into a room, let's say through Door_One, type:\n\t"$bold"cd Door_One"$normal | fold -sw $(tput columns)
-    echo -e "To look and see what is inside the room you are in, type "$bold"ls"$normal". To look really closely, type:\n\t"$bold"ls -lah"$normal | fold -sw $(tput columns)
-    echo "If you see a file using ls, you can open it with the "$bold"less"$normal" command, followed by the file name." | fold -sw $(tput columns)
-    echo -e 'To search for things, use the find command. It wants you to tell it where to search, and what to search for, like so:\n\t'$bold'find . -name "*monster*"'$normal'\nThat command would tell you where all of the monsters are in the dungeon! That is good to know, right?' | fold -sw $(tput columns)
-    echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal". To get back to the start of the dungeon, type "$bold"escape"$normal"." | fold -sw $(tput columns)
-    #echo "" | fold -sw $(tput columns)
+    echo "Welcome to the ponylinux dungeon! Muahahah...ahem. Here are some hints to help you with the basics." | fold -sw $(checkColumns)
+    echo "If your bottom bar doesn't show up well, type light or dark to toggle it." | fold -sw $(checkColumns)
+    echo -e "To move around, use the "$bold"cd"$normal" command, followed by where you want to go. To go back through the door you came from, type:\n\t"$bold"cd .."$normal"\nTo go into a room, let's say through Door_One, type:\n\t"$bold"cd Door_One"$normal | fold -sw $(checkColumns)
+    echo -e "To look and see what is inside the room you are in, type "$bold"ls"$normal". To look really closely, type:\n\t"$bold"ls -lah"$normal | fold -sw $(checkColumns)
+    echo "If you see a file using ls, you can open it with the "$bold"less"$normal" command, followed by the file name." | fold -sw $(checkColumns)
+    echo -e 'To search for things, use the find command. It wants you to tell it where to search, and what to search for, like so:\n\t'$bold'find . -name "*monster*"'$normal'\nThat command would tell you where all of the monsters are in the dungeon! That is good to know, right?' | fold -sw $(checkColumns)
+    echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal". To get back to the start of the dungeon, type "$bold"escape"$normal"." | fold -sw $(checkColumns)
+    #echo "" | fold -sw $(checkColumns)
     echo -e "(If you meant to invoke the help that comes with Unix, type it with a backslash in the front like so: \\help.)"
 }
 
@@ -205,7 +210,7 @@ function lsp(){
     else
 	#cat Description 2>/dev/null	
 	if [[ -e Description ]]; then
-	    fold -sw $(tput columns) <Description 2>/dev/null	
+	    fold -sw $(checkColumns) <Description 2>/dev/null	
 	    #echo "Checking term... $TERM"
 	fi
 	if [[ $TERM = 'tty' ]]; then
@@ -239,9 +244,9 @@ function guide(){
     hint
 }
 function hint(){
-    echo -e "To unlock doors, use the "$bold"chmod"$normal" command. To make it so anyone can open the Door_One, for example, do:\n\t"$bold"chmod a+x Door_One"$normal | fold -sw $(tput columns) 
-    echo -e "To be able to see the contents of a dark room, you also use the "$bold"chmod"$normal" command. To make it so anyone can see inside Door_One, do:\n\t"$bold"chmod a+r Door_One"$normal | fold -sw $(tput columns) 
-    echo -e "Doors in Unix are selective to WHO is allowed to pass or look around. There are three groups of people - the User, the Group, and Other.\n\tIf you own the directory you are going to (the door you are about to open), then the User permissions apply.\n\tIf you don't own the directory you are going to, but you are a member of the group that the directory belongs to, then the Group permissions apply.\n\tIf you don't own the directory you are going to and don't belong to the directory's group, then the Other permissions apply.\n\nTo figure out who you are and what group you are in, type in the id command. The output shows your username, your user id, and all the groups you belong to and their respective group ids. \nIt is normal to belong to a group that is the same as your username, and to be a part of multiple groups.\nTo figure out who owns the directory you are in or want to go in, type ls -lah. The . directory means the one you are currently in. The .. directory refers to the directory that contains the current one, also called parent directory.\n" | fold -sw $(tput columns) 
+    echo -e "To unlock doors, use the "$bold"chmod"$normal" command. To make it so anyone can open the Door_One, for example, do:\n\t"$bold"chmod a+x Door_One"$normal | fold -sw $(checkColumns) 
+    echo -e "To be able to see the contents of a dark room, you also use the "$bold"chmod"$normal" command. To make it so anyone can see inside Door_One, do:\n\t"$bold"chmod a+r Door_One"$normal | fold -sw $(checkColumns) 
+    echo -e "Doors in Unix are selective to WHO is allowed to pass or look around. There are three groups of people - the User, the Group, and Other.\n\tIf you own the directory you are going to (the door you are about to open), then the User permissions apply.\n\tIf you don't own the directory you are going to, but you are a member of the group that the directory belongs to, then the Group permissions apply.\n\tIf you don't own the directory you are going to and don't belong to the directory's group, then the Other permissions apply.\n\nTo figure out who you are and what group you are in, type in the id command. The output shows your username, your user id, and all the groups you belong to and their respective group ids. \nIt is normal to belong to a group that is the same as your username, and to be a part of multiple groups.\nTo figure out who owns the directory you are in or want to go in, type ls -lah. The . directory means the one you are currently in. The .. directory refers to the directory that contains the current one, also called parent directory.\n" | fold -sw $(checkColumns) 
 }
 
 light
