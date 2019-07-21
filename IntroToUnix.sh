@@ -48,7 +48,7 @@ function battle(){
     fi
     echo -e "\nYou make your final preparations. \nYou look back on your new friends and hope that you won't let them down. \nThe dungeon looms ominously in front of you - easily a ten-story stone structure made of what once must have been beautiful limestone, it is now blackened and foreboding. \nA chill wind pushes you forward to meet your fate. Will you save the day?"
     #thisDir=$(dirname "$(readlink -f "$0")")
-    bash --init-file <(echo ". ~/.bash_profile; . ${UNIXTUT}/Section_One/ponyrun.sh; cd ${whereami}/dungeon; . .monster; echo 'You enter the dungeon. To escape, type exit (or use the shortcut: control key + d). If you need help at any point, type help, hint or guide for some pointers.'; printf '.'; sleep 1; printf '.'; sleep 1; printf '.\n';  monsterrun") 2>/dev/null
+    bash --init-file <(echo ". ~/.bash_profile; . ${UNIXTUT}/Section_One/ponyrun.sh; cd ${whereami}/dungeon; . .monster; echo 'You enter the dungeon. To escape, type exit (or use the shortcut: control key + d). If you need help at any point, type help, hint or guide for some pointers.'; printf '.'; sleep 1; printf '.'; sleep 1; printf '.\n';  monsterrun")
     battleresults=$?
     echo "battle results is $battleresults, success is $success"
     if [[ $battleresults = 2 ]]; then
