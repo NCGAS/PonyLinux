@@ -8,8 +8,9 @@ export bold=$(tput bold)
 export normal=$(tput sgr0)
 
 function checkColumns(){
-cols=${COLUMNS:-50}
-echo $cols
+tput cols
+#cols=${COLUMNS:-50}
+#echo $cols
 }
 
 function checkProgress(){
