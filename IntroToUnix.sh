@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-trap 'echo "To exit, please choose the quit option from the menu."; menu' INT
+trap 'echo -e "\n\nTo exit, please choose the quit option from the menu.\n"; menu 1' INT
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,7 +127,9 @@ function intro(){
 }
 
 function menu(){
-    clear
+    if [[ $1 != 1 ]]; then
+	clear
+    fi
     #checkProgress
     big=""
     lines=$(tput lines)
@@ -144,11 +146,12 @@ function menu(){
     read -p $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!
     clear
-    #echo "You said $rawInput"
-#perl -p -e 's/$'
-#cleanInput=$(cat $rawIput | tr -d '\011\012\015\009\010\012\013\015\032\040\176')
-#echo "That is $cleanInput"
-    case $rawInput in
+    echo "You said $rawInput"
+cleanperl=$(echo $rawInput | perl -p -e 's/\011\012\015\009\010\012\013\015\032\040\176//g')
+cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\176')
+echo "That is tr  $cleanInput"
+echo "That is perl  $cleanperl"
+    case $cleanInput in
 	1)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/gentleTut.sh" && menu
             ;;
@@ -160,7 +163,7 @@ function menu(){
             menu
 	    ;;
 	4)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/userTut.sh"
+	    findTut; /usr/bin/env bash "${UNIXTUT}/Section_One/userTut.sh"
 	    ;;
 	5)
 	    /usr/bin/env bash "${UNIXTUT}/Section_One/openTut.sh"
@@ -177,6 +180,9 @@ function menu(){
 	9)
 	    execute
 	    ;;
+        *)
+            exit 0
+            ;;
     esac
 }
 
@@ -215,6 +221,7 @@ read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to pla
 if [[ $variable1 = *"q"* || $variable1 = *"Q"* ]]; then
     cleanUp
 elif [[ $variable1 = *"y"* || $variable1 = *"Y"* ]]; then
+    source ${UNIXTUT}/Section_One/findTut.sh    
     if [[ $name ]]; then
 	menu 2
     else

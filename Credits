@@ -2,6 +2,7 @@ I'd like to thank the following Q&A pages for helping me hone my bash-fu:
 
 Bash basics:
 https://stackoverflow.com/questions/1250079/how-to-escape-single-quotes-within-single-quoted-strings
+https://unix.stackexchange.com/questions/505828/how-to-pass-a-string-to-a-command-that-expects-a-file
 https://www.cyberciti.biz/faq/bash-for-loop/
 https://stackoverflow.com/questions/59838/check-if-a-directory-exists-in-a-shell-script
 https://unix.stackexchange.com/questions/293940/bash-how-can-i-make-press-any-key-to-continue
@@ -35,6 +36,7 @@ https://www.cyberciti.biz/faq/how-to-turn-on-or-off-colors-in-bash/
 
 tput
 https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
+https://stackoverflow.com/questions/1780483/lines-and-columns-environmental-variables-lost-in-a-script
 
 The beauty of fold (cat with text wrap):
 https://unix.stackexchange.com/questions/25173/how-can-i-wrap-text-at-a-certain-column-size
