@@ -95,7 +95,7 @@ function light(){
 }
 function dark(){
     if [ "$PS1" ]; then
-	PS1="\[\033[0;30m\]Hero: \$PONYUSER \[\033[0;91m\]Health: \$HEALTH \[\033[0;96m\]Treasure: \$TREASURE \[\033[0;92m\] $\[\033[0m\] "
+	PS1="\[\033[35m\]Hero: \$PONYUSER \[\033[31m\]Health: \$HEALTH \[\033[34m\]Treasure: \$TREASURE \[\033[32m\] $\[\033[0m\] "
 	#PS1="\[\033[0;30m\]Hero: \$PONYUSER \[\033[0;52m\]Health: \$HEALTH \[\033[0;17m\]Treasure: \$TREASURE \[\033[0;54m\] $\[\033[0m\] "
     fi
 }

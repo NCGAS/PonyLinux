@@ -110,7 +110,7 @@ function buildSubdir {
 		    echo 'function moneyrun(){' >> .treasure
 		    echo "treasure at index $ndex"
 		    treasure=$((RANDOM%100+10))
-		    echo "cat $monsterdir/chest" >> .treasure
+		    echo "cat $monsterdir/treasure" >> .treasure
 		    echo "moneymoneymoney $treasure" >> .treasure		    
 		    chmod a+x .treasure
 		    echo '}' >> .treasure

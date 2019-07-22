@@ -36,3 +36,7 @@ Other tweaks: add numbers to the decks as well; make the first n guesses free bu
 
 EOF
 
+ponygo trixiestage "Welcome one and all to my table!"
+ponygo trixielulamoon "Hah! I won that round!"
+ponygo trixiestand "You'll never guess my cards"
+ponygo trixieamulet "Hmm, well done"
