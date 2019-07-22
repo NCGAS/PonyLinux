@@ -31,24 +31,29 @@ Git clone onto your system. This creates a directory called unixTut. Cd into uni
 Ponysay relies on Python3 to work. Make sure it's in your $PATH as well.
 
 I added ponysay as a git submodule. If you used git clone to get the unixTut files, you will need to do:
+```bash
 git submodule init
 git submodule update
+```
+
 This should pull in the ponysay files and you can refer to the instructions in that folder.
 
 Try this first:
 ---------------------
+```bash
 cd ponysay
 python3 setup.py --freedom=partial install --private
 export PATH=~/.local/bin:$PATH
 ponysay "testing"
-
+```
 You can also add a prefix if that helps:
+```
 python3 setup.py --freedom=partial install --private  --prefix=target/install/directory --without-info
-
+```
 Troubleshooting
 --------------------
 I've run into errors on some systems (silo at indiana, for example) where ponysay fails at the Compiling step:
-
+```
 ::Compiling...
 Creating uncompressed zip file ponysay.zip with files from src: __main__.py argparser.py backend.py balloon.py colourstack.py common.py kms.py lists.py metadata.py ponysay.py ponysaytool.py spellocorrecter.py ucs.py
 gzip -9 -f < manuals/manpage.6.install > manuals/manpage.6.gz
@@ -66,8 +71,9 @@ Traceback (most recent call last):
   File "/l/python3/lib/python3.6/subprocess.py", line 1344, in _execute_child
     raise child_exception_type(errno_num, err_msg, err_filename)
 FileNotFoundError: [Errno 2] No such file or directory: 'gzip': 'gzip'
-
+```
 The python3 I was using was in /usr/local, so I switched to the python/3.7 module and ran it with these parameters:
+```
 python3 setup.py --freedom=partial install --private  --prefix=$(pwd) --without-info
-
+```
 The $(pwd) command in the prefix just substitutes in the current directory, so this builds in-place. You could change it to the full path of unixTut, or leave it alone if you are ok with it going into ~/.local. In any case, you will need to add the bin directory created by ponysay to your PATH variable.
