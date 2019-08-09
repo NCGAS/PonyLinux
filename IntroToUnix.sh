@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-trap 'echo -e "\n\nTo exit, please choose the quit option from the menu.\n"; menu 1' INT
+trap 'printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)"; menu 1' INT
+#trap 'echo -e "\n\nTo exit, please choose the quit option from the menu.\n"; menu 1' INT
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -141,9 +141,9 @@ function menu(){
 	string="Alright, hero-in-training, Let's get you prepared to save the Princess! What would you like to learn first?"
     fi 
     string=${string}${big}
-    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Users and permissions '${usertutdone}$'\n\t5.) Opening and Navigating files '${opentutdone}$'\n\t6.) I am ready to face the dungeon!\n\t7.) I wanna do the intro over again.\n\t8.) Quit'
+    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Users and permissions '${usertutdone}$'\n\t5.) Searching for files and folders\n\t6.) Opening and Navigating files '${opentutdone}$'\n\t7.) I am ready to face the dungeon!\n\t8.) I wanna do the intro over again.\n\t9.) Quit'
 
-    read -p $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
+    read -ep $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!
     clear
     echo "You said $rawInput"
@@ -153,32 +153,37 @@ echo "That is tr  $cleanInput"
 echo "That is perl  $cleanperl"
     case $cleanInput in
 	1)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/gentleTut.sh" && menu
+	    gentleTut
+            menu
             ;;
 	2)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/cdTut.sh" && menu
+	    cdTut
+            menu
             ;;
 	3)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/dirTut.sh"
+	    dirTut
             menu
 	    ;;
 	4)
-	    findTut; /usr/bin/env bash "${UNIXTUT}/Section_One/userTut.sh"
+	    permTut
+            menu
 	    ;;
 	5)
-	    /usr/bin/env bash "${UNIXTUT}/Section_One/openTut.sh"
+	    findTut
+            menu
 	    ;;
-	6)
+        6)
+            openTut
+            menu
+            ;;
+	7)
 	    battle
 	    ;;
-	7)
+	8)
 	    intro
 	    ;;
-	8)
-	    exit 0
-	    ;;
 	9)
-	    execute
+	    exit 0
 	    ;;
         *)
             exit 0
@@ -221,7 +226,12 @@ read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to pla
 if [[ $variable1 = *"q"* || $variable1 = *"Q"* ]]; then
     cleanUp
 elif [[ $variable1 = *"y"* || $variable1 = *"Y"* ]]; then
-    source ${UNIXTUT}/Section_One/findTut.sh    
+    source ${UNIXTUT}/Section_One/gentleTut.sh
+    source ${UNIXTUT}/Section_One/cdTut.sh
+    source ${UNIXTUT}/Section_One/dirTut.sh
+    source ${UNIXTUT}/Section_One/permTut.sh
+    source ${UNIXTUT}/Section_One/findTut.sh
+    source ${UNIXTUT}/Section_One/openTut.sh
     if [[ $name ]]; then
 	menu 2
     else

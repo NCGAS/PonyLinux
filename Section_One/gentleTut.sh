@@ -1,27 +1,10 @@
-#!/usr/bin/env bash
-
-#Todo: Make this less hacktastic. Gotta source utilities.sh somehow, though.
-me="$( cd "$(dirname "$0")" ; cd ../ ; pwd -P )"
-#echo "me is $me"
-source ${UNIXTUT:-$me}/Utilities.sh
-#echo "tut dir is ${UNIXTUT}"
-if [[ -z $PONYUSER ]]; then
-    checkProgress
-fi
-#echo "name is $PONYUSER"
-
 ### For developers
 ### When running ponygo, make sure your text has this format: $'Text and stuff, newlines are slash n. \n If you have an apostrophe, you'\'$'ll have to quote it'
 ### One more time: dollar sign, single quote, text, end single quote. If you need a ' inside, it has to be '\'$' .
 ### This ensures that the shell interprets your newlines correctly when passed to ponysay.
 ### If you need to test your string, use echo (no -e)
 
-#* felt easy to customize 
-#overlay graphics. your imagination is the limit
-#scales well
-#no graphics
-#not as visceral, only one sense engaged
-
+function gentleTut(){
 ponygo fluttershyshy $'Oh, hello there. I will try to introduce you to this Unix and bash thing as gently as possible.'
 ponygo fluttershy $'Let'\'$'s start with the basic way you interact with the computer. You might be used to a screen with pictures and icons, with nice things like mouse access and menus and sounds. \n\nIt might be hard to get used to doing things with just text.'
 
@@ -29,7 +12,7 @@ ponygo fluttershy $'There are advantages, too! For instance, the actions that yo
 
 ponygo fluttershy $'What you are looking at now is called a shell - it'\'$'s a program that lets you interact with the underlying computer operating system.\n\nThe specific shell you are using is called Bash, and it has its own kind of language. You issue commands to the bash shell and it executes those commands.'
 
-ponygo fluttershystare $'When you first invoke Bash, you may see a line with your name and other text, followed by a '$bold'$'$normal$' or a '$bold'#'$normal$' character. This line is called a prompt, because it is prompting you to tell it what to do.'
+ponygo fluttershystare "When you first invoke Bash, you may see a line with your name and other text, followed by a \[$bold\]$\[$normal\]$ or a \[$bold\]#\[$normal\]$ character. This line is called a prompt, because it is prompting you to tell it what to do."
 
 ponygo fluttershy $'You issue commands to the shell by typing them out and hitting enter.\n\nThis is important - the first thing that you type after the prompt must be a command. Unix is very picky about order, capitalization, spaces, and punctuation.'
 
@@ -94,3 +77,4 @@ ponygo pinkiehugsfluttershy 'Oof.'
 
 read -n 1 -r -p "Press any key to continue"
 echo "gentletutdone: (Done)" >> ~/.unixTut/config
+}

@@ -40,7 +40,10 @@ function ponygo(){
     #ponytext="$2"
     getWrap
     ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
-    read -p "Press enter to continue"
+    read -n 1 -p "Press enter to continue" chars
+    echo "typed $char"
+    sleep 0.1
+    #read -p "Press enter to continue"
     clear
 
 }

@@ -1,19 +1,10 @@
-#!/usr/bin/env bash
-me="$( cd "$(dirname "$0")" ; cd ../ ; pwd -P )"
-#echo "me is $me"
-echo "tut dir is ${UNIXTUT}"
-source ${UNIXTUT:-$me}/Utilities.sh
-
-if [[ -z $PONYUSER ]]; then
-    checkProgress
-fi
-#echo "name is $PONYUSER"
-
+function cdTut(){
     ponysay -b round -F pinkie 'Hi! I'\'$'ll be your instructor for the lesson on getting around in Unix.'
     read -p "Press enter to continue"
     clear
     getWrap
-    ponygo pinkiebounce $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder. \n\nYou start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
+    ponygo pinkiebounce $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder.'
+    ponygo pinkie $'You start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd
@@ -54,4 +45,4 @@ fi
     ponysay -b round --wrap $PONYWRAP -F pinkiecannon "Great job! You are done with the first section. Good luck, $PONYUSER!"
     read -n 1 -r -p "Press any key to continue"
     echo "cdtutdone:  (Done)" >> ~/.unixTut/config
-
+}

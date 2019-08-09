@@ -26,6 +26,8 @@ alias go=walk
 alias ls-lah=oops
 export bold=$(tput bold)
 export normal=$(tput sgr0)
+export pick=use
+export get=use
 
 function checkColumns(){
 #    cols=${COLUMNS:-50}
@@ -34,7 +36,7 @@ function checkColumns(){
 }
 
 function use(){
-    echo "Using items is very limited. Maybe just try typing in the name of the item itself?"
+    echo "Manipulating items is very limited. Maybe just try typing in the name of the item itself?"
 }
 
 function save(){
