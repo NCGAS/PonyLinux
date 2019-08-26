@@ -1,20 +1,36 @@
 #!/usr/bin/env bash
-trap 'printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)"; menu 1' INT
 #trap 'echo -e "\n\nTo exit, please choose the quit option from the menu.\n"; menu 1' INT
+#trap 'printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)"' INT
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && pwd -P)
 source ${UNIXTUT}/Utilities.sh
-echo "unixtut is $UNIXTUT"
-
+#echo "unixtut is $UNIXTUT"
+export fromFunction=0
+export killcount=0
 ## Declare some Functions!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function cleanUp(){
     #perl -p -ibkp -e "s/^source ~./unixTut/ponyrun.sh.*$//" ~/.bashrc
     #rm -rf ~/.unixTut
-    echo "Removing game files."
+    #echo "Removing game files."
+    echo "Goodbye!"
 }
+
+function catchInt(){
+clear
+if (( $fromFunction == 0)); then
+let killcount++
+#echo "killcount is $killcount"
+ponysay -F fillypinkie -b round 'Are you going to quit? Type m to go back to the menu or q to quit.'
+else
+printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)" 
+#menu 1
+fi
+}
+
+trap catchInt SIGINT
 
 function execute(){
     ponysay -b round -F applejack 'Hi, '$name'! are you ready to swim on your own? Remember, to get back to the tutorial, type exit (or use the shortcut, the control key + d)'
@@ -88,7 +104,7 @@ function getInput(){
 	fi
 	echo "Attempt $tries of 3:"
 	tries=$((tries + 1))
-	read -p "$strret" variable1
+	read -p "$retry$strret" variable1
     done    
 }
 
@@ -103,7 +119,8 @@ function intro(){
     echo "name: $variable1" > ~/.unixTut/config
     name=$variable1
     export PONYUSER="$name"
-    ponysay -b round -F rarity "I'ts a pleasure to meet you, $variable1."
+    clear
+    ponysay -b round -F rarity "It's a pleasure to meet you, $variable1."
     read -p "Press enter to continue"
     #sleep 1
     clear
@@ -119,17 +136,17 @@ function intro(){
     read  -p "Press enter to continue"
     #sleep 1
     clear
-    ponysay -b round -F rarityponder "Wait, you just showed up! You are right on time to be volunteered as the Princess's hero!"
+    ponysay -b round -F rarityponder "Wait, $variable1, you just showed up! You are right on time to be volunteered as the Princess's hero!"
     read -p "Press enter to continue"
     #sleep 1
     clear
-    menu 1
+#    menu 1
 }
 
 function menu(){
-    if [[ $1 != 1 ]]; then
+    if [[ $clearme ]]; then
 	clear
-    fi
+    fi    
     #checkProgress
     big=""
     lines=$(tput lines)
@@ -146,35 +163,43 @@ function menu(){
     read -ep $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!
     clear
-    echo "You said $rawInput"
-cleanperl=$(echo $rawInput | perl -p -e 's/\011\012\015\009\010\012\013\015\032\040\176//g')
+    #echo "You said $rawInput"
+#cleanperl=$(echo $rawInput | perl -p -e 's/\011\012\015\009\010\012\013\015\032\040\176//g')
 cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\176')
-echo "That is tr  $cleanInput"
-echo "That is perl  $cleanperl"
+#echo "That is tr  $cleanInput"
+#echo "That is perl  $cleanperl"
     case $cleanInput in
 	1)
-	    gentleTut
+            fromFunction=1
+            bash ${UNIXTUT}/Section_One/gentleTut.sh
+	    #gentleTut
+            fromFunction=0
             menu
             ;;
 	2)
+            source ${UNIXTUT}/Section_One/cdTut.sh
 	    cdTut
-            menu
+            #menu
             ;;
 	3)
+            source ${UNIXTUT}/Section_One/dirTut.sh
 	    dirTut
-            menu
+            #menu
 	    ;;
 	4)
+            source ${UNIXTUT}/Section_One/permTut.sh
 	    permTut
-            menu
+            #menu
 	    ;;
 	5)
+            source ${UNIXTUT}/Section_One/findTut.sh
 	    findTut
-            menu
+            #menu
 	    ;;
         6)
+            source ${UNIXTUT}/Section_One/openTut.sh
             openTut
-            menu
+            #menu
             ;;
 	7)
 	    battle
@@ -185,24 +210,27 @@ echo "That is perl  $cleanperl"
 	9)
 	    exit 0
 	    ;;
+        m)
+            menu
+            ;;
         *)
             exit 0
             ;;
     esac
 }
 
-#' This comment is just to fix my annoying bash parser. Nothign to see hwere folks
+#' This comment is just to fix my annoying bash syntax highlighting. Nothign to see hwere folks
 
 function shamemenu(){
     clear
     ponygo redheart $'We barely got you out of there! You look like you'\'$'ve been through some rough patches! \n\n We were able to heal you... but we still need your help! Can you get back in there, hero?\n\nPlease help us '${bold}'FIND'${normal}$' the Princess! I'\'$'m just a doctor, but I might recommend using search techniques instead of walking around in such a dangerous place!\n'
-menu
+#menu
 }
 
 function yaymenu(){
     clear
     ponygo celestia $'Thank you so much for rescuing me! Your trials in the dungeon have proven your mastery over the basics of Unix. I think you are ready to move on to the next phase in your training. For the next step, exit the menu and run Section_Two/IntroToUnix.sh. Keep up the great work, hero '$name'!'
-menu
+#menu
 }
 
 
@@ -213,30 +241,26 @@ if (( $? != 0 )); then
     echo "Uh-oh. A critical game component, ponysay, is not installed or not in the PATH. Please read the install instructions in the INSTALL file to get up to speed."
     exit 1
 fi
+# Hack to make it the right screen size...
+printf "\e[8;45;100t"
+tidyConfig
 checkProgress
 greet="Welcome to Unix!"
 if [[ $name ]]; then
     #export PONYUSER="$name"
     greet="Greetings, $name!"
 fi
-read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es, then enter, to play; Press (n)o exit for now, and (q)uit to exit and never have this screen come up on login.')" variable1
+read -p "$(ponysay -b round -F royalnightguard ${greet}$'\nWould you like to play the Intro to Unix Tutorial Game? \n Press (y)es, then enter, to play; Press (n)o, (q)uit, or e(x)it to exit.')" variable1
 
-#echo "got $variable1"
-
-if [[ $variable1 = *"q"* || $variable1 = *"Q"* ]]; then
-    cleanUp
-elif [[ $variable1 = *"y"* || $variable1 = *"Y"* ]]; then
-    source ${UNIXTUT}/Section_One/gentleTut.sh
-    source ${UNIXTUT}/Section_One/cdTut.sh
-    source ${UNIXTUT}/Section_One/dirTut.sh
-    source ${UNIXTUT}/Section_One/permTut.sh
-    source ${UNIXTUT}/Section_One/findTut.sh
-    source ${UNIXTUT}/Section_One/openTut.sh
-    if [[ $name ]]; then
-	menu 2
-    else
-	intro
-    fi	
-else
+if [[ $variable1 = *"q"* || $variable1 = *"Q"* || $variable1 = *"n"* || $variable1 = *"N"* || $variable1 = *"x"* || $variable1 = *"X"* ]]; then
     exit 0
 fi
+
+if [[ -z $name ]]; then
+    intro
+fi
+#while true; do
+  menu
+#  echo "Going another round"
+done
+exit 0

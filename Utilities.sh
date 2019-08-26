@@ -4,8 +4,34 @@
 #######
 
 export MINLINES=44
-export bold=$(tput bold)
-export normal=$(tput sgr0)
+
+## Text formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Shorthand for newline
+export n=$'\n'
+# Shorthand for two newlines
+export n2=$'\n\n'
+# Shorthand for newline followed by tab
+export nt=$'\n\t'
+# Shorthand for bold face
+export b=$'\033[1m'
+# Shorthand for italic face
+export i=$'\033[3m'
+# Shorthand for reset font to normal
+export r=$'\033[0m'
+
+# TPUT exudes a B( character secretly during setting Bold. This screws up ponysay's character count!
+# For this reason we gotta use the actual codes.
+#export bold=$(tput bold)
+#export normal=$(tput sgr0)
+function bold(){
+    printf "\033[1m$1\033[0m"
+    #$(tput bold; echo -n "$1"; tput sgr0)
+}
+# In my testing, the runtime for $(bold "test") is 20x slower than the shorthands!
+##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 function checkColumns(){
 tput cols
@@ -13,6 +39,16 @@ tput cols
 #echo $cols
 }
 
+# This function sets the width of the text for the speech bubbles for the ponysay --wrap param!
+function getWrap() {
+    wrapsize=$(( $(checkColumns) * 3 / 4 ))
+    if (( $wrapsize < 40 )); then
+	wrapsize=40
+    fi
+    export PONYWRAP=$wrapsize
+}
+
+## Reads in the config file and sets up things that are to be remembered
 function checkProgress(){
     if [[ -e ~/.unixTut/config ]]; then
         #sleep 2
@@ -29,30 +65,27 @@ function checkProgress(){
     fi
 }
 
-function gotest(){
-echo -e "$1"
-cat "$1"
-
+function tidyConfig(){
+    if [[ -e ~/.unixTut/config ]]; then
+	mv ~/.unixTut/config ~/.unixTut/configbkp
+	cat ~/.unixTut/configbkp | sort | uniq > ~/.unixTut/config
+    else
+        mkdir -p ~/.unixTut
+        touch ~/.unixTut/config
+    fi
 }
 
 function ponygo(){
     #ponyname="$1"
     #ponytext="$2"
     getWrap
-    ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
-    read -n 1 -p "Press enter to continue" chars
-    echo "typed $char"
+    echo -e "$2" | ponysay -b round --wrap $PONYWRAP -F "$1" 
+#"$2"
+    read -p "Press enter to continue" chars
+    #read -n 1 "Press enter to continue" chars
+    #echo "typed $char"
     sleep 0.1
     #read -p "Press enter to continue"
-    clear
-
-}
-function ponytest(){
-    #ponyname="$1"
-    #ponytext="$2"
-    getWrap
-    ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
-    read -p "Press enter to continue"
     clear
 }
 
@@ -89,12 +122,4 @@ function getInput(){
 	tries=$((tries + 1))
 	read -p "$strret" variable1
     done    
-}
-# This function sets the width of the text for the speech bubbles for the ponysay --wrap param!
-function getWrap() {
-    wrapsize=$(( $(checkColumns) * 3 / 4 ))
-    if (( $wrapsize < 40 )); then
-	wrapsize=40
-    fi
-    export PONYWRAP=$wrapsize
 }

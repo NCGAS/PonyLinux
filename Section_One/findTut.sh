@@ -18,4 +18,14 @@ ponygo twilighttime "Find can't enter directories if you don't have permission t
 ponygo twilightwings "There are other, more advanced features of find. For example, you can use -exec to run any command on each file found by find. This is very handy if you want to use chmod, but want to be selective about which files to change permissions for."
 ponygo twilightzero "There is also a -delete flag, which will delete the found files. Needless to say, be VERY careful about using -delete with find. If you get the order of the search wrong, you could wipe out all your files."
 ponygo twilightprincess "That's it! It might take a few tries to get the syntax just right, but it's totally worth it when you can easily search your files."
+echo "findtutdone:  (Done)" >> ~/.unixTut/config
 }
+# This is added in case the script is invoked instead of sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    me="$( cd "$(dirname "$0")" ; cd ../ ; pwd -P )"
+    source ${UNIXTUT:-$me}/Utilities.sh
+    if [[ -z $PONYUSER ]]; then
+        checkProgress
+    fi
+    findTut
+fi

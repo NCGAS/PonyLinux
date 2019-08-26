@@ -46,3 +46,13 @@ function cdTut(){
     read -n 1 -r -p "Press any key to continue"
     echo "cdtutdone:  (Done)" >> ~/.unixTut/config
 }
+
+# This is added in case the script is invoked instead of sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    me="$( cd "$(dirname "$0")" ; cd ../ ; pwd -P )"
+    source ${UNIXTUT:-$me}/Utilities.sh
+    if [[ -z $PONYUSER ]]; then
+        checkProgress
+    fi
+    cdTut
+fi
