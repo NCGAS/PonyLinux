@@ -14,7 +14,10 @@ alias Attack=attack
 alias kill=attack
 alias Kill=attack
 alias stab=attack
+alias sword=attack
 alias slay=attack
+alias apple='echo -n "A crisp, hearty apple is just what you needed! "; heal 5'
+alias candy='echo -n "You pull out some tasty candy from your pack. Nomnom. "; heal 2'
 alias help=halp
 alias menu=help
 alias Princess=princess
@@ -28,6 +31,19 @@ export bold=$(tput bold)
 export normal=$(tput sgr0)
 export pick=use
 export get=use
+
+# Shorthand for newline
+export n=$'\n'
+# Shorthand for two newlines
+export n2=$'\n\n'
+# Shorthand for newline followed by tab
+export nt=$'\n\t'
+# Shorthand for bold face
+export b=$'\033[1m'
+# Shorthand for italic face
+export i=$'\033[3m'
+# Shorthand for reset font to normal
+export r=$'\033[0m'
 
 function checkColumns(){
 #    cols=${COLUMNS:-50}
@@ -125,6 +141,21 @@ function ouch()
 		exit 1
 	    fi
 	    echo "Ouch! You lost $1 health!"	
+	fi
+    fi    
+}
+
+function heal()
+{
+    if [[ "$1" != 0 ]]; then
+	re='^[0-9]+$'
+	if [[ "$1" =~ $re ]] ; then
+	    export HEALTH=$((HEALTH + $1))
+	    if [ "$HEALTH" -ge 100 ]; then
+		echo "You feel as good as new!"
+		export HEALTH=100
+	    fi
+	    echo "Yay! You gain $1 health!"	
 	fi
     fi    
 }
@@ -248,9 +279,9 @@ function guide(){
 }
 function hint(){
     echo -e "To unlock doors, use the ${b}chmod${r} command. To make it so anyone can open a door, for example, do:${nt}${b}chmod a+x Door_xxx${r}, where the xxx is the actual letters and numbers of the door you are opening." | fold -sw $(checkColumns) 
-    echo -e "To be able to see the contents of a dark room, you also use the ${b}chmod${r} command. To make it so anyone can see inside Door_One, do:${nt}${b}chmod a+r Door_xxx${r}" | fold -sw $(checkColumns) 
-}
+    echo -e "To be able to see the contents of a dark room, you also use the ${b}chmod${r} command. To make it so anyone can see inside Door_xxx, do:${nt}${b}chmod a+r Door_xxx${r}" | fold -sw $(checkColumns) 
 #    echo -e "Doors in Unix are selective to WHO is allowed to pass or look around. There are three groups of people - the User, the Group, and Other.\n\tIf you own the directory you are going to (the door you are about to open), then the User permissions apply.\n\tIf you don't own the directory you are going to, but you are a member of the group that the directory belongs to, then the Group permissions apply.\n\tIf you don't own the directory you are going to and don't belong to the directory's group, then the Other permissions apply.\n\nTo figure out who you are and what group you are in, type in the id command. The output shows your username, your user id, and all the groups you belong to and their respective group ids. \nIt is normal to belong to a group that is the same as your username, and to be a part of multiple groups.\nTo figure out who owns the directory you are in or want to go in, type ls -lah. The . directory means the one you are currently in. The .. directory refers to the directory that contains the current one, also called parent directory.\n" | fold -sw $(checkColumns) 
 }
-
-light
+# For Jetstream, use dark!
+dark
+#light

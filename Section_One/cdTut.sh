@@ -42,7 +42,7 @@ function cdTut(){
     read -p "Press enter to continue"
     clear
     getWrap
-    ponysay -b round --wrap $PONYWRAP -F pinkiecannon "Great job! You are done with the first section. Good luck, $PONYUSER!"
+    ponysay -b round --wrap $PONYWRAP -F pinkiecannon "Great job! You are done with this section. Good luck, $PONYUSER!"
     read -n 1 -r -p "Press any key to continue"
     echo "cdtutdone:  (Done)" >> ~/.unixTut/config
 }
