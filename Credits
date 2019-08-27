@@ -17,6 +17,7 @@ https://serverfault.com/questions/146745/how-can-i-check-in-bash-if-a-shell-is-r
 https://www.cyberciti.biz/faq/finding-bash-shell-array-length-elements/
 https://stackoverflow.com/questions/4774054/reliable-way-for-a-bash-script-to-get-the-full-path-to-itself
 https://unix.stackexchange.com/questions/122845/using-a-b-for-variable-assignment-in-scripts
+https://stackoverflow.com/questions/20871534/concatenate-in-bash-the-output-of-two-commands-without-newline-character
 
 This is for the issue when I split out the individual pages, ctrl+c would kill the whole thing, when I wanted it to return to menu:
 https://unix.stackexchange.com/questions/80975/preventing-propagation-of-sigint-to-parent-process
@@ -61,8 +62,21 @@ https://stackoverflow.com/questions/10503643/perl-one-liner-if-else-logic
 Random number generator
 http://tldp.org/LDP/abs/html/randomvar.html
 
+Less/nano/vim stuff:
+https://en.wikipedia.org/wiki/GNU_nano
+https://askubuntu.com/questions/418396/what-is-the-difference-between-vi-and-vim
+https://unix.stackexchange.com/questions/31/list-of-useful-less-functions
+https://stackoverflow.com/questions/8586648/going-to-a-specific-line-number-using-less-in-unix
+https://unix.stackexchange.com/questions/7186/can-less-invoke-vim-instead-of-the-default-vi-when-i-hit-the-v-key
+Got pointers for less -S from https://astrobiomike.github.io/bash/six_commands
+
+
 Other notes.
-I think it will be hard to orchestrate the proper sourcing/unsourcing of the files needed after the tutorial is run. Getting it to start automatically will be tricky.
+I think it will be hard to orchestrate the proper sourcing/unsourcing of the files needed after the tutorial is run. Getting it to start automatically will be tricky. Update: It wasn't.
 
 Big thanks to the Ponysay team for making this so much more fun!
 
+Thanks to Sheri A. Sanders for working up the permissions tutorial.
+
+Thanks to my dear hubby for being a patient beta-tester and not at all a computer person.
+Thanks to my other testers! Bhavya NP! Natisha LD! Dan P!
