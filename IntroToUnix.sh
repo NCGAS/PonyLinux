@@ -208,6 +208,7 @@ if (( $? != 0 )); then
     echo "Uh-oh. A critical game component, ponysay, is not installed or not in the PATH. Please read the install instructions in the INSTALL file to get up to speed."
     exit 1
 fi
+
 # Hack to make it the right screen size...
 printf "\e[8;45;100t"
 tidyConfig
