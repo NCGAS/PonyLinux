@@ -4,68 +4,69 @@ function permTut(){
 
     mkdir -p tmptut
     cd tmptut
-    mkdir -p castle/foyer
-    ponyNoClear applejack $'Howdy, '$PONYUSER'. I'\'$'m going to teach you all about users and permissions in Unix.\nLet'\'$'s start by grabbing some supplies from the pony castle!  We'\'$'ll need to get you some food and some armor!'
-    read -n 1 -r -p "Press any key to continue"
-    clear
+    mkdir -p castle
+    chmod 770 castle
+    ponygo applejack "Howdy, $PONYUSER. I'm going to teach you all about users and permissions in Unix.${n2}Let's start by grabbing some supplies from the pony castle!  We'll need to get you some food and some armor!"
+    ponygo applejackscarecrow "Now that the Princess is missing, we are keeping the castle locked. We'll need to make sure we have ${b}permission${r} to enter.${n2}Unix permissions control who can access folders and directories.  Let's check to see who has permission to access the castle."
 
-    ponygo applejackscarecrow $'Now that the princess is missing, we are keeping the castle locked... We'\'$'ll need to make sure we have PERMISSION to enter.\n\nUNIX PERMISSIONS control who can access folders and directories.  Let'\'$'s check who has permission to access the castle.'
-
-    ponyNoClear applejack 'First, let'\'$'s see what the permission code is - try using the command: ls -lah'
-    #'
+    ponyNoClear fillyjack "Our good ol' trusty ${b}ls -lah${r} can tell us what the permission codes are. Go ahead and try it!"
     getInput 'ls -lah' "Don't give up! Did you remember the dash?"
-    ls -lah
-    echo ""
-    echo ""
+    lah="$(ls -lah)"
+    echo "$lah"
+    echo
     echo "Good job!"
     read -p "Press enter to continue"
     clear
 
-    getWrap
-    ls -lah castle
+    ponyNoClear applejack "Remember, running ${b}ls -lah${r} lets us see the long list (${b}-l${r}) for all files (${b}-a${r}) in a human-or-pony-readable way (${b}-h${r}).${n2}There are three things listed where we are standin':${nt}1.)${b} . ${r}(current directory),${nt}2.) ${b}..${r} (directory above), and${nt}3.) ${b}castle${r} (the directory we wanna get into)."
+    echo "${b}ls -lah${r}"
+    echo "$lah"
+    read -n 1 -r -p "Press any key to continue"
+    clear
 
-    ponyNoClear applejack $'The ls -lah castle command lets us see the long list (-l) for all files (-a) in a human readable way (-h).  There are three things listed in the castle - . (current directory), .. (directory above), and castle (a directory location we can go!).  But first, we have to see if we have permission to go - otherwise the guards will be mad!'
+    lah1="$(ls -lah | tail -n 1)"
+    split="$(echo $lah1 | perl -p -e 's/^(\S+).+/$1/')"
+    #split=$(echo $lah1 | perl -p -e 's/^(\s+).+/$1/')
+    ponyNoClear applejack "The first part of each line is the permission code:${n2}${b}$split${r}${n2}Let me grab ya the last line using ls and tail.  Don't worry, we'll make heads and tails of the ${b}head${r} and ${b}tail${r} command later."
+    
+    echo "${b}ls -lah | tail -n 1${r}"
+    echo "$lah1"
+    read -n 1 -r -p "Press any key to continue"
+    clear
+
+    #split into three's
+    pretty=$(echo $lah1 | perl -p -e 's/^([-d ]?)([rwx-]{3})([rwx-]{3})([rwx-]{3}).+/$1 $2 $3 $4/')
+    #ls -lah castle
+
+    ponyNoClear applejack "Let's break the code down into its seperate parts:${n}${b}$pretty${r}${n2}The first letter, ${b}d${r}, means the castle is a ${b}directory${r}.${n}What do the next three sets mean?"
     read -n 1 -r -p "Press any key to continue"
     clear
 
     getWrap
-    ls -lah | tail -n 1
-    ponyNoClear applejack $'That first part of each line: \n\ndrwxrwx---\n\nis the permission code'
+    ponyNoClear applejack "The letter ${b}r${r} stands for read, ${b}w${r} stands for write, and ${b}x${r} stands for execute.${n}For files, this is pretty straightforward - you can read or write to the file, and if it's a program or script, you can run it (execute).${n2}For a directory, read means you can see what's in the directory like you would with ${b}ls${r}, write means you can make new files or directories like with ${b}cp${r}, and execute means you can enter the directory like with ${b}cd${r}.${n2}Do you have any notion why there are three sets of permissions?"
     read -n 1 -r -p "Press any key to continue"
     clear
 
-    getWrap
-    ls -lah castle
-
-    ponyNoClear applejack $'Let'\'$'s look at the different parts of the code separately. \n\nWe can write the code in a more readable way:\n\nd rwx rwx ---\n\nThe first part means the castle is a Directory, but what about the three sets after?'
+    ponyNoClear applejack $'There are three groups of users in Unix Permissions - the owner (also called user), group, and other.  The owner is usually the one who made the file, groups are defined sets of users, and other is everyone else.'
     read -n 1 -r -p "Press any key to continue"
     clear
 
-    getWrap
-    ponyNoClear applejack $'r stands for read, w stands for write, and x stands for execute.  For files, this is pretty straightforward - you can read or write to the file, and if it'\'$'s a program or script, you can run it (execute).\n\nFor a directory, read means you can see what'\'$'s in the directory (ls), write means you can write to a file (nano), and execute means you can enter the file (cd).  \n\nBut why three sets of permissions??'
-    read -n 1 -r -p "Press any key to continue"
-    clear
-
-    ponyNoClear applejack $'There are three groups of users in Unix Permissions - owner (also called user), group, and other.  The owner is usually who made the file, groups are defined sets of users, and other is everyone else.'
-    read -n 1 -r -p "Press any key to continue"
-    clear
-
-    ponyNoClear applejack $'One persniketty thing about Unix is that spaces are a big issue. It'\'$'s really hard to include spaces in file names and even user names; the computer won'\'$'t refer to you by Firstname Lastname like would be polite. Instead, your username is usually all lowercase and 8 or so characters long.'
-    ponyNoClear applejack $'My name is applejack, but my username, apjack19, is what gets used for permissions. So, while your name is '$PONYUSER', you will need to know your username.  You can do this by asking "who am I", but really quick - the command is whoami.\n\nAsk the computer an existential question!'
+    ponygo applejack $'One persniketty thing about Unix is that spaces are a big issue. It'\'$'s really hard to include spaces in file names and even user names; the computer won'\'$'t refer to you by Firstname Lastname like would be polite. Instead, your username is usually all lowercase and 8 or so characters long.'
+    ponyNoClear applejack $'My name is Applejack, but my username, apjack19, is what gets used for permissions. So, while your name is '$PONYUSER', you will need to know your username. You can do this by asking "who am I" all run together-like: ${b}whoami${r}.${n2}Go ahead and ask the computer an existential question!'
     getInput 'whoami' 'Try again!'
     whoami
     read -n 1 -r -p "Press any key to continue"
     clear
 
-    ponyNoClear applejack $'I belong to the group of pony guardss and the team of pony guides.  You can belong to several groups, just like I do.  What groups do you belong to?  You can use the id command to find out!'
+    ponyNoClear applejack $'I belong to the group of pony guards and the team of pony guides.  You can belong to several groups, just like I do.  What groups do you belong to?  You can use the ${b}id${r} command to find out!'
     getInput 'id' 'Try again!'
     id
 
     read -n 1 -r -p "Press any key to continue"
     clear
 
-    echo "uid=1002($uid) gid=1002($uid) groups=1002($uid),100(users),134(ponies)"
-    ponyNoClear applejack $'We made you an honorary pony for helping us, so you will see the ponies group in your ids!  \n\nTo understand the others designation, you we need to look at the permissions again.'
+    #echo "uid=1002($uid) gid=1002($uid) groups=1002($uid),100(users),134(ponies)"
+    ponyNoClear applejack $'To understand the others designation, you we need to look at the permissions again.'
     getInput 'ls -lah' 'Try again!'
     echo "total 12K"
     echo "drwxrwxr-x 3 $uid $uid 4.0K Aug  9 12:25 ."
@@ -226,5 +227,5 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     if [[ -z $PONYUSER ]]; then
         checkProgress
     fi
-    findTut
+    permTut
 fi

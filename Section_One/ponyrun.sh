@@ -204,7 +204,7 @@ function lsp(){
 	
 	testForEmpty="$(\ls $@ 2>&1)"
 	if [[ ! "$testForEmpty" ]];then
-	    echo "You can't look behind locked doors. Maybe try finding a key first?"	   
+	    echo "You can't look behind locked doors. Maybe try a key first?"	   
 	else
 	    echo "It's pitch black, you can't see anything!"
 	fi
@@ -247,9 +247,10 @@ function guide(){
     hint
 }
 function hint(){
-    echo -e "To unlock doors, use the "$bold"chmod"$normal" command. To make it so anyone can open the Door_One, for example, do:\n\t"$bold"chmod a+x Door_One"$normal | fold -sw $(checkColumns) 
-    echo -e "To be able to see the contents of a dark room, you also use the "$bold"chmod"$normal" command. To make it so anyone can see inside Door_One, do:\n\t"$bold"chmod a+r Door_One"$normal | fold -sw $(checkColumns) 
-    echo -e "Doors in Unix are selective to WHO is allowed to pass or look around. There are three groups of people - the User, the Group, and Other.\n\tIf you own the directory you are going to (the door you are about to open), then the User permissions apply.\n\tIf you don't own the directory you are going to, but you are a member of the group that the directory belongs to, then the Group permissions apply.\n\tIf you don't own the directory you are going to and don't belong to the directory's group, then the Other permissions apply.\n\nTo figure out who you are and what group you are in, type in the id command. The output shows your username, your user id, and all the groups you belong to and their respective group ids. \nIt is normal to belong to a group that is the same as your username, and to be a part of multiple groups.\nTo figure out who owns the directory you are in or want to go in, type ls -lah. The . directory means the one you are currently in. The .. directory refers to the directory that contains the current one, also called parent directory.\n" | fold -sw $(checkColumns) 
+    echo -e "To unlock doors, use the ${b}chmod${r} command. To make it so anyone can open a door, for example, do:${nt}${b}chmod a+x Door_xxx${r}, where the xxx is the actual letters and numbers of the door you are opening." | fold -sw $(checkColumns) 
+    echo -e "To be able to see the contents of a dark room, you also use the ${b}chmod${r} command. To make it so anyone can see inside Door_One, do:${nt}${b}chmod a+r Door_xxx${r}" | fold -sw $(checkColumns) 
+}
+#    echo -e "Doors in Unix are selective to WHO is allowed to pass or look around. There are three groups of people - the User, the Group, and Other.\n\tIf you own the directory you are going to (the door you are about to open), then the User permissions apply.\n\tIf you don't own the directory you are going to, but you are a member of the group that the directory belongs to, then the Group permissions apply.\n\tIf you don't own the directory you are going to and don't belong to the directory's group, then the Other permissions apply.\n\nTo figure out who you are and what group you are in, type in the id command. The output shows your username, your user id, and all the groups you belong to and their respective group ids. \nIt is normal to belong to a group that is the same as your username, and to be a part of multiple groups.\nTo figure out who owns the directory you are in or want to go in, type ls -lah. The . directory means the one you are currently in. The .. directory refers to the directory that contains the current one, also called parent directory.\n" | fold -sw $(checkColumns) 
 }
 
 light

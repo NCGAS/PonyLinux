@@ -111,14 +111,14 @@ function getInput(){
 	    echo "So close! You added fancy stuff to the end. Keep it simple."
 	elif [[ $variable1 = *"$cmd" ]];then
 	    echo "So close!. There's something in front of the command where there shouldn't be. Look carefully."
-	else
-	    echo "${retry} Attempt $tries of 3:"
 	fi
 	if [[ $tries > 3 ]]; then
 	    echo "You gave it a few tries. It's ok, I'll show you how to do it."
 	    echo " $ $cmd"
 	    break
-	fi
+	else
+	    echo "${retry} Attempt $tries of 3:"
+	fi	
 	tries=$((tries + 1))
 	read -p "$strret" variable1
     done    

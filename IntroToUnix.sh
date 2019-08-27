@@ -19,15 +19,12 @@ function cleanUp(){
 }
 
 function catchInt(){
-clear
-if (( $fromFunction == 0)); then
-let killcount++
-#echo "killcount is $killcount"
-ponysay -F fillypinkie -b round 'Are you going to quit? Type m to go back to the menu or q to quit.'
-else
-printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)" 
-#menu 1
-fi
+    clear
+    if (( $fromFunction == 0)); then
+	ponysay -F fillypinkie -b round 'Are you going to quit? Type m to go back to the menu or q to quit.'
+    else
+	printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)" 
+    fi
 }
 
 trap catchInt SIGINT
@@ -79,35 +76,6 @@ function battle(){
     fi
 }
 
-function getInput(){
-    cmd=$1
-    retry=$2
-    local tries=2
-    strcmd='Type in this command: '${cmd}$' \n $ '
-#    echo "strcmd:"
-#    echo $strcmd
-#    strret=$retry' Try the command: '${cmd}$' \n $ '
-#    echo "strret:"
-#    echo $strret
-#    echo "begin"
-    read -p "$strcmd" variable1
-    while [[ $variable1 != "$cmd" ]]; do
-	if [[ $variable1 = "$cmd"* ]];then
-	    echo "So close! You added fancy stuff to the end. Keep it simple."
-	elif [[ $variable1 = *"$cmd" ]];then
-	    echo "So close!. There's something in front of the command where there shouldn't be. Look carefully."
-	fi
-	if [[ $tries > 3 ]]; then
-	    echo "You gave it a few tries. It's ok, I'll show you how to do it."
-	    echo " $ $cmd"
-	    break
-	fi
-	echo "Attempt $tries of 3:"
-	tries=$((tries + 1))
-	read -p "$retry$strret" variable1
-    done    
-}
-
 function intro(){
     clear
     string="Hello! What is your name, friend?"
@@ -144,6 +112,7 @@ function intro(){
 }
 
 function menu(){
+    fromFunction=0
     if [[ $clearme ]]; then
 	clear
     fi    
@@ -172,34 +141,32 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 	1)
             fromFunction=1
             bash ${UNIXTUT}/Section_One/gentleTut.sh
-	    #gentleTut
-            fromFunction=0
             menu
             ;;
 	2)
-            source ${UNIXTUT}/Section_One/cdTut.sh
-	    cdTut
-            #menu
+            fromFunction=1
+            bash ${UNIXTUT}/Section_One/cdTut.sh
+            menu
             ;;
 	3)
-            source ${UNIXTUT}/Section_One/dirTut.sh
-	    dirTut
-            #menu
+            fromFunction=1
+            bash ${UNIXTUT}/Section_One/dirTut.sh
+            menu
 	    ;;
 	4)
-            source ${UNIXTUT}/Section_One/permTut.sh
-	    permTut
-            #menu
+            fromFunction=1
+            bash ${UNIXTUT}/Section_One/permTut.sh
+            menu
 	    ;;
 	5)
-            source ${UNIXTUT}/Section_One/findTut.sh
-	    findTut
-            #menu
+            fromFunction=1
+            bash ${UNIXTUT}/Section_One/findTut.sh
+            menu
 	    ;;
         6)
-            source ${UNIXTUT}/Section_One/openTut.sh
-            openTut
-            #menu
+            fromFunction=1
+            bash ${UNIXTUT}/Section_One/openTut.sh
+            menu
             ;;
 	7)
 	    battle
@@ -262,5 +229,5 @@ fi
 #while true; do
   menu
 #  echo "Going another round"
-done
+#done
 exit 0
