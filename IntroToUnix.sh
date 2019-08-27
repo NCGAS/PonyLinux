@@ -19,11 +19,15 @@ function cleanUp(){
 }
 
 function catchInt(){
-    clear
+    echo
+    #echo "Caught, frm is $fromFunction"
+    #clear
     if (( $fromFunction == 0)); then
 	ponysay -F fillypinkie -b round 'Are you going to quit? Type m to go back to the menu or q to quit.'
     else
-	printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)" 
+	echo "${b}To exit, please choose the quit option from the menu.${r}"
+	echo
+	#printf "%s%s\n\n%s\n%s" "$(tput setaf 3)" "$(tput blink)" "To exit, please choose the quit option from the menu." "$(tput sgr0)"
     fi
 }
 
@@ -178,10 +182,13 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
             menu
             ;;
 	7)
+            fromFunction=1
 	    battle
 	    ;;
 	8)
+            fromFunction=1
 	    intro
+	    menu
 	    ;;
 	9)
 	    exit 0
@@ -199,14 +206,14 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 
 function shamemenu(){
     clear
-    ponygo redheart $'We barely got you out of there! You look like you'\'$'ve been through some rough patches! \n\n We were able to heal you... but we still need your help! Can you get back in there, hero?\n\nPlease help us '${bold}'FIND'${normal}$' the Princess! I'\'$'m just a doctor, but I might recommend using search techniques instead of walking around in such a dangerous place!\n'
-#menu
+    ponygo redheart "We barely got you out of there! You look like you've been through some rough patches!${n2}We were able to heal you... but we still need your help! Can you get back in there, hero?${n2}Please help us ${b}FIND${r} the Princess! I'm just a doctor, but I might recommend using search techniques instead of walking around in such a dangerous place!${n}"
+menu
 }
 
 function yaymenu(){
     clear
-    ponygo celestia $'Thank you so much for rescuing me! Your trials in the dungeon have proven your mastery over the basics of Unix. I think you are ready to move on to the next phase in your training. For the next step, exit the menu and run Section_Two/IntroToUnix.sh. Keep up the great work, hero '$name'!'
-#menu
+    ponygo celestia "Thank you so much for rescuing me! Your trials in the dungeon have proven your mastery over the basics of Unix. I think you are ready to move on to the next phase in your training. Keep an eye out for Section Two coming soon. Keep up the great work, hero $name!"
+    menu
 }
 
 
@@ -237,8 +244,8 @@ if [[ -z $name ]]; then
     intro
 fi
 clear
-#while true; do
+while true; do
 menu
-#  echo "Going another round"
-#done
+  echo "Going another round"
+done
 exit 0
