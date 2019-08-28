@@ -18,7 +18,7 @@ ponygo fluttershy $'You issue commands to the shell by typing them out and hitti
 
 ponyNoClear fluttershyshy "For example, there is a command called $(bold "ls"), which lists information about a file or directory."
 
-echo "Just typing $(bold "ls") and hitting enter yeilds:"
+echo "Just typing $(bold "ls") and hitting enter yields:"
 ls | head -n 5
 read -p "Press enter to continue"
 clear

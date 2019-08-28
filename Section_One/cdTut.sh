@@ -4,7 +4,7 @@ function cdTut(){
     clear
     getWrap
     ponygo pinkiebounce $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder.'
-    ponygo pinkie $'You start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
+    ponyNoClear pinkie $'You start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
     pwd
@@ -17,6 +17,13 @@ function cdTut(){
     ponysay -b round --wrap $PONYWRAP -F pinkie $'To move to a different location, you will use the cd command. cd stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nTo go up a directory, you would use the cd command followed by two dots. You should try it! '
     getInput 'cd ..' "Make sure you have a space between cd and the two dots."
     cd ..
+    echo
+    sleep 0.2
+    echo -n .
+    sleep 0.2
+    echo -n .
+    sleep 0.2
+    echo  .
     echo "No errors were printed, so it worked! You are currently in:"
     pwd
     read -p "Press enter to continue"
@@ -26,6 +33,7 @@ function cdTut(){
     echo "Now you backtracked to:"
     cd -
     #pwd
+    read -p "Press enter to continue"
     clear
     ponysay -b round --wrap $PONYWRAP -F pinkiesilly $'You can only backtrack one step. If you keep typing in cd -, you'\'$'ll just bounce back and forth between two directories. Check it out:'
     getInput 'cd -' "Make sure you have just one dash."
@@ -45,6 +53,7 @@ function cdTut(){
     ponysay -b round --wrap $PONYWRAP -F pinkiecannon "Great job! You are done with this section. Good luck, $PONYUSER!"
     read -n 1 -r -p "Press any key to continue"
     echo "cdtutdone:  (Done)" >> ~/.unixTut/config
+    clear
 }
 
 # This is added in case the script is invoked instead of sourced
