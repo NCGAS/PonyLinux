@@ -87,7 +87,9 @@ function halp(){
     echo -e 'To search for things, use the find command. It wants you to tell it where to search, and what to search for, like so:\n\t'$bold'find . -name "*monster*"'$normal'\nThat command would tell you where all of the monsters are in the dungeon! That is good to know, right?' | fold -sw $(checkColumns)
     echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal". To get back to the start of the dungeon, type "$bold"escape"$normal"." | fold -sw $(checkColumns)
     #echo "" | fold -sw $(checkColumns)
-    echo -e "(If you meant to invoke the help that comes with Unix, type it with a backslash in the front like so: \\help.)"
+    echo -e "To unlock doors, use the ${b}chmod${r} command. To make it so anyone can open a door, for example, do:${nt}${b}chmod a+x Door_xxx${r}, where the xxx is the actual letters and numbers of the door you are opening." | fold -sw $(checkColumns) 
+    echo -e "To be able to see the contents of a dark room, you also use the ${b}chmod${r} command. To make it so anyone can see inside Door_xxx, do:${nt}${b}chmod a+r Door_xxx${r}" | fold -sw $(checkColumns) 
+    #echo -e "(If you meant to invoke the help that comes with Unix, type it with a backslash in the front like so: \\help.)"
 }
 
 function attack(){
@@ -221,7 +223,7 @@ function lsp(){
     if [[ ! "$result" ]]; then
 	testForEmpty="$(\ls -lah $@ 2>&1)"
 	if [[ "$testForEmpty" = *"Permission"* ]];then
-	    echo "You can't look behind locked doors. Maybe try finding a key first?"
+	    echo "You can't look behind locked doors. Maybe try unlocking it first?"
 	else
 	    num=$(echo "$testForEmpty" | wc -l)	    
 	    if [[ $num > 3 ]]; then
@@ -235,7 +237,7 @@ function lsp(){
 	
 	testForEmpty="$(\ls $@ 2>&1)"
 	if [[ ! "$testForEmpty" ]];then
-	    echo "You can't look behind locked doors. Maybe try a key first?"	   
+	    echo "You can't look behind locked doors. Maybe try unlocking it first?"	   
 	else
 	    echo "It's pitch black, you can't see anything!"
 	fi
