@@ -61,11 +61,11 @@ ponygo fluttershygala "The control key does special things in Unix. If you hold 
 
 ponygo fluttershybat "If you hit ctrl and the c key at the same time, it will quit most programs (press the q key if $(bold "ctrl+c") doesn't work). You can also use $(bold "ctrl+c") if you make a mistake while typing a command as a faster way to cancel the command rather than pressing backspace."
 
-ponygo fluttershy $'Other keyboard shortcuts you might use are:\n\t'$(bold "ctrl+a")$' to go to the beginning of the line;\n\t'$(bold "ctrl+e")$' to go to the end of the line;\n\tthe escape key plus the > character to go to the end of a document;\n\t'$(bold "escape+<")$' to go to the beginning of a document;\n\t'$(bold "ctrl+d")$' to log out of your current Bash session.' 
+ponygo fluttershy $'Other keyboard shortcuts you might use are:\n\t'$(bold "ctrl+a")$' to go to the beginning of the line;\n\t'$(bold "ctrl+e")$' to go to the end of the line;\n\t'$(bold "escape+>")$' to go to the end of a document;\n\t'$(bold "escape+<")$' to go to the beginning of a document;\n\t'$(bold "ctrl+d")$' to log out of your current Bash session.' 
 
 ponygo fluttershy "In addition to the up arrow key, the tab key will also save you a ton of typing. Use tab to complete a command or to fill in the rest of a file name. Hit tab twice in a row quickly to see your completion options."
 
-ponygo fluttershy "For example, if I had two files - one named $(bold "verylongfilename.txt") and the other $(bold "veryshort.txt") - I could type in $(bold "ls v") and then hit tab. This would fill in $(bold "very") and then wait for me to enter the next character."
+ponygo fluttershy "For example, if I had two files, one named $(bold "verylongfilename.txt") and the other named $(bold "veryshort.txt"), I could type in $(bold "ls v") and then hit tab. This would fill in $(bold "very") and then wait for me to enter the next character."
 ponygo fluttershyshy $'There are two files that start with '$(bold "very")$', so Unix is now waiting to see which one you want to run with the '$(bold "ls")$' command.\n\nIf you hit tab twice, it will show you both files that start with '$(bold "very")'.'
 
 ponygo fluttershy "If you type $(bold "ls veryl"), the tab key would fill in the whole file:"$'\n'"$(bold "verylongfilename.txt")."$'\n\n'"This is also a good way to avoid spelling mistakes, and to make sure that the file or command exists where Unix is looking."

@@ -140,7 +140,7 @@ function menu(){
 	string="Alright, hero-in-training, Let's get you prepared to save the Princess! What would you like to learn first?"
     fi 
     string=${string}${big}
-    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Users and permissions '${usertutdone}$'\n\t5.) Searching for files and folders\n\t6.) Opening and Navigating files '${opentutdone}$'\n\t7.) I am ready to face the dungeon!\n\t8.) I wanna do the intro over again.\n\t9.) Quit'
+    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Users and permissions '${permtutdone}$'\n\t5.) Searching for files and folders'${findtutdone}$'\n\t6.) Opening and Navigating files '${opentutdone}$'\n\t7.) I am ready to face the dungeon!\n\t8.) I wanna do the intro over again.\n\t9.) Quit'
 
     read -ep $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!

@@ -3,7 +3,7 @@ function cdTut(){
     read -p "Press enter to continue"
     clear
     getWrap
-    ponygo pinkiebounce $'Whenever you are logged into a Unix system using a shell, you have a location - also called a directory or a folder.'
+    ponygo pinkiebounce $'Whenever you are logged into a Unix system using a shell, you have a location, which is also called a directory or a folder.'
     ponyNoClear pinkie $'You start out a new shell session from your home location. A home is where you sleep, so it makes sense that this is where you wake up!\n\nYou can always find out where you are by typing in pwd and hitting enter. Now you try it.'
     getInput 'pwd' "Not quite."
     echo "Great! You are currently in:"
@@ -11,7 +11,7 @@ function cdTut(){
     read -p "Press enter to continue"
     clear
     getWrap
-    ponysay -b round --wrap $PONYWRAP -F pinkiebounce $'Directories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.\n\nDirectories inside the current directory are called subdirectories. The directory that contains your current location is called the parent directory. \n\nIn the bash shell, the current directory can be denoted by a shorthand of one dot, or period: ".". The parent is two dots: "..". There isn'\'$'t a three dot shorthand though.'
+    ponysay -b round --wrap $PONYWRAP -F pinkiebounce $'Directories in Unix are hierarchical, which means that a directory can contain other directories in a nested way.\n\nDirectories inside the current directory are called subdirectories. The directory that contains your current location is called the parent directory. \n\nIn the bash shell, the current directory can be denoted by a shorthand of one dot (a period): ".". The parent is two dots: "..". There isn'\'$'t a three dot shorthand though.'
     read -p "Press enter to continue"
     clear
     ponysay -b round --wrap $PONYWRAP -F pinkie $'To move to a different location, you will use the cd command. cd stands for change directory. \n\nThink of it as opening a door, and going from one room into another. \n\nTo go up a directory, you would use the cd command followed by two dots. You should try it! '

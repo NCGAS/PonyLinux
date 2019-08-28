@@ -7,7 +7,7 @@ function permTut(){
     mkdir -p castle
     chmod 770 castle
     ponygo applejack "Howdy, $PONYUSER. I'm going to teach you all about users and permissions in Unix.${n2}Let's start by grabbing some supplies from the pony castle!  We'll need to get you some food and some armor!"
-    ponygo applejackscarecrow "Now that the Princess is missing, we are keeping the castle locked. We'll need to make sure we have ${b}permission${r} to enter.${n2}Unix permissions control who can access folders and directories.  Let's check to see who has permission to access the castle."
+    ponygo applejackscarecrow "Now that the Princess is missing, we are keeping the castle locked. We'll need to make sure we have ${b}permission${r} to enter.${n2}Unix permissions control who can access files and directories. Let's check to see who has permission to access the castle."
 
     ponyNoClear fillyjack "Our good ol' trusty ${b}ls -lah${r} can tell us what the permission codes are. Go ahead and try it!"
     getInput 'ls -lah' "Don't give up! Did you remember the dash?"
@@ -18,17 +18,9 @@ function permTut(){
     read -p "Press enter to continue"
     clear
 
-    ponyNoClear applejack "Remember, running ${b}ls -lah${r} lets us see the long list (${b}-l${r}) for all files (${b}-a${r}) in a human-or-pony-readable way (${b}-h${r}).${n2}There are three things listed where we are standin':${nt}1.)${b} . ${r}(current directory),${nt}2.) ${b}..${r} (directory above), and${nt}3.) ${b}castle${r} (the directory we wanna get into)."
-    echo "${b}ls -lah${r}"
-    echo "$lah"
-    read -n 1 -r -p "Press any key to continue"
-    clear
-
     lah1="$(ls -lah | tail -n 1)"
     split="$(echo $lah1 | perl -p -e 's/^(\S+).+/$1/')"
-    #split=$(echo $lah1 | perl -p -e 's/^(\s+).+/$1/')
-    ponyNoClear applejack "The first part of each line is the permission code:${n2}${b}$split${r}${n2}Let me grab ya the last line using ls and tail.  Don't worry, we'll make heads and tails of the ${b}head${r} and ${b}tail${r} command later."
-    
+    ponyNoClear applejack "The first part of each line is the permission code:${n2}${b}$split${r}"
     echo "${b}ls -lah | tail -n 1${r}"
     echo "$lah1"
     read -n 1 -r -p "Press any key to continue"
@@ -38,21 +30,11 @@ function permTut(){
     pretty=$(echo $lah1 | perl -p -e 's/^([-d ]?)([rwx-]{3})([rwx-]{3})([rwx-]{3}).+/$1 $2 $3 $4/')
     #ls -lah castle
 
-    ponyNoClear applejackscarecrow "Let's break the code down into its seperate parts:${n}${b}$pretty${r}${n2}The first letter, ${b}d${r}, means the castle is a ${b}directory${r}.${n}What do the next three sets mean?"
-    read -n 1 -r -p "Press any key to continue"
-    clear
+    ponygo applejackscarecrow "Let's break the code down into its seperate parts:${n}${b}$pretty${r}${n2}The first letter, ${b}d${r}, means the castle is a ${b}directory${r}.${n}What do the next three sets mean?"
 
-    getWrap
-    ponyNoClear applejack "The letter ${b}r${r} stands for read, ${b}w${r} stands for write, and ${b}x${r} stands for execute.${n}For files, this is pretty straightforward - you can read or write to the file, and if it's a program or script, you can run it (execute).${n2}For a directory, read means you can see what's in the directory like you would with ${b}ls${r}, write means you can make new files or directories like with ${b}cp${r}, and execute means you can enter the directory like with ${b}cd${r}.${n2}Do you have any notion why there are three sets of permissions?"
-    read -n 1 -r -p "Press any key to continue"
-    clear
-
-    ponyNoClear fillyjack "There are three groups of users in Unix Permissions - the owner (also called user), group, and other.  The owner is usually the one who made the file, groups are defined sets of users, and other is everyone else."
-    read -n 1 -r -p "Press any key to continue"
-    clear
-
-    ponygo applejack "One persniketty thing about Unix is that spaces are a big issue. It's really hard to include spaces in file names and even user names; the computer won't refer to you by Firstname Lastname like would be polite. Instead, your username is usually all lowercase and 8 or so characters long."
-    ponyNoClear applejack "My name is Applejack, but my username, apjack19, is what gets used for permissions. So, while your name is $PONYUSER, you will need to know your username. You can do this by asking \"who am I\" all run together-like: ${b}whoami${r}.${n2}Go ahead and ask the computer an existential question!"
+    ponygo applejack "The letter ${b}r${r} stands for read, ${b}w${r} stands for write, and ${b}x${r} stands for execute.${n}For files, this is pretty straightforward - you can read or write to the file, and if it's a program or script, you can run it (execute).${n2}For a directory, read means you can see what's in the directory like you would with ${b}ls${r}, write means you can make new files or directories like with ${b}cp${r}, and execute means you can enter the directory like with ${b}cd${r}.${n2}Do you have any notion why there are three sets of permissions?"
+    ponygofillyjack "There are three types of Unix permissions: permissions for the owner (also called user), the group, and other. The owner is usually the one who made the file, groups are defined sets users, and other is everyone else."
+    ponyNoClear applejack "My name is Applejack, but my username, ajack19, is what gets used for permissions. So, while your name is $PONYUSER, you will need to know your username. You can do this by asking \"who am I\" all run together-like: ${b}whoami${r}.${n2}Go ahead and ask the computer an existential question!"
     getInput 'whoami' 'Try again!'
     whoami
     read -n 1 -r -p "Press any key to continue"
@@ -61,7 +43,6 @@ function permTut(){
     ponyNoClear fillyjacktravel "I belong to the group of pony guards and the team of pony guides. You can belong to several groups, just like I do.  What groups do you belong to?  You can use the ${b}id${r} command to find out!"
     getInput 'id' 'Try again!'
     id
-
     read -n 1 -r -p "Press any key to continue"
     clear
 
@@ -119,8 +100,8 @@ function permTut(){
     echo "total 14K"
     echo "drwxrwx--- 2 princess ponies 4.0K Aug  9 12:25 ."
     echo "drwxrwx--- 3 princess ponies 4.0K Aug  9 12:25 .."
-    echo "-rw-rw---- 3 apjack19 ponies 2.0K Aug 9 12:25 apples"
-    echo "-rw-rw---- 3 apjack19 apjack19 2.0K Aug 9 12:25 candy"
+    echo "-rw-rw---- 3 ajack19 ponies 2.0K Aug 9 12:25 apples"
+    echo "-rw-rw---- 3 ajack19 ajack19 2.0K Aug 9 12:25 candy"
     echo "-rw------- 3 $uid ponies 2.0K Aug 9 12:25 travelpack"
     read -n 1 -r -p "Press any key to continue"
     clear
@@ -128,8 +109,8 @@ function permTut(){
     echo "total 14K"
     echo "drwxrwx--- 2 princess ponies 4.0K Aug  9 12:25 ."
     echo "drwxrwx--- 3 princess ponies 4.0K Aug  9 12:25 .."
-    echo "-rw-rw---- 3 apjack19 ponies 2.0K Aug 9 12:25 apples"
-    echo "-rw-rw---- 3 apjack19 apjack19 2.0K Aug 9 12:25 candy"
+    echo "-rw-rw---- 3 ajack19 ponies 2.0K Aug 9 12:25 apples"
+    echo "-rw-rw---- 3 ajack19 ajack19 2.0K Aug 9 12:25 candy"
     echo "-rw------- 3 $uid ponies 2.0K Aug 9 12:25 travelpack"
     ponyNoClear fillyjack "You can see we brought your travelpack into the kitchen for storage.  I also have my private stash of candy and the apples I share with all the ponies. Notice these are files, not directories - the permission block starts with a - instead of a d!  Also, there is no x, because these are not directories or programs."
     read -n 1 -r -p "Press any key to continue"
@@ -154,7 +135,7 @@ function permTut(){
     echo "total 14K"
     echo "drwxrwx--- 2 princess ponies 4.0K Aug  9 12:25 ."
     echo "drwxrwx--- 3 princess ponies 4.0K Aug  9 12:25 .."
-    echo "-rw-rw---- 3 apjack19 apjack19 2.0K Aug 9 12:25 candy"
+    echo "-rw-rw---- 3 ajack19 ajack19 2.0K Aug 9 12:25 candy"
     echo "-rw-r----- 3 $uid ponies 2.0K Aug 9 12:25 travelpack"
     read -n 1 -r -p "Press any key to continue"
     clear
@@ -168,7 +149,7 @@ function permTut(){
     echo "total 14K"
     echo "drwxrwx--- 2 princess ponies 4.0K Aug  9 12:25 ."
     echo "drwxrwx--- 3 princess ponies 4.0K Aug  9 12:25 .."
-    echo "-rw-rw---- 3 apjack19 apjack19 2.0K Aug 9 12:25 candy"
+    echo "-rw-rw---- 3 ajack19 ajack19 2.0K Aug 9 12:25 candy"
     echo "-rw-rw---- 3 $uid ponies 2.0K Aug 9 12:25 travelpack" 
     read -n 1 -r -p "Press any key to continue"
     clear
@@ -178,7 +159,7 @@ function permTut(){
     read -n 1 -r -p "Press any key to continue"
     clear
 
-    ponyNoClear fillyjacktravel "Come on! Time to go to the armory. Remember how to mv to a directory above the one you are in? With cd ..!  You can also make the hop to the armory in the same command.  Race you!"
+    ponyNoClear fillyjacktravel "Come on! Time to go to the armory. Remember how to move to a directory above the one you are in? With cd ..!  You can also make the hop to the armory in the same command.  Race you!"
     getInput 'cd ../armory' 'Try again!'
     read -n 1 -r -p "Press any key to continue"
     clear
@@ -188,7 +169,7 @@ function permTut(){
     echo "total 12K"
     echo "drwxrwx--- 2 princess ponies 4.0K Aug  9 12:25 ."
     echo "drwxrwx--- 3 princess ponies 4.0K Aug  9 12:25 .."
-    echo "-rw-rw---- 3 apjack19 ponies 2.0K Aug 9 12:25 sword"
+    echo "-rw-rw---- 3 ajack19 ponies 2.0K Aug 9 12:25 sword"
     echo "-rw------- 3 $uid $uid 2.0K Aug 9 12:25 other_weapons"
     read -n 1 -r -p "Press any key to continue"
     clear
@@ -207,7 +188,7 @@ function permTut(){
     echo "total 12K"
     echo "drwxrwx--- 2 princess ponies 4.0K Aug  9 12:25 ."
     echo "drwxrwx--- 3 princess ponies 4.0K Aug  9 12:25 .."
-    echo "-rw-rw---- 3 apjack19 ponies 2.0K Aug 9 12:25 sword"
+    echo "-rw-rw---- 3 ajack19 ponies 2.0K Aug 9 12:25 sword"
     echo "-rw------- 3 $uid ponies 2.0K Aug 9 12:25 other_weapons"
     read -n 1 -r -p "Press any key to continue"
     clear
