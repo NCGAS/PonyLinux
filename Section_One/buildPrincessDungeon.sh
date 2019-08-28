@@ -49,8 +49,7 @@ more="A perfectly normal dungeon hallway extends before you. At the end of the h
 start="You look around as the large, ponderous dungeon doors close behind you. There's an unsettling finality to the way they shut, but your job is to perform a rescue. As you make your way into the hall, you kick something metal across the floor. It looks like some kind of key. You pocket it away for safe keeping and look around. Whoever built this dungeon had an odd sense of naming rooms. Each door is labeled Door_ followed by three random seeming letters and numbers."
 deadend="You walk into a room which is round, with even stone blocks making up the walls. It looks like the only door out of this room is the one you came from."
 princess="Your weariness and battered body seem to fade away from your worries as soon as you step into this room. The one you were trying so desperately to find stands before you. The Princess, even though she is locked in a small cell with little amenity, radiates such splendor that is takes you a moment to realize that you have succeeded. You run to her aide, unlocking the iron door to her cell with the key you found when you entered the dungeon. With a tired smile, your princess thanks you graciously and leans on your proferred shoulder as you make haste to retreat from this awful place." 
-travelpack="You have a sword and some apples in your pack. There's also a few pieces of candy you snuck in while Applejack wasn't looking. You can use the sword by typing sword, and eat an apple or candy by typing apple or candy."
-sword="You look the sword over. There are a few spots of tarnish on the blade, but it feels solid. The hilt is inscribed with the Princess's insignia."
+travelpack="You have several things in your pack: Some shiny red apples, some candy that looks like raffy wrapped in paper, and a decent-looking sword! in your pack. There are a few spots of tarnish on the blade, but it feels solid. The hilt is inscribed with the Princess's insignia. You can use the sword by typing sword, and eat an apple or candy by typing apple or candy."
 apple="The apples are round and a shiny red color. They look yummy!"
 candy="There are a few pieces of taffy wrapped up in paper."
 key="To unlock doors, use the chmod command. To make it so anyone can open a door, for example, do chmod a+x Door_xxx, where the xxx is the actual letters and numbers of the door you are opening. To be able to see the contents of a dark room, you also use the chmod command. To make it so anyone can see inside Door_xxx, do chmod a+r Door_xxx"
@@ -150,14 +149,8 @@ mkdir -p dungeon
 echo $?
 cd dungeon
 echo "${start}" >> Description
-mkdir -p travelpack
-cd travelpack
-echo "$travelpack" >> Description
-echo "$sword" >> sword
-echo "$apple" >> apples
-echo "$candy" >> candy
+echo "$travelpack" >> travelpack
 echo "$key" >> key
-cd ..
 cp ${monsterdir}/start .monster
 globaldepth=6
 breadth=2
