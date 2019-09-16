@@ -13,6 +13,12 @@ export n=$'\n'
 export n2=$'\n\n'
 # Shorthand for newline followed by tab
 export nt=$'\n\t'
+# Shorthand for reset followed by newline
+export rn=$'\r\n'
+# Shorthand for reset followed by two newlines
+export rn2=$'\r\n\n'
+# Shorthand for newline followed by bold
+export nt=$'\n\b'
 # Shorthand for bold face
 export b=$'\033[1m'
 # Shorthand for italic face
@@ -20,14 +26,16 @@ export i=$'\033[3m'
 # Shorthand for reset font to normal
 export r=$'\033[0m'
 
+## Notes for developers:
+##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # TPUT exudes a B( character secretly during setting Bold. This screws up ponysay's character count!
 # For this reason we gotta use the actual codes.
 #export bold=$(tput bold)
 #export normal=$(tput sgr0)
-function bold(){
-    printf "\033[1m$1\033[0m"
-    #$(tput bold; echo -n "$1"; tput sgr0)
-}
+#function bold(){
+#    printf "\033[1m$1\033[0m"
+#    #$(tput bold; echo -n "$1"; tput sgr0)
+#}
 # In my testing, the runtime for $(bold "test") is 20x slower than the shorthands!
 ##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,22 +84,8 @@ function tidyConfig(){
 }
 
 function ponygo(){
-    #ponyname="$1"
-    #ponytext="$2"
     getWrap
     echo -e "$2" | ponysay -b round --wrap $PONYWRAP -F "$1" 
-#"$2"
-    read -p "Press enter to continue" chars
-    #read -n 1 "Press enter to continue" chars
-    #echo "typed $char"
-    sleep 0.1
-    #read -p "Press enter to continue"
-    clear
-}
-
-function ponyNoClear(){
-    getWrap
-    ponysay -b round --wrap $PONYWRAP -F "$1" "$2"
 }
 
 function getInput(){
