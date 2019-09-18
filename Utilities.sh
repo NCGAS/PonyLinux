@@ -18,7 +18,9 @@ export rn=$'\r\n'
 # Shorthand for reset followed by two newlines
 export rn2=$'\r\n\n'
 # Shorthand for newline followed by bold
-export nt=$'\n\b'
+export nb=$'\n\b'
+# Shorthand for newline followed by tab and bold
+export ntb=$'\n\t\b'
 # Shorthand for bold face
 export b=$'\033[1m'
 # Shorthand for italic face
