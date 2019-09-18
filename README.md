@@ -7,7 +7,6 @@ Step one is to install Ponysay, and make sure that python3 is in your $PATH.
 
 I had to run:
   * sudo apt-get update
-  * sudo apt-get install util-say
   * sudo apt-get install texinfo
   * git clone https://github.com/erkin/ponysay.git
   * sudo python3 setup.py --freedom=partial install
