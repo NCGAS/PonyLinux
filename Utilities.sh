@@ -13,21 +13,14 @@ export n=$'\n'
 export n2=$'\n\n'
 # Shorthand for newline followed by tab
 export nt=$'\n\t'
-# Shorthand for reset followed by newline
-export rn=$'\r\n'
-# Shorthand for reset followed by two newlines
-export rn2=$'\r\n\n'
-# Shorthand for newline followed by bold
-export nb=$'\n\b'
-# Shorthand for newline followed by tab and bold
-export ntb=$'\n\t\b'
 # Shorthand for bold face
 export b=$'\033[1m'
 # Shorthand for italic face
 export i=$'\033[3m'
 # Shorthand for reset font to normal
 export r=$'\033[0m'
-
+# I don't know if this works but I'll put this here
+export nbsp=$'\xC2\xA0'
 ## Notes for developers:
 ##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # TPUT exudes a B( character secretly during setting Bold. This screws up ponysay's character count!

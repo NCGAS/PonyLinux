@@ -31,7 +31,7 @@ function catchInt(){
     fi
 }
 
-trap catchInt SIGINT
+#trap catchInt SIGINT
 
 function execute(){
     ponysay -b round -F applejack 'Hi, '$name'! are you ready to swim on your own? Remember, to get back to the tutorial, type exit (or use the shortcut, the control key + d)'
@@ -153,37 +153,37 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
     case $cleanInput in
 	1)
             fromFunction=1
-            bash ${UNIXTUT}/runTutorial.sh Section_One/gentleDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/gentleDialog.txt
             #bash ${UNIXTUT}/Section_One/gentleTut.sh
             menu
             ;;
 	2)
             fromFunction=1
-            bash ${UNIXTUT}/runTutorial.sh Section_One/cdDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/cdDialog.txt
             #bash ${UNIXTUT}/Section_One/cdTut.sh
             menu
             ;;
 	3)
             fromFunction=1
-            bash ${UNIXTUT}/runTutorial.sh Section_One/dirDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/dirDialog.txt
             #bash ${UNIXTUT}/Section_One/dirTut.sh
             menu
 	    ;;
 	4)
             fromFunction=1 
-            bash ${UNIXTUT}/runTutorial.sh Section_One/permDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/permDialog.txt
             #bash ${UNIXTUT}/Section_One/permTut.sh
             menu
 	    ;;
 	5)
             fromFunction=1
-            bash ${UNIXTUT}/runTutorial.sh Section_One/findDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/findDialog.txt
             #bash ${UNIXTUT}/Section_One/findTut.sh
             menu
 	    ;;
         6)
             fromFunction=1
-            bash ${UNIXTUT}/runTutorial.sh Section_One/openDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/openDialog.txt
             #bash ${UNIXTUT}/Section_One/openTut.sh
             menu
             ;;

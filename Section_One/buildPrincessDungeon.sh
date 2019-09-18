@@ -21,11 +21,11 @@ declare -a floors=(
 "The passage before you seems crudely hewn from the surrounding rock. As you trace your fingers along the stony walls it feels like the marks were left not by tools, but by some large clawed hand. Your blood chills for a moment as you imagine whatever beast might have had the force to do this occupying the tunnel with you, but steeling your heart you look ahead to see several doors, marked Door_ followed by three random seeming letters and numbers."
 "As you open the door to this passage the pungent smell of must and mold imediately invades your nostrils. The walls are covered in a slick sheen of black and green mold and you try desperately not to breathe in too deep as you make your way through to the doors, marked Door_ followed by three random seeming letters and numbers."
 "It takes you a moment to notice, as you walk through the hall that every sound you make echos back a moment later, just a little too loud and a bit distorted. The further you walk the more the sound of your own footsteps reverberating piles up and you hurry towards one of the doors, marked Door_ followed by three random seeming letters and numbers to escape the sound before it drives you mad."
-"Upon opening the door to the hall you are immediately overwhelmed by a stream of bats flying in your face. The noise and wings buffet you, completely drowning out all rational though as you wave your arms frantically trying to clear the space around your head. Claws and wings leave little papercuts on you as the swarm passes, dealing you 5 damage. As suddenly as they flew out, the last of the bats passes you and once again you are left in silence to take in the rather plain looking passageway before you. To either side, doors marked Door_ followed by three random seeming letters and numbers."
+"Upon opening the door to the hall you are immediately overwhelmed by a stream of bats flying in your face. The noise and wings buffet you, completely drowning out all rational thought as you wave your arms frantically trying to clear the space around your head. Claws and wings leave little papercuts on you as the swarm passes, dealing you 5 damage. As suddenly as they flew out, the last of the bats passes you and once again you are left in silence to take in the rather plain looking passageway before you. To either side, doors marked Door_ followed by three random seeming letters and numbers."
 "Your torches flicker as you open up this passageway. It seems there's a fairly strong breeze coming from down the hall. You could almost swear you could detect a faint scent of the ocean in the warm air as it whips around you. That can't be right though, can it? To you left and to your right you see more doors marked Door_ followed by three random seeming letters and numbers."
 "This passage seems more finished than those that came before. Carpet lines the ground and the walls are painted and tastefully decorated. Seems like a lot of trouble for a place like this. The doors here too are just a bit nicer with brass hinges and solid looking doorknobs."
 "You open the door and the hallway before you looks like it belongs in a tavern. Wooden beams and panelling make up the walls and ceiling, and there are unadorned wool rugs under your feet. Wrought iron candle holders jut from the walls, with long ivory candles that keep the hall well-lit. There are several chandeliers hanging from iron chains from the beams of the ceiling, also lit with candles. At the end of the hall, iron-braced wooden doors stand before you, marked with black paint: Door_ followed by three random seeming letters and numbers." 
-"The hallway before you has strange markings on the floor. You walk carefully, trying to figure out what they mean, when one of the floor tiles gives way when you step on it. A dart flies out of a hole in the wall you didn't see before, striking you in the arm for 10 damage. You yipe in surprise, briefly glad no one is around to witness your un-heroic squeak. More cautious now, you find three more tiles that look suspicious and are able avoid tripping them. You get to the other side where there are innocent-looking doors marked Door_ followed by three random seeming letters and numbers."  
+"The hallway before you has strange markings on the floor. You walk carefully, trying to figure out what they mean, when one of the floor tiles gives way when you step on it. A dart flies out of a hole in the wall you didn't see before, striking you in the arm for 10 damage. You yipe in surprise, briefly glad no one is around to witness your un-heroic squeak. More cautious now, you find three more tiles that look suspicious and are able to avoid tripping them. You get to the other side where there are innocent-looking doors marked Door_ followed by three random seeming letters and numbers."  
 "The passage grows more and more narrow as you progress. What started out wide enough for two to walk side by side with ease before long leaves one feeling cramped and claustrophobic. Probably best to pick one of the doors to either side before risking getting stuck in the passage itself."
 "Nothing seems too particularly notable about this dark hallway until you let your hand graze against the wall. Everything, it seems, is lined with soot. The dark powder sticks instantly to you and soon starts to spread to your clothes as well. Whatever color you had on your items is soon obscured by the clinging soot. Ahead you see door after door, marked Door_ followed by three random seeming letters and numbers."
 "A small stream flows through the center of this passageway. The soft burble of running water is soothing and, after so much thirst-inducing walking, drinking a bit of the water seems mighty tempting. As you lean close there's something about the scent of the water that warns you away though, perhaps another source would be better. As you walk along you see to either side, doors marked Door_ followed by three random seeming letters and numbers."
@@ -58,25 +58,25 @@ RANDOM=$$
 function buildSubdir {
     local depth=$1
     local breadth=$2
-    echo "buildSubdir was called with depth $depth and breadth $breadth"
+    #echo "buildSubdir was called with depth $depth and breadth $breadth"
     local depthminus=$((depth - 1))   
     if [[ $depth -lt 1 ]]; then
-	echo "done, going back up"
+	#echo "done, going back up"
 	cd ..
 	pwd
     else
-	echo "depth is $depth"
+	#echo "depth is $depth"
 	local i=1
 	for (( i; i<=$breadth; i++ )); do
-	    echo "Building number $i of $breadth at depth $depth"
+	    #echo "Building number $i of $breadth at depth $depth"
 	    local tempdir=$(mktemp -d ${PWD}/Door_XXX)
 	    cd $tempdir
 	    local ndex=$(( (globaldepth - depth ) * breadth ))
-	    echo "ndex is $ndex"
+	    #echo "ndex is $ndex"
 	    local ndex=$((ndex + (i - 1)))
-	    echo "ndex is now $ndex"
+	    #echo "ndex is now $ndex"
 	    if (( $depth == 1 )); then
-		echo "$ndex, $i, $depth, $breadth" >> Description
+		#echo "$ndex, $i, $depth, $breadth" >> Description
 		if (( $princessplaced >= 1 )); then
 		    echo $deadend >> Description
 		else
@@ -92,13 +92,13 @@ function buildSubdir {
 		    ((princessplaced++))
 		fi
 	    elif (( $ndex < $numDescriptions )); then
-		echo "$ndex, $i, $depth, $breadth" >> Description
+		#echo "$ndex, $i, $depth, $breadth" >> Description
 		echo "${floors[ndex]}" >> Description
 		monstertest=$((RANDOM % $monsterodds))
 		echo "rolling randomly $monstertest"		
 		#if (( $monsterindex < $nummonsters)); then
 		if (( $monstertest == 0 )); then
-		    echo "monster at index $ndex rolling randomly $monstertest"
+		    #echo "monster at index $ndex rolling randomly $monstertest"
 		    monsterid=$((RANDOM % $nummonsters))
 		    cp ${monsterdir}/${monsters[$monsterid]} .monster
 		    chmod a+x .monster
@@ -107,10 +107,10 @@ function buildSubdir {
 		        #fi
 		fi
                 treasuretest=$((RANDOM % $treasureodds))
-                echo "rolling randomly $treasuretest"
+                #echo "rolling randomly $treasuretest"
 		if (( $treasuretest == 0)); then
 		    echo 'function moneyrun(){' >> .treasure
-		    echo "treasure at index $ndex"
+		    #echo "treasure at index $ndex"
 		    treasure=$((RANDOM%100+10))
 		    echo "cat $monsterdir/treasure" >> .treasure
 		    echo "moneymoneymoney $treasure" >> .treasure		    
@@ -125,8 +125,8 @@ function buildSubdir {
 		    darked="$darked $here"
 		fi
 	    else
-		echo "We wrote $numDescriptions descs, and ndex is $ndex"
-		echo "$ndex, $i, $depth, $breadth" >> Description
+		#echo "We wrote $numDescriptions descs, and ndex is $ndex"
+		#echo "$ndex, $i, $depth, $breadth" >> Description
 		echo $more >> Description
 	    fi
 	    echo -n "Recursing into dir: "

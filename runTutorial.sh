@@ -23,6 +23,7 @@ function readandDo(){
     elif (( $file_index > $total_lines )); then
 	exit 0
     else
+	clear	
 	# A little flailing. This helped: https://stackoverflow.com/questions/4668640/how-to-execute-command-stored-in-a-variable
 	#sed -n ${file_index}p fileDialog.txt | xargs -0 bash # no such file or dir
 	#$( sed -n ${file_index}p fileDialog.txt ) # Messes up quotes
@@ -35,15 +36,15 @@ function readandDo(){
 function runTut(){
     readandDo
     while (( 1 == 1 )); do
-	printf "Press the left and right arrow keys to go back/forward. Up and down keys take you to the beginning and the end. Type q to quit.\n"
+	printf "Press the left and right arrow keys to go back/forward. Up and down keys take you to the beginning and the end. Type q to quit.\n" | fold -s
 	read -rsn1 mode # get 1 character
 	if [[ $mode == $esc ]]; then
 	    read -rsn2 mode # read 2 more chars
 	fi
 	case $mode in
 	    'q') echo QUITTING ; exit ;;
-	    '[A') printf "↑"; let file_index=1 ;;
-	    '[B') printf "↓"; let file_index=$total_lines ;;
+	    '[A') printf "↑"; file_index=1 ;;
+	    '[B') printf "↓"; file_index=$total_lines ;;
 	    '[D') printf "←"; let file_index-- ;;
 	    *) printf "→"; let file_index++ ;;
 	esac
