@@ -52,20 +52,30 @@ function getWrap() {
 }
 
 ## Reads in the config file and sets up things that are to be remembered
+
+
+
 function checkProgress(){
-    if [[ -e ~/.unixTut/config ]]; then
+    if [[ -s ~/.unixTut/config ]]; then
+    	##echo "File not empty"
+    	## else
+    	##echo "File empty"
+    	##fi
         #sleep 2
         echo -n '' > ~/.unixTut/sourceTmpVars
-        sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' ~/.unixTut/config >> ~/.unixTut/sourceTmpVars
-        . ~/.unixTut/sourceTmpVars
+         sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' ~/.unixTut/config >> ~/.unixTut/sourceTmpVars
+         . ~/.unixTut/sourceTmpVars
         #sleep 5
     else
-        mkdir -p ~/.unixTut
-        touch ~/.unixTut/config
-    fi
+       mkdir -p ~/.unixTut
+     touch ~/.unixTut/config
+   fi
+
     if [[ $name ]]; then
-	export PONYUSER="$name"
-    fi
+	 export PONYUSER="$name"
+   fi
+    
+    
 }
 
 function tidyConfig(){
