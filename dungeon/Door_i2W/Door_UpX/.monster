@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F fido "You will never succeed in finding the Princess!"
+echo "As you enter the room, a burly creature with gray fur and a spiked collar turns to face you. Its lower jaw protrudes in an underbite, showing off yellowed fangs. It speaks in a slurred, screeching voice as it charges you, managing to swipe at you with its claws." | fold -sw $(checkColumns) 
+ouch 5
+}

@@ -1,0 +1,7 @@
+function monsterrun(){
+ponysay -b round -F mannyroar "Rraawwrrrr!"
+echo "The door behind you slams shut, clicking ominously. There is a feeling of air moving and a faint, rhythmic whooshing sound. You look around and find, to your dismay, the source of the sound - a flying creature, the size of a small horse, is circling in the vaulting ceiling above. You hope to escape its notice, but the door shutting catches its attention, and it swoops down upon you! You run and duck, but the creature flicks its long tail in your direction as it whooshes by. It stings you with a cruel barb at the tip of its tail and your feel your left shoulder tingle. You can't feel your fingertips and you feel a cold, sick feeling in your stomach." | fold -sw $(checkColumns) 
+ouch 10
+ouch 10
+ouch 10
+function monsterrun(){

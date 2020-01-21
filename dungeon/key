@@ -1,0 +1,1 @@
+To unlock doors, use the chmod command. To make it so anyone can open a door, for example, do chmod a+x Door_xxx, where the xxx is the actual letters and numbers of the door you are opening. To be able to see the contents of a dark room, you also use the chmod command. To make it so anyone can see inside Door_xxx, do chmod a+r Door_xxx

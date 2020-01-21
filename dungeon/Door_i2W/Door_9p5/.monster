@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F raccoon "Gwwgwgwgw?"
+echo "A raccoon, which had been hiding somewhere in the room, glares at you. It grabs whatever it was eating and disappears into a small crack in the wall." | fold -sw $(checkColumns) 
+}

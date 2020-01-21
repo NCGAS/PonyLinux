@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F owlowiscious "Whooooooo are you looking for?"
+echo "A rustling from somewhere up above your head catches your ears, and you look up to see a smug-looking owl staring down at you." | fold -sw $(checkColumns) 
+}
