@@ -53,7 +53,7 @@ function trainingTut(){
     #echo " You leave $whereami behind"
     if [[ ! -e training ]]; then
 	#echo "building training grounds"
-	/usr/bin/env bash ${UNIXTUT}/Section_One/buildTraining.sh $whereami  2>&1
+	/usr/bin/env bash ${UNIXTUT}/Section_One/buildTraining.sh $whereami > /dev/null 2>&1 
     fi
     #echo -e "\n You make your way around to the fields behind the castle." | fold -s
 
