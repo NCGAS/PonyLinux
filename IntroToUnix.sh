@@ -149,7 +149,7 @@ function intro(){
     read -p "Press enter to continue"
     #sleep 1
     clear
-#    menu 1
+    menu 1
 
 }
 function playground(){
@@ -282,15 +282,13 @@ if [[ $variable1 = *"q"* || $variable1 = *"Q"* || $variable1 = *"n"* || $variabl
 fi
 
 if [[ -z $name ]]; then
-	playground
-	intro
-    
+    #playground
+    intro
 fi
 
-
 clear
-while true; do
+#while true; do
 menu
-  echo "Going another round"
-done
+#  echo "Going another round"
+#done
 exit 0
