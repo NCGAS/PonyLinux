@@ -1,6 +1,6 @@
 function monsterrun(){
 ponysay -b round -F owl "This is going to be a hoot."
-echo "An owl is perched above you in an alcove in the stone wall. You thought it was a statue until it moves its head to regard you. You get the feeling that it will not hesitate to eat you if you died in here." | fold -sw $(checkColumns) 
+echo "Dungeon goals: Explore the dungeon using ls, cd, chmod, and find. You need to figure out the path to the Princess, cd into the directory that she is in, then exit the dungeon. The dungeon is huge, so going through every directory exhaustively might not be wise!" | fold -sw $(checkColumns) 
 export DUNGEON=$(pwd)
 export HEALTH=100
 }

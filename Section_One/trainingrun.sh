@@ -170,13 +170,13 @@ function hint(){
 
 function light(){
     if [ "$PS1" ]; then
-        PS1="\[\033[0;95m\]Hero: \$PONYUSER \[\033[0;91m\] You are currently in \$PWD.\n\[\033[0;96m\](Type done to return to menu)\[\033[0;92m\] $\[\033[0m\] "
+        PS1="\[\033[0;95m\]Hero: \$PONYUSER \[\033[0;91m\] You are currently in \$PWD.\n\[\033[0;96m\]Explore all the training areas, then type done to return to menu\[\033[0;92m\] $\[\033[0m\] "
     fi
 }
 
 function dark(){
     if [ "$PS1" ]; then
-        PS1="\[\033[35m\]Hero: \$PONYUSER \[\033[31m\] You are currently in \$PWD.\n\[\033[34m\](Type done to return to menu)\[\033[32m\] $\[\033[0m\] "
+        PS1="\[\033[35m\]Hero: \$PONYUSER \[\033[31m\] You are currently in \$PWD.\n\[\033[34m\]Explore all the training areas, then type done to return to menu\[\033[32m\] $\[\033[0m\] "
     fi
 }
 
