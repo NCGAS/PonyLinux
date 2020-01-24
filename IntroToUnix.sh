@@ -150,7 +150,15 @@ function intro(){
     #sleep 1
     clear
 #    menu 1
+
 }
+function playground(){
+mkdir -p ~/.unixTut/playground
+checkProgress	
+echo "welcome to playground!"
+}
+
+
 
 function menu(){
     fromFunction=0
@@ -274,8 +282,12 @@ if [[ $variable1 = *"q"* || $variable1 = *"Q"* || $variable1 = *"n"* || $variabl
 fi
 
 if [[ -z $name ]]; then
-    intro
+	playground
+	intro
+    
 fi
+
+
 clear
 while true; do
 menu

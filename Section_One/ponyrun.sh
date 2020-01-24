@@ -162,6 +162,7 @@ function heal()
     fi    
 }
 
+	
 function cdp(){
     #echo $1
     if [[ "$1" = "portal" ]]; then
