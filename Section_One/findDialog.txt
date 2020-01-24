@@ -6,5 +6,5 @@ ponygo twilighttime "Of those filters, the ${b}-name${r} parameter is probably t
 ponygo twilight "For example, if I wanted to search for my music, I might try the following command:${n}${b}find . -name \"*.mp3\"${r}${n2}This will return all the mp3s I have from my current directory on down."
 ponygo twilight "You can put multiple stars ( ${b}*${r} ) in your search too! So I can look for music with names that contain \"Twilight\" by doing:${n}${b}find . -name  \"*Twilight*.mp3\"${r}${n}This allows, but does not require, characters in front of or after \"Twilight\"."
 ponygo twilight "Did you notice the single dash in front of ${b}-name${r}? ${b}Find${r} cheats. It only uses one dash even though it uses long words, which makes it a little odd for a Unix program."
-ponygo twilightzero "One last thing; make sure that you put \"quotes\" around whatever name you are searching for with find."
+ponygo twilightzero "One last thing; make sure that you put \"${b}quotes${r}\" around whatever name you are searching for with find."
 ponygo twilightprincess "That's it! It might take a few tries to get the syntax just right, but it's totally worth it when you can easily search your files."; echo "findtutdone:  (Done)" >> ~/.unixTut/config
