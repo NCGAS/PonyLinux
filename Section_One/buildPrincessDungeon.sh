@@ -147,7 +147,7 @@ mkdir -p dungeon
 echo $?
 cd dungeon
 echo "${start}" >> Description
-echo "${travelpack}" >> travelpack
+#echo "${travelpack}" >> travelpack
 #echo "${key}" >> key
 cp ${monsterdir}/start .monster
 globaldepth=6
