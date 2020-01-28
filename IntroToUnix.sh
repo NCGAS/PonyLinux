@@ -12,6 +12,7 @@ export killcount=0
 ## Declare some Functions!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function cleanUp(){
+    # I'm currently too chicken to actually remove user files until better tested
     #perl -p -ibkp -e "s/^source ~./unixTut/ponyrun.sh.*$//" ~/.bashrc
     #rm -rf ~/.unixTut
     #echo "Removing game files."
@@ -31,6 +32,7 @@ function catchInt(){
     fi
 }
 
+# This has unwanted behaviours inside of read loops
 #trap catchInt SIGINT
 
 function execute(){
@@ -38,6 +40,32 @@ function execute(){
     read -n 1 -r -p "Press enter key to continue"
     bash --init-file <(echo "ls; pwd")
     clear
+    menu
+}
+
+function trainingTut(){
+    clear
+    ponysay -b round -F shiningarmor 'Hey there, '$name'! Before we send you into the dungeon to save our wonderful and miraculous princess, I thought you would like some extra practice at the training grounds. Let'\''s go get some practice using ls and cd.'
+    #'
+    echo ""
+    read -p "Press enter to enter the training grounds."
+    whereami=$(pwd)    
+    #echo " You leave $whereami behind"
+    if [[ ! -e training ]]; then
+	#echo "building training grounds"
+	/usr/bin/env bash ${UNIXTUT}/Section_One/buildTraining.sh $whereami > /dev/null 2>&1 
+    fi
+    #echo -e "\n You make your way around to the fields behind the castle." | fold -s
+
+    # Figure out if we need to source any bash files
+    sourceme=""
+    if [ -f ~/.bash_profile ]; then
+	sourceme=". ~/.bash_profile;"
+    elif [ -f ~/.bashrc ]; then
+	sourceme=". ~/.bashrc;"
+    fi
+    bash --init-file <(echo "$sourceme . ${UNIXTUT}/Section_One/trainingrun.sh; cd ${whereami}/training")
+    battleresults=$?
     menu
 }
 
@@ -121,7 +149,7 @@ function intro(){
     read -p "Press enter to continue"
     #sleep 1
     clear
-#    menu 1
+    menu 1
 
 }
 function playground(){
@@ -148,7 +176,7 @@ function menu(){
 	string="Alright, hero-in-training, Let's get you prepared to save the Princess! What would you like to learn first?"
     fi 
     string=${string}${big}
-    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Users and permissions '${permtutdone}$'\n\t5.) Searching for files and folders'${findtutdone}$'\n\t6.) Opening and Navigating files '${opentutdone}$'\n\t7.) I am ready to face the dungeon!\n\t8.) I wanna do the intro over again.\n\t9.) Quit'
+    ponysay -b round -F rarity ${string}$'\n\t1.) Gentle Introduction '${gentletutdone}$'\n\t2.) Getting around '${cdtutdone}$'\n\t3.) Directories '${dirtutdone}$'\n\t4.) Training Grounds\n\t5.) Users and permissions '${permtutdone}$'\n\t6.) Searching for files and folders'${findtutdone}$'\n\t7.) Opening and Navigating files '${opentutdone}$'\n\t8.) I am ready to face the dungeon!\n\t9.) Quit'
 
     read -ep $'Please choose a number and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!
@@ -178,31 +206,30 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
             menu
 	    ;;
 	4)
+            trainingTut
+            menu
+	    ;;	
+        5)
             fromFunction=1 
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/permDialog.txt
             #bash ${UNIXTUT}/Section_One/permTut.sh
             menu
 	    ;;
-	5)
+	6)
             fromFunction=1
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/findDialog.txt
             #bash ${UNIXTUT}/Section_One/findTut.sh
             menu
 	    ;;
-        6)
+        7)
             fromFunction=1
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/openDialog.txt
             #bash ${UNIXTUT}/Section_One/openTut.sh
             menu
             ;;
-	7)
-            fromFunction=1
-	    battle
-	    ;;
 	8)
             fromFunction=1
-	    intro
-	    menu
+	    battle
 	    ;;
 	9)
 	    exit 0
@@ -255,15 +282,13 @@ if [[ $variable1 = *"q"* || $variable1 = *"Q"* || $variable1 = *"n"* || $variabl
 fi
 
 if [[ -z $name ]]; then
-	playground
-	intro
-    
+    #playground
+    intro
 fi
 
-
 clear
-while true; do
+#while true; do
 menu
-  echo "Going another round"
-done
+#  echo "Going another round"
+#done
 exit 0

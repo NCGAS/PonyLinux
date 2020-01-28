@@ -17,7 +17,7 @@ if [ ! -r "$tutfile" ]; then
 fi
 
 function readandDo(){
-    echo "index is $file_index"
+    #echo "index is $file_index"
     if (( $file_index < 1 )); then
 	file_index=1
     elif (( $file_index > $total_lines )); then
