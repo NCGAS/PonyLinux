@@ -32,7 +32,7 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  Pervasive Technology Institute at Indiana University website: https://pti.iu.edu/
  
  ## Follow NCGAS on Social Media! ##
- Facebook - https://www.facebook.com/ncgasiu <br />
+ <b>Facebook</b> - https://www.facebook.com/ncgasiu <br />
  Twitter - https://twitter.com/ncgas <br />
  Youtube Video - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
  GitHub - https://github.com/NCGAS
