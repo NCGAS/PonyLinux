@@ -1,5 +1,5 @@
 # unixTut
-![pony photo](/Images/ponytweak.png)
+![pony photo](/Images/ponyicon.png)
 
 
 Welcome to PonyLinux! An I.T training game that teaches you about the terminal in Linux, using bash commands.
