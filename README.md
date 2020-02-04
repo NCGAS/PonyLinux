@@ -26,10 +26,10 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  other course offerings, and NCGAS services.
  
  
- 
+ ## NCGAS ##
  ![pony photo](/Images/ncgas.png)
  The National Center for Genome Analysis Support is a center in the Pervasive Technology Institute at Indiana University.
- https://pti.iu.edu/
+ Pervasive Technology Institute at Indiana University website: https://pti.iu.edu/
  
  ## Follow NCGAS on Social Media! ##
  Facebook - https://www.facebook.com/ncgasiu <br />
