@@ -7,12 +7,12 @@ There will be mini sessions to ensure you get more practice and engagement, so t
 Your job will be to find the princess in the final dungeon, so go on brave one, and be a hero while learning about Linux!
 
 
-SECTION ONE
+## SECTION ONE ##
 The goal of section one is to introduce you to the basic bash commands in the terminal.
 Your goal is to find the princess in the dungeon with the knowledge you gained in the tutorial.
 
 
-SECTION TWO - Coming Soon
+## SECTION TWO - Coming Soon ##
 The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal.
 There will be more computer technical terms, that will gradually increase your knowledge of technical talk.
 
