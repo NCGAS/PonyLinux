@@ -28,6 +28,15 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  
  
  ![pony photo](/Images/ncgas.png)
+ The National Center for Genome Analysis Support is a center in the Pervasive Technology Institute at Indiana University.
+ https://pti.iu.edu/
+ 
+ ## Follow NCGAS on Social Media! ##
+ Facebook - https://www.facebook.com/ncgasiu
+ Twitter - https://twitter.com/ncgas
+ Youtube Video - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9
+ GitHub - https://github.com/NCGAS
+ 
 ## Fun game based heavily on Ponysay to teach bash ##
 
 
