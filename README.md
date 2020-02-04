@@ -34,7 +34,7 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  
  ## Follow NCGAS on Social Media! ##
  <b>Facebook</b> - https://www.facebook.com/ncgasiu <br />
- <b>Twitter</b> - https://twitter.com/ncgas <br />
+  ![pony photo](/Images/twitter-brands.svg)<b>Twitter</b> - https://twitter.com/ncgas <br />
  <b>Youtube Video</b> - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
  <b>GitHub</b> - https://github.com/NCGAS
  
