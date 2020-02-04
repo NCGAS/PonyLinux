@@ -16,6 +16,11 @@ Your goal is to find the princess in the dungeon with the knowledge you gained i
 The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal.
 There will be more computer technical terms, that will gradually increase your knowledge of technical talk.
 
+
+## Links to Supercomputing Series ##
+https://ittraining.iu.edu/explore-topics/titles/scfes/index.html
+
+
 ## Fun game based heavily on Ponysay to teach bash ##
 
 
