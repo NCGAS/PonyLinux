@@ -33,8 +33,8 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  
  ## Follow NCGAS on Social Media! ##
  Facebook - https://www.facebook.com/ncgasiu <br />
- Twitter - https://twitter.com/ncgas
- Youtube Video - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9
+ Twitter - https://twitter.com/ncgas <br />
+ Youtube Video - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
  GitHub - https://github.com/NCGAS
  
 ## Fun game based heavily on Ponysay to teach bash ##
