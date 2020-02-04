@@ -32,7 +32,7 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  https://pti.iu.edu/
  
  ## Follow NCGAS on Social Media! ##
- Facebook - https://www.facebook.com/ncgasiu
+ Facebook - https://www.facebook.com/ncgasiu <br />
  Twitter - https://twitter.com/ncgas
  Youtube Video - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9
  GitHub - https://github.com/NCGAS
