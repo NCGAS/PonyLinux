@@ -21,6 +21,9 @@ There will be more computer technical terms, that will gradually increase your k
 https://ittraining.iu.edu/explore-topics/titles/scfes/index.html
 
 
+## National Center for Genome Analysis Support and HPC ##
+The National Center for Genome Analysis Support (NCGAS) provides this high performance computing (HPC) workshop to help new users learn about HPC resources available to them,
+ other course offerings, and NCGAS services.
 ## Fun game based heavily on Ponysay to teach bash ##
 
 
