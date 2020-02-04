@@ -1,5 +1,5 @@
 # unixTut
-![pony photo](/Images/ponytweak.png)
+![pony photo](/Images/ponytweak.png =50x50)
 
 Welcome to PonyLinux! An I.T training game that teaches you about the terminal in Linux, using bash commands.
 Walk through a series of tutorial sections that will teach you different bash commands, what they do, and how to use them in the Dungeon section!
@@ -33,9 +33,9 @@ The National Center for Genome Analysis Support (NCGAS) provides this high perfo
  
  ## Follow NCGAS on Social Media! ##
  <b>Facebook</b> - https://www.facebook.com/ncgasiu <br />
- Twitter - https://twitter.com/ncgas <br />
- Youtube Video - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
- GitHub - https://github.com/NCGAS
+ <b>Twitter</b> - https://twitter.com/ncgas <br />
+ <b>Youtube Video</b> - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
+ <b>GitHub</b> - https://github.com/NCGAS
  
 ## Fun game based heavily on Ponysay to teach bash ##
 
