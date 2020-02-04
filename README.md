@@ -1,5 +1,7 @@
 # unixTut
-![pony photo](/Images/ponytweak.png =50x50)
+![pony photo](/Images/ponytweak.png)
+:height: 50px
+:width: 50px
 
 Welcome to PonyLinux! An I.T training game that teaches you about the terminal in Linux, using bash commands.
 Walk through a series of tutorial sections that will teach you different bash commands, what they do, and how to use them in the Dungeon section!
