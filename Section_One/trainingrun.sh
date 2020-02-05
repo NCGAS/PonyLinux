@@ -86,11 +86,6 @@ function me(){
 }
 
 function cdp(){
-    if [[ "$1" = "portal" ]]; then
-#    if (( $1 == "*portal*" )); then
-	export SUCCESS=true
-	exit 3
-    fi
     result="$(\cd $1 2>&1)";
     ec=$?
     #echo "exit is $ec, result is $result"
@@ -103,8 +98,10 @@ function cdp(){
 
     elif [[ $result && $result = *"Permission"* ]];then
 	echo "You try the door, but it's locked tight."
+	echo "$result"
     elif  [[ "$result" && "$result" = *"No such"* ]];then
 	echo "What door are you trying to open? I can't find that one."
+	echo "$result"
     else
 	echo "Something went wrong, try again. Result is $result, exit code is $ec."
     fi
@@ -147,19 +144,12 @@ function lsp(){
 	    \ls --color=tty $@
 	else
 	    echo "Here are the directoy contents:"
-	    echo "$result"
 	    #\ls $@
 	fi
     fi
+    echo "$result"
 }
 
-function escape(){
-    if [[ -e "$DUNGEON" ]]; then
-	cd $DUNGEON
-    else
-	echo "Not sure where to send you. Did you enter the dungeon yet?"
-    fi
-}
 function guide(){
     hint
 }
@@ -180,4 +170,8 @@ function dark(){
     fi
 }
 
+# Check background color and revise light vs dark
+#Ps=${1:-11}
+#printf "\033]$Ps;?\033\\" > filenm
+#perl -p -e 'm/rgb:([0-9A-Fa-f]{2})/' filenm
 dark
