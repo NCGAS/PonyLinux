@@ -7,8 +7,6 @@ PonyLinux is a short, very basic tutorial on using the **command line** in Unix 
 Walk through a series of tutorial sections that will teach you different **commands**, what they do, and how to use them. The tutorials are interactive, with mini sessions to ensure you get more practice and engagement. Your task will be to take the knowledge you gained during the tutorials to find the Princess in the final dungeon! So go on brave one, and be a hero while learning about Linux!
 
 ---
-
-<img src="/Images/pony.png" alt="Screen capture of game starting up." height="300" />
    
 ## Curriculum ##
 
@@ -17,6 +15,8 @@ The PonyLinux curriculum is broken up into multiple sessions to make it less ove
 ### SECTION ONE ###
 
 Section one introduces the structure of things that are typed into the **command line**, and the concept that programs can be run using text. We delve into basic movement between folders and showing what is inside a folder. Understanding and setting permission to view, open, and change files and folders is covered, as well as how to read the contents of a file.
+
+<img align="right" src="/Images/pony.png" alt="Screen capture of game starting up." height="200" />
 
 We go over the following **commands**:
 
@@ -32,6 +32,7 @@ less
 Section One wraps up with a challenge. Use the commands you learned during the tutorials to defeat a dungeon set up using files and folders right in the Linux environment. Your goal is to find the Princess in the dungeon with the knowledge you earned in the tutorial.
 
 ### SECTION TWO - Coming Soon ###
+
 The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal. Manipulating the contents of files, full-text searches using ```grep```, creating directories, moving files, copying files, and more!
 
 ## Getting Started ##
