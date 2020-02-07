@@ -29,7 +29,7 @@ less
 Section One wraps up with a challenge. Use the commands you learned during the tutorials to defeat a dungeon set up using files and folders right in the Linux environment. Your goal is to find the Princess in the dungeon with the knowledge you earned in the tutorial.
 
 ### SECTION TWO - Coming Soon ###
-The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal. Manipulating the contents of files, 
+The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal. Manipulating the contents of files, full-text searches using ```grep```, creating directories, moving files, copying files, and more!
 
 ## Getting Started ##
 The easiest way to get started with PonyLinux is to use Jetstream, located at https://jetstream-cloud.org/. You may find this NCGAS blog on Jetstream helpful - https://ncgas.org/Blog_Posts/Getting%20Started%20on%20Jetstream.php
