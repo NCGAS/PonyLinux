@@ -1,15 +1,22 @@
 ## Welcome to PonyLinux!
-<img align="right" width="200" src="/Images/ponyicon.png" alt="Logo for PonyLinux, which is a blue pony with a streak through the mane">
-PonyLinux is a short, very basic tutorial on using the **command line** in Unix operating systems such as Ubuntu and CentOS Linux.
+<img align="right" width="250" src="/Images/ponyicon.png" alt="Logo for PonyLinux, which is a blue pony with a streak through the mane">
 
-Walk through a series of tutorial sections that will teach you different **commands**, what they do, and how to use them to defeat a Dungeon! There will be mini sessions to ensure you get more practice and engagement, so that you get the most of out of PonyLinux.
-Your job will be to find the Princess in the final dungeon, so go on brave one, and be a hero while learning about Linux!
+PonyLinux is a short, very basic tutorial on using the **command line** in Unix operating systems, such as Ubuntu Linux.
+
+
+Walk through a series of tutorial sections that will teach you different **commands**, what they do, and how to use them. The tutorials are interactive, with mini sessions to ensure you get more practice and engagement. Your task will be to take the knowledge you gained during the tutorials to find the Princess in the final dungeon! So go on brave one, and be a hero while learning about Linux!
 
 ---
+## Curriculum ##
 
-## SECTION ONE ##
+The PonyLinux curriculum is broken up into multiple sessions to make it less overwhelming. The following list shows the concepts we will cover in each section.
 
-Section one introduces *commands* that can be run using text. 
+# SECTION ONE #
+
+Section one introduces the structure of things that are typed into the **command line**, and the concept that programs can be run using text. We delve into basic movement between folders and showing what is inside a folder. Understanding and setting permission to view, open, and change files and folders is covered, as well as how to read the contents of a file.
+
+We go over the following **commands**:
+
 ```
 cd
 ls
@@ -18,11 +25,11 @@ find
 chmod
 less
 ```
-Section One wraps up with a challenge. Use the commands you learned during tutorials to defeat a dungeon set up using files and folders right in the Linux environment. Your goal is to find the princess in the dungeon with the knowledge you gained in the tutorial.
 
-## SECTION TWO - Coming Soon ##
-The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal.
-There will be more computer technical terms, that will gradually increase your knowledge of technical talk.
+Section One wraps up with a challenge. Use the commands you learned during the tutorials to defeat a dungeon set up using files and folders right in the Linux environment. Your goal is to find the Princess in the dungeon with the knowledge you earned in the tutorial.
+
+# SECTION TWO - Coming Soon #
+The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal. Manipulating the contents of files, 
 
 ## Getting Started ##
 The easiest way to get started with PonyLinux is to use Jetstream, located at https://jetstream-cloud.org/. You may find this NCGAS blog on Jetstream helpful - https://ncgas.org/Blog_Posts/Getting%20Started%20on%20Jetstream.php
