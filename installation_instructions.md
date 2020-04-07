@@ -12,7 +12,7 @@ If util-say is giving you trouble, do the following instead:
   * sudo dpkg -i ponysay_3.0.2-1_all.deb
 
 Then I was ready to launch my own script:
-  * cd unixTut
+  * cd PonyLinux
   * bash IntroToUnix.sh
 
 The pony files look like crap on the Jetstream web shell, so change the font around until it looks smooth. The settings are on the right:
@@ -21,11 +21,11 @@ The pony files look like crap on the Jetstream web shell, so change the font aro
 
 ## To install without root privileges: ##
 
-Git clone onto your system. This creates a directory called unixTut. Cd into unixTut and add unixTut to your $PATH. Don't move the contents of the Sections around, since the program will look for files in there relative to the unixTut directory.
+Git clone onto your system. This creates a directory called PonyLinux. Cd into PonyLinux and add PonyLinux to your $PATH. Don't move the contents of the Sections around, since the program will look for files in there relative to the PonyLinux directory.
 
 Ponysay relies on Python3 to work. Make sure it's in your $PATH as well.
 
-I added ponysay as a git submodule. If you used git clone to get the unixTut files, you will need to do:
+I added ponysay as a git submodule. If you used git clone to get the PonyLinux files, you will need to do:
 ```bash
 git submodule init
 git submodule update
@@ -71,4 +71,4 @@ The python3 I was using was in /usr/local, so I switched to the python/3.7 modul
 ```
 python3 setup.py --freedom=partial install --private  --prefix=$(pwd) --without-info
 ```
-The $(pwd) command in the prefix just substitutes in the current directory, so this builds in-place. You could change it to the full path of unixTut, or leave it alone if you are ok with it going into ~/.local. In any case, you will need to add the bin directory created by ponysay to your PATH variable.
+The $(pwd) command in the prefix just substitutes in the current directory, so this builds in-place. You could change it to the full path of PonyLinux, or leave it alone if you are ok with it going into ~/.local. In any case, you will need to add the bin directory created by ponysay to your PATH variable.
