@@ -47,6 +47,8 @@ python3 setup.py --freedom=partial install --private  --prefix=target/install/di
 ```
 Troubleshooting
 --------------------
+If you get an error that says 'makeinfo command not found' or ponyinfo not found, you will need to install texinfo using yum or apt. If you aren't running as root, you can isntall this manually.
+
 I've run into errors on some systems (silo at indiana, for example) where ponysay fails at the Compiling step:
 ```
 ::Compiling...
