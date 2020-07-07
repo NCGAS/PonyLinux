@@ -37,7 +37,7 @@ The goals of section two will be to start getting into more bash commands that w
 
 ## Getting Started ##
 <a href="https://jetstream-cloud.org/"><img align="right" src="/Images/jetstream-logo-web.png" alt="Jetstream Logo" width="200" /></a>
-The easiest way to get started with PonyLinux is to use Jetstream, located at https://jetstream-cloud.org/. You may find this NCGAS blog on Jetstream helpful - https://ncgas.org/Blog_Posts/Getting%20Started%20on%20Jetstream.php
+The easiest way to get started with PonyLinux is to use Jetstream, located at https://jetstream-cloud.org/. You may find this NCGAS blog on Jetstream helpful - https://blogs.iu.edu/ncgas/2017/10/18/getting-started-on-jetstream/
 
 You will need to do the following:
 1. Go to the Jetstream link above. Click on "Request Trial Account".
