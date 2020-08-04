@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-alias key=hint
-alias unlock=hint
-alias open=hint
+alias key=halp
+alias unlock=halp
+alias open=halp
 alias Start=start
 alias cd=cdp
+alias hint=halp
+alias guide=halp
 alias ls=lsp
 alias less=lessp
 alias flee=escape
@@ -39,15 +41,13 @@ export b=$'\033[1m'
 export i=$'\033[3m'
 # Shorthand for reset font to normal
 export r=$'\033[0m'
+# Variables for tracking each section of the training
+export completed_joust=0
+export completed_track=0
+export completed_strength=0
 
 function checkColumns(){
-#    cols=${COLUMNS:-50}
-#    echo $cols
     tput cols
-}
-
-function use(){
-    echo "Manipulating items is very limited. Maybe just try typing in the name of the item itself?"
 }
 
 function oops(){
@@ -67,18 +67,9 @@ function start(){
 
 function halp(){
     echo "If your bottom bar doesn't show up well, type light or dark to toggle it." | fold -sw $(checkColumns)
-    echo -e "To move around, use the "$bold"cd"$normal" command, followed by where you want to go. To go back through the door you came from, type:\n\t"$bold"cd .."$normal"\nTo go into a room, for example bedroom, type:\n\t"$bold"cd bedroom"$normal | fold -sw $(checkColumns)
+    echo -e "To move around, use the "$bold"cd"$normal" command, followed by where you want to go. To go back to the area you came from, type:\n\t"$bold"cd .."$normal"\nTo go into an area, for example track, type:\n\t"$bold"cd track"$normal | fold -sw $(checkColumns)
     echo -e "To look and see what is inside the room you are in, type "$bold"ls"$normal". To look really closely, type:\n\t"$bold"ls -lah"$normal | fold -sw $(checkColumns)
     echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal"." | fold -sw $(checkColumns)
-}
-
-function attack(){
-    if [[ -e .monster ]]; then
-	echo "With a daring charge, you hack through the monster before you, dispatching it with one swing of your weapon. It fades away with an eerie laugh echoing from all around you."
-	echo -e "function monsterrun(){ \necho 'There is a small spot of soot on the floor where once stood a frightful beast.' \n}" > .monster
-    else
-	echo "You look around alertly, but there is nothing to attack."	
-    fi
 }
 
 function me(){
@@ -95,83 +86,94 @@ function cdp(){
 	    . .monster
 	    monsterrun
 	fi
-
+	
     elif [[ $result && $result = *"Permission"* ]];then
 	echo "You try the door, but it's locked tight."
-	echo "$result"
     elif  [[ "$result" && "$result" = *"No such"* ]];then
 	echo "What door are you trying to open? I can't find that one."
-	echo "$result"
     else
 	echo "Something went wrong, try again. Result is $result, exit code is $ec."
     fi
+    
+    #Testing file location, and progress completion indicator
+    if [[ $(basename $PWD) == 'joust' || $(basename $PWD) == 'strength' || $(basename $PWD) == 'track' ]]; then
+	echo "use ls to look around, and then you can exit."	
+    fi    
 }
-
-function lsp(){
-    curdir=${PWD##*/}   
-    result="$(\ls $@ 2>&1)"
-    #echo "$result"
-    if [[ ! "$result" ]]; then
-	testForEmpty="$(\ls -lah $@ 2>&1)"
-	if [[ "$testForEmpty" = *"Permission"* ]];then
-	    echo "You can't look behind locked doors. Maybe try unlocking it first?"
-	else
-	    num=$(echo "$testForEmpty" | wc -l)	    
-	    if [[ $num > 3 ]]; then
-		echo "There are no doors or obvious items, but maybe there are some secret hiding places in here."
-	    else
-		echo "The room appears empty and bare."
-		#echo " There are $num items."
-	    fi
-	fi
-    elif  [[ "$result" = *"Permission"* ]];then
-	
-	testForEmpty="$(\ls $@ 2>&1)"
-	if [[ ! "$testForEmpty" ]];then
-	    echo "You can't look behind locked doors. Maybe try unlocking it first?"	   
-	else
-	    echo "It's pitch black, you can't see anything!"
-	fi
-    elif  [[ "$result" = *"No such"* ]];then
-	echo "That place doesn't exist. Where exactly are you trying to look? Make sure you have a space after ls and dash if doing "$bold"ls -lah"$normal"."
-    else
-	#cat Description 2>/dev/null	
-	if [[ -e Description ]]; then
-	    fold -sw $(checkColumns) <Description 2>/dev/null	
-	    #echo "Checking term... $TERM"
-	fi
-	if [[ $TERM = 'tty' ]]; then
-	    \ls --color=tty $@
-	else
-	    echo "Here are the directoy contents:"
-	    #\ls $@
-	fi
+   
+function lsp(){    
+    if [[ -e Description ]]; then
+	fold -sw $(checkColumns) <Description 2>/dev/null
+	export test=1
     fi
-    echo "$result"
-}
 
-function guide(){
-    hint
-}
-function hint(){
-    echo -e "To unlock doors, use the ${b}chmod${r} command. To make it so anyone can open a door, for example, do:${nt}${b}chmod a+x Door_xxx${r}, where the xxx is the actual letters and numbers of the door you are opening." | fold -sw $(checkColumns) 
- 
+    curdir=${PWD##*/}
+    result="$(\ls $@ 2>&1)"
+    echo "Here are the directoy contents:"
+    echo "$result"
+    dirname=$(basename $PWD)
+    case $dirname in
+	'joust')
+	    echo "1 Great Job! Move onward!"
+  	    let completed_joust=1
+	    ;;
+	'strength')
+	    echo "1 You have made it!"
+	    let completed_strength=1
+	    ;;
+	'track')
+            echo "1 You have finished viewing this room!"
+            let completed_track=1 #$completed
+	    ;;
+    esac
+    if [[ $(basename $PWD) == 'joust' ]]; then
+	echo "2 Great Job! Move onward!"
+  	#let completed_joust=1
+    fi
+	    
+    if [[ $(basename $PWD) == 'strength' ]]; then
+	echo "2 You have made it!"
+	#let completed_strength=1 
+    fi		
+    if [[ $(basename $PWD) == 'track' ]]; then 
+	echo "2 You have finished viewing this room!"
+	#let completed_track=1 #$completed
+    fi		
+	# After all is said and done, prompt user to a final message.
+	export final_completion=$(($completed_joust+$completed_strength+$completed_track))
+	# by adding if 'result' equals the description, it will count the completion.
+	# putting it in this if-then statement, will assist it to not appear when it lists the results
+	# and it will continue to count the completion after each directory has been entered, and the description has been printed.
+	
+	if [[ "$result" = Description ]]; then
+	echo "You have completed: $final_completion of 3"
+	fi
+		
+	if [[ $final_completion == 3 ]]; then
+	sleep 1
+	echo "You have completed all of the trainings! Please type exit to get back to the menu."
+	fi
+	
+}  
+
+function findBGColor(){
+ # Check background color and revise light vs dark
+    Ps=${1:-11}
+ #printf "\033]$Ps;?\033\\" > filenm
+ #perl -p -e 'm/rgb:([0-9A-Fa-f]{2})/' filenm
 }
 
 function light(){
     if [ "$PS1" ]; then
-        PS1="\[\033[0;95m\]Hero: \$PONYUSER \[\033[0;91m\] You are currently in \$PWD.\n\[\033[0;96m\]Explore all the training areas, then type done to return to menu\[\033[0;92m\] $\[\033[0m\] "
+        PS1="\[\033[0;95m\]Hero: \$PONYUSER \[\033[0;91m\] You are currently in \$PWD.\n\[\033[0;96m\]To explore all the training areas, type ${b}ls${r}. Type done to return to the main menu\[\033[0;92m\] $\[\033[0m\]"
+        
     fi
 }
 
 function dark(){
     if [ "$PS1" ]; then
-        PS1="\[\033[35m\]Hero: \$PONYUSER \[\033[31m\] You are currently in \$PWD.\n\[\033[34m\]Explore all the training areas, then type done to return to menu\[\033[32m\] $\[\033[0m\] "
+        PS1="\[\033[35m\]Hero: \$PONYUSER \[\033[31m\] You are currently in \$PWD.\n\[\033[34m\]To explore all the training areas, type ${b}ls${r}. Type done to return to the main menu\[\033[32m\] $\[\033[0m\]"
     fi
 }
 
-# Check background color and revise light vs dark
-#Ps=${1:-11}
-#printf "\033]$Ps;?\033\\" > filenm
-#perl -p -e 'm/rgb:([0-9A-Fa-f]{2})/' filenm
 dark
