@@ -53,22 +53,20 @@ function getWrap() {
 
 ## Reads in the config file and sets up things that are to be remembered
 
-
-
 function checkProgress(){
-    if [[ -s ~/.unixTut/config ]]; then
+    if [[ -s ~/.ponylinux/config ]]; then
     	##echo "File not empty"
     	## else
     	##echo "File empty"
     	##fi
         #sleep 2
-        echo -n '' > ~/.unixTut/sourceTmpVars
-         sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' ~/.unixTut/config >> ~/.unixTut/sourceTmpVars
-         . ~/.unixTut/sourceTmpVars
+        echo -n '' > ~/.ponylinux/sourceTmpVars
+         sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' ~/.ponylinux/config >> ~/.ponylinux/sourceTmpVars
+         . ~/.ponylinux/sourceTmpVars
         #sleep 5
     else
-       mkdir -p ~/.unixTut
-     touch ~/.unixTut/config
+       mkdir -p ~/.ponylinux
+     touch ~/.ponylinux/config
    fi
 
     if [[ $name ]]; then
@@ -79,12 +77,12 @@ function checkProgress(){
 }
 
 function tidyConfig(){
-    if [[ -e ~/.unixTut/config ]]; then
-	mv ~/.unixTut/config ~/.unixTut/configbkp
-	cat ~/.unixTut/configbkp | sort | uniq > ~/.unixTut/config
+    if [[ -e ~/.ponylinux/config ]]; then
+	mv ~/.ponylinux/config ~/.ponylinux/configbkp
+	cat ~/.ponylinux/configbkp | sort | uniq > ~/.ponylinux/config
     else
-        mkdir -p ~/.unixTut
-        touch ~/.unixTut/config
+        mkdir -p ~/.ponylinux
+        touch ~/.ponylinux/config
     fi
 }
 
@@ -93,17 +91,63 @@ function ponygo(){
     echo -e "$2" | ponysay -b round --wrap $PONYWRAP -F "$1" 
 }
 
+function quiz(){
+    argnum=${#@}
+    if [ $argnum -lt 3 ]; then
+	echo "need at least three arguments to make a quiz."
+    elif [ $((argnum%2)) -eq 0 ]; then
+	question="$1"
+	echo $question
+	index_of_correct_answer=$2
+	question_number=0
+	letters=({a..z})
+	for ((i=3; i<=$#; i+=2)); do
+	    printf "\t%s.) %s\n" "${letters[$question_number]}" "${!i}"
+	    let "question_number++"
+	done
+	local tries=2
+	while true; do
+	    read -e -p "Type one letter and hit return:  " answer
+	    
+	    numeric_representation=$(printf "%d" "'$answer")	    
+	    echo "number is $numeric_representation"	
+	    # Check answer is a-z, A-Z, or 1-whatever.
+            if [[ $numeric_representation -gt 96 && $numeric_representation -lt 123 ]];then
+		index=$(( ( 2 * (numeric_representation - 97) ) + 4 ))
+		#echo "index is $index"
+		printf "%s\n" "${!index}"
+		break
+            else
+		if [[ $tries > 3 ]]; then
+		    echo "You haven't given any input I can use. Skipping this question."
+		    break
+		else
+		    echo "Please type a letter to indicate your answer. Attempt $tries of 3:"
+		fi
+		let "tries++"
+	    fi
+	done
+    else
+	echo "error for the programmers/developers of ponylinux: odd number of args; missing an option or a response?"
+    fi
+}
+heredoc=<<EOF
+echo $(( a - 1 ))
+96
+echo $(( a - 97 ))
+0
+a=$(printf "%d" "'A")
+echo $(( a - 97 ))
+-32
+echo $a
+65
+EOF
+
 function getInput(){
     cmd=$1
     retry=$2
     local tries=2
     strcmd='Type in this command: '${cmd}$' \n $ '
-#    echo "strcmd:"
-#    echo $strcmd
-#    strret=$retry' Try the command: '${cmd}$' \n $ '
-#    echo "strret:"
-#    echo $strret
-#    echo "begin"
     read -p "$strcmd" variable1
     while [[ $variable1 != "$cmd" ]]; do
 	if [[ $variable1 = "$cmd"* ]];then
