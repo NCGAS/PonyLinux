@@ -31,7 +31,7 @@ export nbsp=$'\xC2\xA0'
 #    printf "\033[1m$1\033[0m"
 #    #$(tput bold; echo -n "$1"; tput sgr0)
 #}
-# In my testing, the runtime for $(bold "test") is 20x slower than the shorthands!
+# In my testing, the runtime for $(bold "test") is 20x slower than the shorthands above!
 ##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -72,13 +72,11 @@ function checkProgress(){
     if [[ $name ]]; then
 	 export PONYUSER="$name"
    fi
-    
-    
 }
 
 function tidyConfig(){
     if [[ -e ~/.ponylinux/config ]]; then
-	mv ~/.ponylinux/config ~/.ponylinux/configbkp
+	mv -f  ~/.ponylinux/config ~/.ponylinux/configbkp
 	cat ~/.ponylinux/configbkp | sort | uniq > ~/.ponylinux/config
     else
         mkdir -p ~/.ponylinux
@@ -107,22 +105,33 @@ function quiz(){
 	done
 	local tries=2
 	while true; do
-	    read -e -p "Type one letter and hit return:  " answer
-	    
-	    numeric_representation=$(printf "%d" "'$answer")	    
-	    echo "number is $numeric_representation"	
-	    # Check answer is a-z, A-Z, or 1-whatever.
+	    read -e -p "Type one letter and hit return:  " answer	    
+	    if [[ ${#answer} -gt 1 ]]; then
+		echo "You gave me more than one letter! Make a single selection. Attempt $tries out of 3: "
+		let "tries++"
+		continue
+	    fi
+	    # Turn the letter a,b,c etc into their ascii representation 97,98,99 etc
+	    numeric_representation=$(printf "%d" "'$answer")
+
+	    # Check answer is a-z. Todo: allow A-Z, or 1-whatever.
             if [[ $numeric_representation -gt 96 && $numeric_representation -lt 123 ]];then
-		index=$(( ( 2 * (numeric_representation - 97) ) + 4 ))
-		#echo "index is $index"
-		printf "%s\n" "${!index}"
+		index_answer=$(( numeric_representation - 97 ))
+		index_response=$(( ( 2 * index_answer ) + 4 ))
+		if [[ $index_answer -eq $index_of_correct_answer ]]; then
+		    echo "Correct!"
+		    export SCORE=1
+		else
+		    echo "Sorry, that's incorrect."
+		fi
+		printf "%s\n" "${!index_response}"
 		break
             else
-		if [[ $tries > 3 ]]; then
+		if [[ $tries -gt 3 ]]; then
 		    echo "You haven't given any input I can use. Skipping this question."
 		    break
 		else
-		    echo "Please type a letter to indicate your answer. Attempt $tries of 3:"
+		    echo "Please type a lowercase letter to indicate your answer. Attempt $tries of 3:"
 		fi
 		let "tries++"
 	    fi
@@ -148,7 +157,7 @@ function getInput(){
     retry=$2
     local tries=2
     strcmd='Type in this command: '${cmd}$' \n $ '
-    read -p "$strcmd" variable1
+    read -e -p "$strcmd" variable1
     while [[ $variable1 != "$cmd" ]]; do
 	if [[ $variable1 = "$cmd"* ]];then
 	    echo "So close! You added fancy stuff to the end. Keep it simple."

@@ -1,0 +1,1 @@
+sTAndArd oUtpUt, Is tHe dEfAuLt fIlE dEsCriPtOr whErE a prOcEsE CAN wRiTe ouTpuT
