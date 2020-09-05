@@ -18,6 +18,7 @@ https://www.cyberciti.biz/faq/finding-bash-shell-array-length-elements/
 https://stackoverflow.com/questions/4774054/reliable-way-for-a-bash-script-to-get-the-full-path-to-itself
 https://unix.stackexchange.com/questions/122845/using-a-b-for-variable-assignment-in-scripts
 https://stackoverflow.com/questions/20871534/concatenate-in-bash-the-output-of-two-commands-without-newline-character
+https://unix.stackexchange.com/questions/225943/except-the-1st-argument
 
 This is for the issue when I split out the individual pages, ctrl+c would kill the whole thing, when I wanted it to return to menu:
 https://unix.stackexchange.com/questions/80975/preventing-propagation-of-sigint-to-parent-process
