@@ -34,8 +34,6 @@
       Ashley Brooks, and Sheri Sanders  
  
   Would you like to play the Intro to Unix Tutorial Game?
-
-      Yes! Press y then hit enter!
-
-      Press any other key to quit 😭
+    *  Yes! Press y then hit enter!
+    *  Press any other key to quit 😭
 [0m

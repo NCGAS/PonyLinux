@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-realpath="$(readlink -f "$(readlink "${BASH_SOURCE[0]}")")"
+#realpath="$(readlink -f "$(readlink "${BASH_SOURCE[0]}")")"
+realpath=$(dirname "$(readlink "$BASH_SOURCE")")
 export UNIXTUT="$(cd "$(dirname "${realpath}")" && pwd -P)"
 #export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && pwd -P)
 source ${UNIXTUT}/Utilities.sh
