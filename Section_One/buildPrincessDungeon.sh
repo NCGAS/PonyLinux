@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 me="$( cd "$(dirname "$0")" ; pwd -P )"
-echo "me is $me"
 monsterdir=${me}/monsters
-echo "tut dir is $monsterdir"
-#if [[ -z $PONYUSER ]]; then
-#    checkProgress
-#fi
-#echo "name is $PONYUSER"
 export DUNGEON=$(pwd)
 # Monsters are in a folder (called monsters) with the names below. We should try not to use any given one more than once.
 # To implement a new monster, copy the monster template file in the monsters folder to a new name and put the name in the list below.

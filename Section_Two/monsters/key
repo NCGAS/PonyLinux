@@ -1,0 +1,3 @@
+function monsterrun(){
+cat key.txt
+}

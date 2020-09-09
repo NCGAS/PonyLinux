@@ -20,6 +20,8 @@ declare -a beans=("blue veryberry jelly bean"
 "orange mango jelly bean"
 "red raspberry jelly bean"
 )
+mkdir -p jellybeans
+cd jellybeans
 numbeans=${#beans[@]}
 #let "numbeans--"
 echo "how many beans? $numbeans"
