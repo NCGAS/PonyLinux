@@ -2,10 +2,9 @@
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && cd .. && pwd -P)
+realpath="$(readlink "$BASH_SOURCE")"
+export UNIXTUT="$(cd "$(dirname "${realpath}")" && pwd -P)"
 source ${UNIXTUT}/Utilities.sh
-export fromFunction=0
-export killcount=0
 ## Declare some Functions!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -86,22 +85,22 @@ function menu(){
     if [[ $1 = 1 ]]; then
 	string="You are free to do this section, but did you do want to do Section One first?"
     fi 
-    ponysay -b round -F rarity ${string}$'1.) Pipe and flow\n\t2.) Chaining commands together\n\t3.) Searching file contents\n\t4.) Making and taking shortcuts\n\t5.)Sedawk\n\t6.) Investigation\n\t9.) I am ready for the maze!\n\tq) Quit'
+    ponysay -b round -F rarity ${string}$'1.) Searching file contents using grep\n\t2.) Chaining commands together\n\t3.) Controlling inputs and outputs\n\t4.) Making and taking shortcuts\n\t5.)Sedawk\n\t6.) Fairgrounds\n\t9.) I am ready for the maze!\n\tq) Quit'
     read -ep $'Please choose a number or letter and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!
     clear
     cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\176')
     case $cleanInput in
 	1)
-            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/pipeDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/grepDialog.txt
             menu
             ;;
 	2)
-            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/channelDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/pipeDialog.txt
             menu
             ;;
 	3)
-            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/grepDialog.txt
+            bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/channelDialog.txt
             menu
 	    ;;
 	4) 

@@ -2,7 +2,8 @@
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && cd .. && pwd -P)
+realpath="$(readlink "$BASH_SOURCE")"
+export UNIXTUT="$(cd "$(dirname "${realpath}")" && pwd -P)"
 source ${UNIXTUT}/Utilities.sh
 
 ## Declare some Functions!
