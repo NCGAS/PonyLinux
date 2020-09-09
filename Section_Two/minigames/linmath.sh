@@ -8,7 +8,7 @@ echo "Sound like a good deal? Alright, let's start!"
 
 
 
-echo "How many characters are in 'stdout'?"
+echo "How many characters (times itself) are in 'stdout'?"
 read n
 WRONGANSWER=$n
 if [[ ( $n == 5 || $n  != $WRONGANSWER ) ]]
