@@ -58,7 +58,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 #' This comment is just to fix my annoying bash syntax highlighting. Nothign to see hwere folks
 
 function splash(){
-    cat splash.txt
+    cat "${UNIXTUT}/splash.txt"
 # Set the bg to black so it matches the image
     #printf "\e[48;5;16m\e[38;5;63m\n"
     #read -e -p $'Would you like to play the Intro to Unix Tutorial Game?\nPress (y)es, then enter, to play\nPress (n)o, (q)uit, or e(x)it to exit.' variable1
