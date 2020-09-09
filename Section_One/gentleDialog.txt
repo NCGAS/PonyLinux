@@ -29,4 +29,4 @@ ponygo fluttershy "For example, if I had two files, one named ${b}verylongfilena
 ponygo fluttershyshy "There are two files that start with ${b}very${r}, so Unix is now waiting to see which one you want to run with the ${b}ls${r} command.${n2}If you hit tab twice, it will show you both files that start with ${b}very${r}."
 ponygo fluttershy "If you type ${b}ls veryl${r}, the tab key would fill in the whole file:${n}${b}verylongfilename.txt${r}.${n2}This is also a good way to avoid spelling mistakes, and to make sure that the file or command exists where Unix is looking."
 ponygo pinkiehugfluttershy "I think with that, you are ready to learn more about navigating from my friend.."
-ponygo pinkiehugsfluttershy "Oof.";echo "gentletutdone: (Done)" >> ~/.unixTut/config
+ponygo pinkiehugsfluttershy "Oof.";echo "gentletutdone: (Done)" >> ~/.ponylinux/config

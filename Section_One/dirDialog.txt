@@ -16,4 +16,4 @@ ponygo rainbow "A relative path uses my current location as my starting point.${
 ponygo rainbowfly "If the file is in a directory above me, I would use the ${b}..${r} syntax to say to go up a directory relative to me."
 ponygo rainbowfirm "Let's say I am still in ${b}/home/rdash${r}, but my friend wants me to look at her recipe file in:${nt}${b}/home/ajack19/recipes.${r}${n2}I would do the following:${nt}${b}ls ../ajack19/recipes/apple_pie.txt${r}"
 ponygo rainbowsalute "That concludes my lesson on directories."
-ponygo rainbowhurricane "Great job, $PONYUSER! Now get out there and be victorious!" ;echo "dirtutdone: (Done)" >> ~/.unixTut/config
+ponygo rainbowhurricane "Great job, $PONYUSER! Now get out there and be victorious!" ;echo "dirtutdone: (Done)" >> ~/.ponylinux/config
