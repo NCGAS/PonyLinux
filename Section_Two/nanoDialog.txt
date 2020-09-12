@@ -16,7 +16,7 @@ ponygo rarity "${b}Less${r} shows you the contents of the file, and it only load
 ponygo rarityponder "The downside, though, is that you can only read the file, not change it in any way."
 ponygo rarity "To open a file so that you can change its contents, you will need an editor such as ${b}nano/pico, vim,${r} or ${b}emacs${r}.${n2}Nano and pico are similar, though you are more likely to find nano. Vim is similar to vi and you'll probably run into it more often."
 ponygo rarity "${b}Vim${r} and ${b}emacs${r} are not the most beginner friendly, so I'll be teaching you about ${b}nano${r} for now."
-ponygo fillyrarity "You open ${b}nano${r} like so:${n2}${b}nano starbucks.txt${r}"
+ponygo fillyrarity "You open ${b}nano${r} like so:${n2}${b}nano starbucks.txt${r}"; bash ${UNIXTUT}/minibash.sh
 ponygo rarityelite "Once inside, you will see a screen kinda like ${b}less${r}, but with a handy bar at the bottom with commands you can perform."
 ponygo raritygala "The full help menu for ${b}nano${r} can be brought up using ${b}ctrl+G${r}. ${b}Nano${r} is the easiest editor to learn for Unix beginners, but it is a good idea to play around for a while until you get the hang of things."
 ponygo rarityponder "Here are a few quick pointers for nano:${nt}To search, ${b}ctrl+w${r} will prompt you for text to find.${nt}Use ${b}ctrl+o${r} to save your file. It behaves like a \"save as\" and will always ask you for a name to save it.${nt}${b}ctrl+x${r} lets you exit out of ${b}nano${r}."
