@@ -17,7 +17,7 @@ function runTut(){
     while IFS=$'\t' read -r -a myarray
     do	
 	numargs="${#myarray[@]}"
-	echo "numargs is $numargs"
+	#echo "numargs is $numargs"
         if [ $numargs -lt 1 ]; then
 	    continue
 	elif [ $numargs -lt 3 ]; then
@@ -38,7 +38,7 @@ function runTut(){
 	## This loop only checks for VALID input, not whether its a correct answer
 	while [[ $tries < 3 ]]; do
 	    # Turn the letter a,b,c etc into their ascii representation 97,98,99 etc
-	    echo "looping $tries"
+	    #echo "looping $tries"
             numeric_representation=$(printf "%d" "'$answer")
 	    # Check to make sure we only got one character
 	    if [[ ${#answer} -gt 1 ]]; then
@@ -57,14 +57,14 @@ function runTut(){
         else
             index_answer=$(( numeric_representation - 97 ))
             index_response=$(( ( 2 * index_answer ) + 3 ))
-	    echo "answer is $index_answer and respons is $index_response"
-            printf "%s\n" "${myarray[$index_response]}"
+	    #echo "answer is $index_answer and respons is $index_response"
             if [[ $index_answer -eq $index_of_correct_answer ]]; then
 		echo "Correct!"
 		let "score++"
             else
 		echo "Sorry, that's incorrect."
             fi
+            printf "%s\n" "${myarray[$index_response]}"
 	fi
     done < $tutfile
     
