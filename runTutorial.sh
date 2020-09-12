@@ -8,8 +8,8 @@ export esc=$'\033'
 export file_index=1
 # Gotta use < with wc if we want maths to work: https://stackoverflow.com/questions/10238363/how-to-get-wc-l-to-print-just-the-number-of-lines-without-file-name
 export total_lines=$(wc -l < "$tutfile")
-echo "totl lines is $total_lines"
-echo "tutfile is $tutfile"
+#echo "totl lines is $total_lines"
+#echo "tutfile is $tutfile"
 
 if [ ! -r "$tutfile" ]; then
     echo "Can't read $tutfile"
@@ -46,7 +46,7 @@ function runTut(){
 	    '[A') printf "↑"; file_index=1 ;;
 	    '[B') printf "↓"; file_index=$total_lines ;;
 	    '[D') printf "←"; let file_index-- ;;
-	    *) printf "→"; let file_index++ ;;
+	    *) printf "→\n"; let file_index++ ;;
 	esac
 	readandDo
     done    

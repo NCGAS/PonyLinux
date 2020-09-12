@@ -54,13 +54,13 @@ function menu(){
     if [[ $clearme ]]; then
 	clear
     fi    
-    checkProgress
+    checkProgress    
     lines=$(tput lines)
     string=$'Welcome to the Second Section of your Linux Training: Lord of the Files!'
     if [[ $1 = 1 ]]; then
 	string="You are free to do this section, but did you do want to do Section One first?"
     fi 
-    ponysay -b round -F rarity ${string}$'\n\t1.) Review of reading files\n\t2.) Copying files '${copytutdone}$'\n\t3.) Moving and renaming files '${mvtutdone}$'\n\t4.) Mental Health Break!\n\t5.) Deleting files with rm '${rmtutdone}$'\n\t6.) Creating files and folders\n\t7.) Back into the dungeon!\n\t8.) Bonus: Unix directory structure\n\tb) Bonus bonus: Find, the sequel\n\tq) Quit'
+    ponysay -b round -F rarity ${string}$'\n\t1.) Review of reading files '${nanotutdone}$'\n\t2.) Copying files '${copytutdone}$'\n\t3.) Moving and renaming files '${mvtutdone}$'\n\t4.) Mental Health Break!\n\t5.) Deleting files with rm '${rmtutdone}$'\n\t6.) Creating files and folders '${mktutdone}$'\n\t7.) Back into the dungeon!\n\t8.) Bonus: Unix directory structure\n\tb) Bonus bonus: Find, the sequel\n\tq) Quit'
     read -ep $'Please choose a number or letter and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!'
     clear
@@ -68,26 +68,46 @@ function menu(){
     case $cleanInput in
 	1)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/nanoDialog.txt
+	    if [ -z $nanotutdone ]; then
+		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/nanoQuiz.txt;
+		echo "nanotutdone: (Done)" >> ~/.ponylinux/config
+	    fi
             menu
 	    ;;
         2)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/copyDialog.txt
+	    if [ -z $copytutdone ]; then
+		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/copyQuiz.txt;
+		echo "copytutdone: (Done)" >> ~/.ponylinux/config
+	    fi
             menu
             ;;
 	3)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/mvDialog.txt
-            menu
+            if [ -z $mvtutdone ]; then
+		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/mvQuiz.txt;
+		echo "mvtutdone: (Done)" >> ~/.ponylinux/config
+	    fi
+	    menu
             ;;
 	4)
-            bash ${UNIXTUT}/Section_Two/minigames/PsychoPony.sh            
+            bash ${UNIXTUT}/Section_Two/minigames/PsychoPony.sh
             menu
 	    ;;	
 	5) 
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/rmDialog.txt
+	    if [ -z $rmtutdone ]; then
+		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/rmQuiz.txt;
+		echo "rmtutdone: (Done)" >> ~/.ponylinux/config
+	    fi
             menu
 	    ;;
 	6)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/mkDialog.txt
+	    if [ -z $mktutdone ]; then
+		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/mkQuiz.txt;
+		echo "mktutdone: (Done)" >> ~/.ponylinux/config
+	    fi
             menu
 	    ;;
         7)
@@ -105,6 +125,7 @@ function menu(){
             menu
             ;;
         *)
+	    tidyConfig
             exit 0
             ;;
     esac
