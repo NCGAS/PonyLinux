@@ -8,7 +8,7 @@ function reset_cursor(){
 trap reset_cursor INT
 while true; do
     command=$( if read -e -p "> " line ; then echo "$line"; else echo "quit"; fi )
-    if [[ "$command" == "quit" || "command" == "done" ]] ; then
+    if [[ "$command" == "quit" ]] ; then
 	exit
     else 
 	history -s $command

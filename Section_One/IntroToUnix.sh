@@ -182,7 +182,8 @@ menu
 
 function yaymenu(){
     clear
-    ponygo celestia "Thank you so much for rescuing me! Your trials in the dungeon have proven your mastery over the basics of Unix. I think you are ready to move on to the next phase in your training. Keep an eye out for Section Two coming soon. Keep up the great work, hero $name!"
+    ponygo celestia "Thank you so much for rescuing me! Your trials in the dungeon have proven your mastery over the basics of Unix. I think you are ready to move on to the next phase in your training - Section Two. Keep up the great work, hero $name!"
+    echo "sectiononedone: (Done)" >> ~/.ponylinux/config
     menu
 }
 

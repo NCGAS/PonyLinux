@@ -151,6 +151,7 @@ function yaymenu(){
     ponygo celestiasmall "Oh no!! My crown - it - it's gone!!"    
     echo "What could have happened? What dastardly games are afoot? Find out in Section Three!"
     read -p "Press enter to continue"     
+    echo "sectiontwodone: (Done)" >> ~/.ponylinux/config
 clear
     menu
 }
