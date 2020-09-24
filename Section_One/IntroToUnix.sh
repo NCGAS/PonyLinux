@@ -131,14 +131,26 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
     case $cleanInput in
 	1)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/gentleDialog.txt
+            if [ -z $gentletutdone ]; then
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/gentleQuiz.txt;
+                echo "gentletutdone: (Done)" >> ~/.ponylinux/config
+            fi
             menu
             ;;
 	2)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/cdDialog.txt
+            if [ -z $cdtutdone ]; then
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/cdQuiz.txt;
+                echo "cdtutdone: (Done)" >> ~/.ponylinux/config
+            fi
             menu
             ;;
 	3)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/dirDialog.txt
+            if [ -z $dirtutdone ]; then
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/dirQuiz.txt;
+                echo "dirtutdone: (Done)" >> ~/.ponylinux/config
+            fi
             menu
 	    ;;
 	4)
@@ -147,14 +159,26 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 	    ;;	
         5)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/permDialog.txt
+            if [ -z $permtutdone ]; then
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/permQuiz.txt;
+                echo "permtutdone: (Done)" >> ~/.ponylinux/config
+            fi
             menu
 	    ;;
 	6)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/findDialog.txt
+            if [ -z $findtutdone ]; then
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/findQuiz.txt;
+                echo "findtutdone: (Done)" >> ~/.ponylinux/config
+            fi
             menu
 	    ;;
         7)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/openDialog.txt
+            if [ -z $opentutdone ]; then
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/openQuiz.txt;
+                echo "opentutdone: (Done)" >> ~/.ponylinux/config
+            fi
             menu
             ;;
 	8)

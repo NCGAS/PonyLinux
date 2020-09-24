@@ -1,0 +1,7 @@
+"(True/False) To open a file, you invoke the files first then the program"	1	TRUE	"In Unix, you have to invoke the program first, not the file. This means you have to start the program before you can open the file that is inside of it."	FALSE	Correct!				
+escape+< allows you to go to (blank) of a document	3	Bottom	escape+< allows you to go to the beginning of a document	Middle	escape+< allows you to go to the beginning of a document	Back	escape+< allows you to go to the beginning of a document	Beginning	
+The less command opens (blank) files	0	Text	Correct	Music	The less command allows you to open text files	Read	The less command allows you to open text files	All of the above	The less command allows you to open text files
+(True/False) ctrl+f allows you to scroll forward a page	0	TRUE	Correct	FALSE	ctrl+f does allow you to scroll forward a page				
+Which command allows you to quit?	2	-N	ÒqÓ is the command that allows you to quit	-q	ÒqÓ is the command that allows you to quit	q	Correct	p	ÒqÓ is the command that allows you to quit
+"(True/False) To go to a certain line, you enter the line number followed by g"	0	TRUE	Correct	FALSE	To go a certain line you enter the line number followed by g (for example: 42g)				
+What command shows the line number on each line?	3	-H	The command -N to shows the line numbers on each line	-n	The command -N to shows the line numbers on each line	-M	The command -N to shows the line numbers on each line	-N	Correct!

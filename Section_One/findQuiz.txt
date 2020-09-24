@@ -1,0 +1,3 @@
+(True/False) The Find command looks at the contents of files	1	TRUE	"The Find command lets you serch for files by name, by type, by last time it was changed and more. It does not look at the file contents."	FALSE	Correct!				
+What is the wildcard character?	3	-	"The wildcard character is an asterisk (*), which can stand for 0 or more characters."	^	"The wildcard character is an asterisk (*), which can stand for 0 or more characters."	.	"The wildcard character is an asterisk (*), which can stand for 0 or more characters."	*	Correct
+"(True/False) You have to put ""quotes"" around the name you are searching for with find"	0	TRUE	Correct	FALSE	You have to put “quotes” around the name you are searching for with find				
