@@ -2,8 +2,14 @@
 
 ## Declare some Globals!
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-realpath="$(readlink "$BASH_SOURCE")"
-export UNIXTUT="$(cd "$(dirname "${realpath}")" && pwd -P)"
+#echo "bash src is $BASH_SOURCE"
+#real=$(readlink "$BASH_SOURCE")
+#echo "real path is $real"
+#dir="$(dirname "${real}")"
+#echo "dir is $dir"
+#export UNIXTUT="$(cd "$(dirname "${real}")" && pwd -P)"
+#export UNIXTUT="$(cd "${dir}/.." && pwd -P)"
+export UNIXTUT=$(cd $(dirname "$BASH_SOURCE") && cd .. && pwd -P)
 source ${UNIXTUT}/Utilities.sh
 
 ## Declare some Functions!
@@ -132,7 +138,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 	1)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/gentleDialog.txt
             if [ -z $gentletutdone ]; then
-                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/gentleQuiz.txt;
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_One/gentleQuiz.txt;
                 echo "gentletutdone: (Done)" >> ~/.ponylinux/config
             fi
             menu
@@ -140,7 +146,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 	2)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/cdDialog.txt
             if [ -z $cdtutdone ]; then
-                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/cdQuiz.txt;
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_One/cdQuiz.txt;
                 echo "cdtutdone: (Done)" >> ~/.ponylinux/config
             fi
             menu
@@ -148,7 +154,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 	3)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/dirDialog.txt
             if [ -z $dirtutdone ]; then
-                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/dirQuiz.txt;
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_One/dirQuiz.txt;
                 echo "dirtutdone: (Done)" >> ~/.ponylinux/config
             fi
             menu
@@ -160,7 +166,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
         5)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/permDialog.txt
             if [ -z $permtutdone ]; then
-                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/permQuiz.txt;
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_One/permQuiz.txt;
                 echo "permtutdone: (Done)" >> ~/.ponylinux/config
             fi
             menu
@@ -168,7 +174,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
 	6)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/findDialog.txt
             if [ -z $findtutdone ]; then
-                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/findQuiz.txt;
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_One/findQuiz.txt;
                 echo "findtutdone: (Done)" >> ~/.ponylinux/config
             fi
             menu
@@ -176,7 +182,7 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
         7)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_One/openDialog.txt
             if [ -z $opentutdone ]; then
-                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/openQuiz.txt;
+                bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_One/openQuiz.txt;
                 echo "opentutdone: (Done)" >> ~/.ponylinux/config
             fi
             menu
