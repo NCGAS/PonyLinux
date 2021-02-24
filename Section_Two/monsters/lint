@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F lintsalot "[SIGN] Grrrrr! Fear m.."
+echo "This room looks familiar, and you remember there used to be a monster lurking here.  Your heart speeds up, and you jump when your torch illuminates... a stool with... lint?  Whatever was here has been removed by the resident animals - even the sign is ripped." | fold -sw $(checkColumns) 
+}

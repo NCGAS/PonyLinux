@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F basil "Hssssssss!  My treasure! You're after my treasssssure!"
+echo "You step through the door, and hear the unmistakable sound of scales on stone.  A large, red, very angry dragon sniffs the air, and smells his treasure on you.  He snaps at your bag, but you dodge and run, keeping your money but gaining a battle scar worthy of the adventurer you are." | fold -sw $(checkColumns) 
+ouch 15
+}

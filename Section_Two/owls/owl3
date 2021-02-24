@@ -1,0 +1,21 @@
+function owlrun(){
+        if [[ ! -f "choices" ]]; then
+            ponysay -F owl "WHooo goes there? I'll let you pass if you settle some bets with my Parliment.  Please put the answers into a file called choices. Ready? Perl or Python? Cake or pie? Vim or emacs? You must label which is which, in this exact, completely unbiased way: 'TheOnlyAnswerIsPython: Python, CakeIsBetter: Cake, FlameWars: Nano for life! Hahahooohoooo!"
+            return 0
+        else
+	    pass=0
+            if  ! grep -qi "TheOnlyAnswerIsPython" choices ; then
+                echo "Perl or Python? You have to pick one!"
+            fi
+            if  ! grep -qi "CakeIsBetter" choices ; then
+                echo "Cake... or pie? You have to pick one!"
+            fi
+            if  ! grep -qi "FlameWars" choices ; then
+                echo "Vim or Emacs? You have to pick... something ^_^"
+            fi
+            if [[ $pass -eq 1 ]]; then return; fi
+            ponysay -F owl "You may pass."
+	    pass=1
+        fi
+	return $pass
+}

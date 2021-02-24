@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F <monstername> "Grrrr!"
+echo "monster description" | fold -sw $(checkColumns) 
+ouch 15
+}

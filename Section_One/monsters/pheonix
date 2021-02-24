@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F philomenaphinx "Sqqqqqquuuuuueeeeeeeee!"
+echo "The door clicks shut, and you hear what sounds like a match strike.  Suddenly the room is very bright and very bright. You catch a glimpse of the firebird as she wisks out of an air vent.  You stand there, contemplating your next move, while slightly singed and seeing spots" | fold -sw $(checkColumns) 
+ouch 10
+}

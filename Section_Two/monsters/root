@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F turnip "[SIGN] Bait for monsters, please do not disturb"
+echo "Walking down the corridor, you spot a stool supporting a bucket of turnips with a sign.  These sure are rough times for the dungeon... what monster likes turnips?  I guess it's hard to grow much else here" | fold -sw $(checkColumns) 
+}

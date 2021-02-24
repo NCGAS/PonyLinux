@@ -6,7 +6,7 @@ me="$( cd "$(dirname "$0")" ; pwd -P )"
 
 export DUNGEON=$(pwd)
 
-start="The training grounds consists of a few different areas; you catch sight of a jousting arena, a running track, and a strength training weight pull. Each of these training areas are in their own directory. Your task is to go into each training area using the cd command. You will need to use ls to figure out what each training area is called. Once in the training area, use ls to accomplish the task in the area. You can type 'done' when you are finished or want to return to the menu."
+start="The training grounds consist of a few different areas; you catch sight of a jousting arena, a running track, and a strength training weight pull. Each of these training areas are in their own directory. Your task is to go into each training area using the cd command. You will need to use ls to figure out what each training area is called. Once in the training area, use ls to accomplish the task in the area. You can type 'done' when you are finished or want to return to the menu."
 
 joust="You walk into the training grounds, and the jousting area catches your attention. You see a display of wooden practice swords, sand sacks, and a ball pit. You decide to pick a fight with the practice dummy. You take a sand sack and throw it at the dummy, but it mocks you, unfazed. You grab a sword and charge at the dummy, and with a flourish, knock off its head and body slam it into the ball pit. You feel accomplished and fierce! You can go back by doing cd .."
 
@@ -33,4 +33,3 @@ cd track
 echo "${track}" >> Description
 cd ../..
 exit 0
-

@@ -1,0 +1,10 @@
+function animalrun(){
+    if [[ ! -f "theRaccoon" ]]; then
+        echo "A cute little fluffy friend comes shuffling out of the rubble as you walk by.  She's very friendly and seems to be someone's pet.  She sure wants some attention...and keeps blocking your ability to open the door.  You may have to ... touch theRaccoon" | fold -sw $(checkColumns)
+        ponysay -F raccon "Hello friend.  Belly rubs?"
+        return 0
+    else
+        ponysay -F winona "MMMMMmmmmm"
+	return 1
+    fi
+}

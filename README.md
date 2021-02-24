@@ -1,10 +1,9 @@
 # Welcome to PonyLinux! #
 <img align="right" width="220" src="/Images/ponyicon.png" alt="Logo for PonyLinux, which is a blue pony with a streak through the mane">
 
-PonyLinux is a short, very basic tutorial on using the **command line** in Unix operating systems, such as Ubuntu Linux.
+PonyLinux is a very basic tutorial on using the **command line** in Unix operating systems, such as Ubuntu Linux.
 
-
-Walk through a series of tutorial sections that will teach you different **commands**, what they do, and how to use them. The tutorials are interactive, with mini sessions to ensure you get more practice and engagement. Your task will be to take the knowledge you gained during the tutorials to find the Princess in the final dungeon! So go on brave one, and be a hero while learning about Linux!
+Walk through a series of tutorial sections that will teach you different **commands**, what they do, and how to use them. The tutorials are interactive, with mini sessions to ensure you get more practice and engagement. Your task will be to take the knowledge you gained during the tutorials to find the Princess in the dungeon! So go on brave one, and be a hero while learning about Linux!
 
 ---
    
@@ -31,9 +30,28 @@ less
 
 Section One wraps up with a challenge. Use the commands you learned during the tutorials to defeat a dungeon set up using files and folders right in the Linux environment. Your goal is to find the Princess in the dungeon with the knowledge you earned in the tutorial.
 
-### SECTION TWO - Coming Soon ###
+### SECTION TWO ###
 
-The goals of section two will be to start getting into more bash commands that will introduce you to doing new things in the terminal. Manipulating the contents of files, full-text searches using ```grep```, creating directories, moving files, copying files, and more!
+We go over the following **commands**:
+```
+head
+tail
+wc
+cat
+less
+nano
+cp
+alias
+mv
+rm
+touch
+mkdir
+```
+The goals of section two will be to start getting into more bash commands that will introduce you to file handling in Linux - how to read, edit, generate, and remove files.  Your goal is to use your new skills to navigate the dungeon, which is now a ruin and overrun with animals, to find the Princess's key.
+
+### SECTION THREE - Coming Soon ###
+
+This section will focus on manipulation of files for advance use, including full-text searches using ```grep```, rearrangements with ```awk```, replacements with ```sed```, and creating shortcuts with ```ln```.
 
 ## Getting Started ##
 <a href="https://jetstream-cloud.org/"><img align="right" src="/Images/jetstream-logo-web.png" alt="Jetstream Logo" width="200" /></a>
@@ -48,15 +66,16 @@ You will need to do the following:
 1. Search for PonyLinux in the image search. You can launch this with the default settings, usually :smile:
 1. When your instance is available, click on the Web Desktop to the right to bring up a desktop on your new cloud computer.
 1. You should see a pony icon on the desktop. Double click on it to get started!
+
 ## FAQ ##
 * **Q**: Is PonyLinux a Linux distribution (distro)?
 * **A**: Nope. It's just some shell scripts. But if you crave a Pony-themed operating system, maybe check out PonyOS at https://ponyos.org/.
 
 * **Q**: What do ponies and Linux have to do with bioinformatics?
-* **A**: NCGAS teaches many workshops on bioinformatic techniques, doing certain experiments, and working with certain kinds of data. So much software that we use is written for Linux primarily, that we require workshop attendees to come in with some familiarity with command line. PonyLinux is meant to be a primer we can give our attendees to get them ready for our classes.
+* **A**: NCGAS teaches many workshops on bioinformatic techniques, doing certain experiments, and working with certain kinds of data. So much software that we use is written for Linux primarily, that we require workshop attendees to come in with some familiarity with command line. PonyLinux is meant to be a primer we can give our attendees to get them ready for our classes and completing their research in HPC environments.
 
 * **Q**: Why are there ponies? Why not something else?
-* **A**: I found ponysay while surfing the web, and was so excited about putting images into bash that I thought it would make it easier to learn bash. If there are other images out on the web, fork my project and make it happen.
+* **A**: Former NCGAS staff member, Carrie, found ponysay while surfing the web, and was so excited about putting images into bash that we thought it would make it easier to learn bash. If there are other images out on the web, fork the project and make it happen!
 
 * **Q**: You use terminal, bash, shell, command line, Unix, and Linux all interchangeably. What gives?
 * **A**: It's true, these concepts are all related. How bout this: Many software projects I deal with only run on Linux operating systems, which are a subset of UNIX standards from way back when. I primarily interact with this software through a command line interface, which is just text, as opposed to a graphical interface, which has pictures. Bash is a shell program, which means it understands what commands you type into the terminal. The terminal emulates a direct connection to the operating system, similar to a CMD or DOS window. There are other shell programs that speak slightly different languages from bash.
@@ -65,20 +84,17 @@ You will need to do the following:
 The National Center for Genome Analysis Support (NCGAS) gives a 'first impression' introduction to high performance computing (HPC) at Indiana University and IUPUI roughly in the beginning of each semester. We provide this workshop to help new users learn about what HPC resources are available to them, talk about other course offerings, and NCGAS services.
 
 ## Links to Supercomputing Series ##
+This material is part of the Supercomputing for Everyone Series at Indiana University.  The full HPC Onboarding for Biologists course is available to non-IU students - more information can be found at
 https://ittraining.iu.edu/explore-topics/titles/scfes/index.html
 
- ## More about NCGAS ##
- <a href="https://ncgas.org/"><img src="/Images/ncgas.png" width="220" /></a>
+## More about NCGAS ##
+<a href="https://ncgas.org/"><img src="/Images/ncgas.png" width="220" /></a>
  
- The National Center for Genome Analysis Support is a center in the Pervasive Technology Institute at Indiana University.
- Pervasive Technology Institute at Indiana University website: https://pti.iu.edu/
+The National Center for Genome Analysis Support is a center in the Pervasive Technology Institute at Indiana University.
+Pervasive Technology Institute at Indiana University website: https://pti.iu.edu/
  
- ## Follow NCGAS on Social Media! ##
-![Facebook icon](/Images/facebook-square-brands.png) <b>Facebook</b> - https://www.facebook.com/ncgasiu <br />
+## Follow NCGAS on Social Media! ##
 ![Twitter icon](/Images/twitter-brands.png) <b>Twitter</b> - https://twitter.com/ncgas <br />
 ![Youtube icon](/Images/youtube-brands.png) <b>Youtube Video</b> - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
 ![Github icon](/Images/github-brands.png) <b>GitHub</b> - https://github.com/NCGAS
  
-
-
-

@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F rocky "[SIGN] I'm a Golem! Scaaarrry!"
+echo "What is going on here??  You investigate the rock pile, hoping for treasure, but instead end up only pinching your finger as one of the rocks shift" | fold -sw $(checkColumns) 
+ouch 3
+}

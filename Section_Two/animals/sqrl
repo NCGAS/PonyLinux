@@ -1,0 +1,9 @@
+function animalrun(){
+    if [[ ! -f "apple" ]]; then
+        ponysay -F squirrel "Hey, this door is locked from the inside. I can squeeze in and unlock it if you give me an apple. Just make a file called apple and we have a deal!"
+        return 0
+    else
+        ponysay -F squirrel "Yay! Thanks, friend! CRUNCH"
+	return 1
+    fi
+}

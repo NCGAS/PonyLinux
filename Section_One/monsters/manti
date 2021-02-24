@@ -4,4 +4,4 @@ echo "The door behind you slams shut, clicking ominously. There is a feeling of 
 ouch 10
 ouch 10
 ouch 10
-function monsterrun(){
+}

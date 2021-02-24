@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F ironwill "Wait... shouldn't I be in a maze?"
+echo "As you search for the next set of doors, you hear a quiet muttering.  Following the sound, you come across a very large, very confused minotaur!  He seems to be as lost as you are.  You sneak by without his notice" | fold -sw $(checkColumns) 
+}

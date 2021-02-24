@@ -1,0 +1,6 @@
+function monsterrun(){
+ponysay -b round -F owl "This is going to be a hoot."
+echo "Dungeon goals: Explore the dungeon using ls, cd, chmod, and find. It will look familiar, but different.  Everything is a bit overrun with animals now that the monsters have been released (budget cuts).  You need to figure out where the Princess left her key, cd into the directory that it is in, then exit the dungeon. The dungeon is huge, so going through every directory exhaustively might not be wise!" | fold -sw $(checkColumns) 
+export DUNGEON=$(pwd)
+export HEALTH=100
+}

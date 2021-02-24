@@ -1,0 +1,4 @@
+function boulderrun(){
+ponysay -b round -F tom "I used to be part of a great wall..."
+echo "A large rock sits in your path, you should try to ${b}remove${r} it!" | fold -sw $(checkColumns) 
+}

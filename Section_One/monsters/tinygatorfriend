@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F gummy "Snap!"
+echo "As you swing your torch through the room, a purple eye shine catches your attention.  Aww... what a cute little gator friend!  Ow! I guess he's not so much a friend..." | fold -sw $(checkColumns) 
+ouch 1
+}

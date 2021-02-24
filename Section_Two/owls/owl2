@@ -1,0 +1,21 @@
+function owlrun(){
+        if [[ ! -f "whoareyou" ]]; then
+            ponysay -F owl "WHooo goes there? I'll let you pass if you answer three questions.  Please put the answers into a file called whoareyou. Ready? WHAT is your username? What is your default group? WHat is your favorite bird? I know know much about linux, so I can't check your answers... but I can read!  So you must label which is which, such as 'user: owl, group: ??, bird:??'"
+            return 0
+        else
+	    pass=0
+            if  ! grep -qi "name" whoareyou ; then
+                echo "I don't see your user."
+            fi
+            if  ! grep -qi "group" whoareyou ; then
+                echo "I don't see your default group."
+            fi
+            if  ! grep -qi "bird" whoareyou ; then
+                echo "I don't see your favorite bird.  I'm SHOCKED it's not me!"
+            fi
+            if [[ $pass -eq 1 ]]; then return; fi
+            ponysay -F owl "Very interesting.  You may pass."
+	    pass=1
+        fi
+	return $pass
+}

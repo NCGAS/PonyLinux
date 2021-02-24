@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F pinkiewhoops "Oh, YUCK!"
+echo "You take one step into the room, and the stone under your foot sinks - followed by your heart.  SPLAT! A goo falls upon you, covering you entirely.  Hm... tastes like... cupcake batter!" | fold -sw $(checkColumns) 
+}

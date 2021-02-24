@@ -1,4 +1,4 @@
-I'd like to thank the following Q&A pages for helping me hone my bash-fu:
+This tutorial was built referencing the following:
 
 Bash basics:
 https://stackoverflow.com/questions/1250079/how-to-escape-single-quotes-within-single-quoted-strings
@@ -25,10 +25,6 @@ https://unix.stackexchange.com/questions/80975/preventing-propagation-of-sigint-
 
 I didn't use the select functionality, but it seems cool:
 https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
-
-This stuff was straight up crazy, and I didn't get it working:
-https://superuser.com/questions/184307/bash-create-anonymous-fifo
-https://unix.stackexchange.com/questions/334543/capture-the-output-of-a-shell-function-without-a-subshell
 
 This helped me with getting the ponylist together:
 https://superuser.com/questions/380772/removing-ansi-color-codes-from-text-stream
@@ -71,13 +67,9 @@ https://stackoverflow.com/questions/8586648/going-to-a-specific-line-number-usin
 https://unix.stackexchange.com/questions/7186/can-less-invoke-vim-instead-of-the-default-vi-when-i-hit-the-v-key
 Got pointers for less -S from https://astrobiomike.github.io/bash/six_commands
 
-
 Other notes.
-I think it will be hard to orchestrate the proper sourcing/unsourcing of the files needed after the tutorial is run. Getting it to start automatically will be tricky. Update: It wasn't.
-
 Big thanks to the Ponysay team for making this so much more fun!
 
-Thanks to Sheri A. Sanders for working up the permissions tutorial.
+Thanks to the NCGAS team for getting this completed, and for all of our friends and family that did testing!
 
-Thanks to my dear hubby for being a patient beta-tester and not at all a computer person.
-Thanks to my other testers! Bhavya NP! Natisha LD! Dan P!
+Many thanks to the Jetstream team for helping us along the way!

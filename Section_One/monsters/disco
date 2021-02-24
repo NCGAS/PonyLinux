@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F discordamused "HI FRIEND!"
+echo "AH! A dragon! Thankfully, this one seems friendly enough... maybe too friendly.  This dragon wants to regale you with stories of other travelers... No health lost, just your time" | fold -sw $(checkColumns) 
+}

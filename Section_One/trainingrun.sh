@@ -68,7 +68,7 @@ function start(){
 function halp(){
     echo "If your bottom bar doesn't show up well, type light or dark to toggle it." | fold -sw $(checkColumns)
     echo -e "To move around, use the "$bold"cd"$normal" command, followed by where you want to go. To go back to the area you came from, type:\n\t"$bold"cd .."$normal"\nTo go into an area, for example track, type:\n\t"$bold"cd track"$normal | fold -sw $(checkColumns)
-    echo -e "To look and see what is inside the room you are in, type "$bold"ls"$normal". To look really closely, type:\n\t"$bold"ls -lah"$normal | fold -sw $(checkColumns)
+    echo -e "To look and see what is inside the area you are in, type "$bold"ls"$normal". To look really closely, type:\n\t"$bold"ls -lah"$normal | fold -sw $(checkColumns)
     echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal"." | fold -sw $(checkColumns)
 }
 
@@ -86,7 +86,7 @@ function cdp(){
 	    . .monster
 	    monsterrun
 	fi
-	
+
     elif [[ $result && $result = *"Permission"* ]];then
 	echo "You try the door, but it's locked tight."
     elif  [[ "$result" && "$result" = *"No such"* ]];then
@@ -94,14 +94,14 @@ function cdp(){
     else
 	echo "Something went wrong, try again. Result is $result, exit code is $ec."
     fi
-    
+
     #Testing file location, and progress completion indicator
     if [[ $(basename $PWD) == 'joust' || $(basename $PWD) == 'strength' || $(basename $PWD) == 'track' ]]; then
 	echo "use ls to look around, and then you can exit."	
-    fi    
+    fi
 }
-   
-function lsp(){    
+
+function lsp(){
     if [[ -e Description ]]; then
 	fold -sw $(checkColumns) <Description 2>/dev/null
 	export test=1
@@ -109,7 +109,7 @@ function lsp(){
 
     curdir=${PWD##*/}
     result="$(\ls $@ 2>&1)"
-    echo "Here are the directoy contents:"
+    echo "Here are the directory contents:"
     echo "$result"
     dirname=$(basename $PWD)
     case $dirname in
@@ -130,31 +130,32 @@ function lsp(){
 	echo "2 Great Job! Move onward!"
   	#let completed_joust=1
     fi
-	    
+
     if [[ $(basename $PWD) == 'strength' ]]; then
 	echo "2 You have made it!"
 	#let completed_strength=1 
-    fi		
+    fi
     if [[ $(basename $PWD) == 'track' ]]; then 
 	echo "2 You have finished viewing this room!"
 	#let completed_track=1 #$completed
-    fi		
+    fi
 	# After all is said and done, prompt user to a final message.
 	export final_completion=$(($completed_joust+$completed_strength+$completed_track))
 	# by adding if 'result' equals the description, it will count the completion.
 	# putting it in this if-then statement, will assist it to not appear when it lists the results
 	# and it will continue to count the completion after each directory has been entered, and the description has been printed.
-	
+
 	if [[ "$result" = Description ]]; then
 	echo "You have completed: $final_completion of 3"
 	fi
-		
+
 	if [[ $final_completion == 3 ]]; then
 	sleep 1
 	echo "You have completed all of the trainings! Please type exit to get back to the menu."
+	echo "trainingdone: (Done)" >> ~/.ponylinux/config
 	fi
-	
-}  
+
+}
 
 function findBGColor(){
  # Check background color and revise light vs dark
@@ -166,7 +167,6 @@ function findBGColor(){
 function light(){
     if [ "$PS1" ]; then
         PS1="\[\033[0;95m\]Hero: \$PONYUSER \[\033[0;91m\] You are currently in \$PWD.\n\[\033[0;96m\]To explore all the training areas, type ${b}ls${r}. Type done to return to the main menu\[\033[0;92m\] $\[\033[0m\]"
-        
     fi
 }
 

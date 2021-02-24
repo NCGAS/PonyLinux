@@ -1,0 +1,11 @@
+function animalrun(){
+    if [[ ! -f "ball" ]]; then
+        echo "You cannot get through either door, because they lack doorknobs!  You see a furry friend to the left of one of the doors... chewing on something brass and round..." | fold -sw $(checkColumns)
+        ponysay -F winona "Nom nom nom, this almost-ball is not quite as great as a real ball. I'll trade you this one if you have a real ball! Just make a file called ball and we have a deal!"
+        return 0
+    else
+        ponysay -F winona "Oh boy! Thanks, friend!"
+	echo "You grab the door knob and use it to escape, while the happy pooch chases the ball around the room"
+	return 1
+    fi
+}

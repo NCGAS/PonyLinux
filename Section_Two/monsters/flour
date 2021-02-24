@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F laflour "[SIGN] I'm a scary monster, please react accordingly (sorry, budget cuts) - MGMT"
+echo "You stumble across a stool, with a sack of flour... a sad, tattered sign is taped to the burlap.  The whole thing smells slightly of mildew, triggering your allergies" | fold -sw $(checkColumns) 
+ouch 1
+}

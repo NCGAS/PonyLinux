@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F Cerberus "BARKBARKBARK GRRRRRRrrrrrrr!"
+echo "As soon as you open the door, a very excited dog runs up to you, barking for attention.  Good boy, nice boy... You tenatively pet a head with each hand, but the third head gets jealous and nips at your arm." | fold -sw $(checkColumns) 
+ouch 5
+}

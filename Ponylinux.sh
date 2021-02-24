@@ -28,14 +28,14 @@ function bigmenu(){
     fromFunction=0
     if [[ $clearme ]]; then
 	clear
-    fi    
+    fi
     checkProgress
     string="Welcome back, $name! Ready to do some more training?"
     if [[ $1 = 1 ]]; then
-	string="It's nice to meet you, $name. I currently have two sections worth of material for you to go through. Section three will be out in early 2021. Start with section one, then move on to section two."
-    fi 
+	string="It's nice to meet you, $name. I currently have two sections worth of material for you to go through. Start with section one, then move on to section two."
+    fi
     string=${string}${big}
-    ponysay -b round -F royalnightguard ${string}$'\n\t1.) Section One - the very basics '${sectiononedone}$'\n\t2.) Section Two - Lord of the Files '${sectiontwodone}$'\n\tPress any other key to Quit.'
+    ponysay -b round -F royalnightguard ${string}$'\n\t1.) Section One - better than BASIC '${sectiononedone}$'\n\t2.) Section Two - Lord of the Files '${sectiontwodone}$'\n\tPress any other key to Quit.'
 
     read -e -p $'Please choose a number and press enter. You can always redo a section you'\'$'ve already done.\n ' rawInput
     clear
@@ -58,7 +58,6 @@ cleanInput=$(echo $rawInput | tr -d '\011\012\015\009\010\012\013\015\032\040\17
     esac
 }
 
-#' This comment is just to fix my annoying bash syntax highlighting. Nothign to see hwere folks
 
 function splash(){
     cat "${UNIXTUT}/splash.txt"
@@ -72,7 +71,7 @@ function splash(){
     fi
 }
 
-## Here's where the program kinda starts
+## Main - Here's where the program starts
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 which ponysay >> /dev/null

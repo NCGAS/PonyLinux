@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F ironwill "I swear, that dragon gave me bad directions.  I just want to get back to my maze... Where is Discord anyway?"
+echo "As you search for the next set of doors, you hear a quiet muttering.  Following the sound, you come across a very large, very confused minotaur!  He seems to be as lost as you are.  You sneak by without his notice" | fold -sw $(checkColumns) 
+}

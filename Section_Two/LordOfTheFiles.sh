@@ -11,7 +11,7 @@ source ${UNIXTUT}/Utilities.sh
 function dungeon(){
     clear
     ponysay -b round -F shiningarmor 'Hello again, '$name'! The Princess lost her keys in the Dungeon. Sadly, that evil castle was destroyed and is now ruins! Can you search the devastation for the key?'
-    read -p "Press enter to continue" 
+    read -p "Press enter to continue"
     clear
     whereami=$(pwd)
     if [[ ! -d dungeon_ruins ]]; then
@@ -44,7 +44,7 @@ function dungeon(){
 	#echo "Something went wrong!"
 	clear
 	echo "You book it out of the dungeon."
-	menu	
+	menu
     else
 	menu
     fi
@@ -60,7 +60,7 @@ function menu(){
     if [[ $1 = 1 ]]; then
 	string="You are free to do this section, but did you do want to do Section One first?"
     fi 
-    ponysay -b round -F rarity ${string}$'\n\t1.) Review of reading files '${nanotutdone}$'\n\t2.) Copying files '${copytutdone}$'\n\t3.) Moving and renaming files '${mvtutdone}$'\n\t4.) Mental Health Break!\n\t5.) Deleting files with rm '${rmtutdone}$'\n\t6.) Creating files and folders '${mktutdone}$'\n\t7.) Back into the dungeon!\n\t8.) Bonus: Unix directory structure\n\tb) Bonus bonus: Find, the sequel\n\tq) Quit'
+    ponysay -b round -F rarity ${string}$'\n\t1.) Editing files '${nanotutdone}$'\n\t2.) Copying files '${copytutdone}$'\n\t3.) Moving and renaming files '${mvtutdone}$'\n\t4.) Deleting files with rm '${rmtutdone}$'\n\t5.) Creating files and folders '${mktutdone}$'\n\t6.) Back into the dungeon! '${keyfound}$'\n\t7.) Bonus: Unix directory structure\n\t8.) Bonus bonus: find, the sequel\n\tq) Quit'
     read -ep $'Please choose a number or letter and press enter. You can always redo a tutorial you'\'$'ve already done.\n ' rawInput
     # Todo: strip out non-printing characters from variable1!'
     clear
@@ -91,10 +91,6 @@ function menu(){
 	    menu
             ;;
 	4)
-            bash ${UNIXTUT}/Section_Two/minigames/PsychoPony.sh
-            menu
-	    ;;	
-	5) 
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/rmDialog.txt
 	    if [ -z $rmtutdone ]; then
 		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/rmQuiz.txt;
@@ -102,7 +98,7 @@ function menu(){
 	    fi
             menu
 	    ;;
-	6)
+	5)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/mkDialog.txt
 	    if [ -z $mktutdone ]; then
 		bash ${UNIXTUT}/runQuiz.sh ${UNIXTUT}/Section_Two/mkQuiz.txt;
@@ -110,14 +106,14 @@ function menu(){
 	    fi
             menu
 	    ;;
-        7)
+        6)
             dungeon
             ;;
-	8)
+	7)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/dir2Dialog.txt
             menu
 	    ;;
-	b)         
+	8)
             bash ${UNIXTUT}/runTutorial.sh ${UNIXTUT}/Section_Two/find2Dialog.txt
             menu 1
 	    ;;
@@ -131,26 +127,25 @@ function menu(){
     esac
 }
 
-#' This comment is just to fix my annoying bash syntax highlighting. Nothign to see hwere folks
-
 function shamemenu(){
     clear
     ponygo redheart "Looks like you're back for a pep talk, eh? I hope you find those keys! Let me know if I can help!"
-    read -p "Press enter to continue" 
+    read -p "Press enter to continue"
     clear
 menu
 }
 
 function yaymenu(){
     clear
-    ponygo celestiasmall "Thank you so much for finding my keys! Let's see.."    
+    ponygo celestiasmall "Thank you so much for finding my keys! Let's see.."
 
     echo "The Princess opens her safe vault with the key, and gasps in surprise and anguish."
-    read -p "Press enter to continue" 
-    clear 
-    ponygo celestiasmall "Oh no!! My crown - it - it's gone!!"    
-    echo "What could have happened? What dastardly games are afoot? Find out in Section Three!"
-    read -p "Press enter to continue"     
+    read -p "Press enter to continue"
+    clear
+    ponygo celestiasmall "Oh no!! My crown - it - it's gone!!"
+    echo "What could have happened? What dastardly games are afoot? To Be Continued!"
+    read -p "Press enter to continue"
+    echo "keyfound: (Done)" >> ~/.ponylinux/config
     echo "sectiontwodone: (Done)" >> ~/.ponylinux/config
 clear
     menu

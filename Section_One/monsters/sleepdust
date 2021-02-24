@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F bigmacsleep "Zzzzz Zzzzzz"
+echo "As soon as you cross through the doorway, a puff of dust hits your face!  You have a momentary flashback to playing Last of Us and are very concerned... until concern is replaced by overwhelming sleepiness..." | fold -sw $(checkColumns) 
+ouch 5
+}

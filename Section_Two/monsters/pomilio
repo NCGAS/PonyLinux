@@ -1,0 +1,5 @@
+function monsterrun(){
+ponysay -b round -F orangefrog "Ribbit!"
+echo "You follow the corridor and in the middle of the hallway is... a giant hopping fruit? What a weird dungeon. While squeeeeezing by the rotund...orange-frog, you touch the slimy rind and get a slight burn from the citric acid " | fold -sw $(checkColumns) 
+ouch 10
+}

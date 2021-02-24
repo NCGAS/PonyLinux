@@ -1,0 +1,41 @@
+Version 3 Changes:
+Updated initial menu to remove false promises of third chapter this spring! - 1/26 SS
+Updated Quiz for gentle tutorial - 1/26 SS
+Updated Quiz for cd tutorial - 1/26 SS
+Updated and Fixed Quiz for directories tutorial - 1/26 SS
+Updated and Fixed Quiz for permissions tutorial - 1/26 SS
+Updated and Fixed Quiz for find tutorial - 1/26 SS
+Updated and Fixed Quiz for open files tutorial - 1/26 SS
+Tested all quizzes for Section One - 1/26 SS
+Removed mental break, may add back later - 1/26 SS
+Updated Section Two menu - 1/26 SS
+
+Fixed monsters and added new ones - 1/27 SS
+Added to the help menu in the dungeon - 1/27 SS
+Removed the dungeon timer as it never stopped, no matter what you did - 1/27 SS
+Re-write permissions to be less long and weird - 1/27 SS
+
+Updated, fixed, and tested all quizzes for Section Two - 1/28 SS
+Populated second dungeon with owls, animals, new monsters - 1/28 SS
+Finished Section_Two dungeon - 1/28 SS
+
+Added mkDialog - 2/14 SS
+Bugfixed the cp tutorial to remove the need to actually reference files - 2/14 SS
+Bugfixed the mv tutorial to remove errors - 2/14 SS
+Added ponies to copy tutorial - 2/14 SS
+
+Added ponies and story to rm - 2/15 SS
+
+Fixed Princess win message bug - 2/17 SS
+Fixed Trigger for Nurse - 2/17 SS
+Added DONE messages to training grounds and both dungeons - 2/17 SS
+Fixed treasure saving - 2/17 SS
+Updated the README to include new section, info - 2/17 SS
+
+Massive amounts of typo/grammar/formatting changes - 2/18 SS
+Updates to find2 dialog to remove bugs and other weirdness - 2/18 SS
+Removed temp files from production version - 2/18 SS
+
+To Do:
+make quizzes retakable without breaking score handling
+Section Three!

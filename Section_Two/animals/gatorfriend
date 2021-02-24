@@ -1,0 +1,12 @@
+function animalrun(){
+    if [[ ! -f "steak" ]]; then
+        echo "As you enter the room, you see a small crocodilian splayed out in front of the doors... he looks hungry..." | fold -sw $(checkColumns)
+        ponysay -F gummy "I'll let you pass if you have a bit of meat?  Make me a file called steak, and I'll let you pass!"
+        return 0
+    else
+        ponysay -F gummy "Snap! Nom nom nom"
+	return 1
+    fi
+
+
+}

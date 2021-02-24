@@ -3,6 +3,8 @@ alias unlock=hint
 alias open=hint
 alias Start=start
 alias cd=cdp
+alias ls=lsp
+alias less=lessp
 alias flee=escape
 export TREASURE=0
 export HEALTH=100
@@ -17,6 +19,8 @@ alias apple='echo -n "A crisp, hearty apple is just what you needed! "; heal 5'
 alias candy='echo -n "You pull out some tasty candy from your pack. Nomnom. "; heal 2'
 alias help=halp
 alias menu=help
+alias Princess=princess
+alias key=Key
 alias n=walk
 alias s=walk
 alias e=walk
@@ -27,7 +31,7 @@ export bold=$(tput bold)
 export normal=$(tput sgr0)
 export pick=use
 export get=use
-
+export timeron=1
 # Shorthand for newline
 export n=$'\n'
 # Shorthand for two newlines
@@ -48,17 +52,18 @@ function checkColumns(){
 }
 
 function use(){
-    echo "Manipulating items is very limited. Maybe just try typing in the name of the item itself?"
+    echo "Manipulating items is very limited. Maybe just try typing in the name of the item itself?  Remember, you picked up some food in the kitchen..."
 }
 
 function save(){
-    echo "Saving your treasure for you!"
-    echo "treasure: $TREASURE" >> ~/.unixTut/config
+    echo "In the light of day, away from the dungeon ruins, you realize none of this is worth saving."
 }
+
 function load(){
     echo "Load not implemented. Here's 50 bucks for your trouble."
     export TREASURE=$((TREASURE + 50))
 }
+
 function oops(){
     echo "Oops, make sure you have a space after the command and before any dashes or other arguments." | fold -sw $(checkColumns)
 }
@@ -66,6 +71,7 @@ function oops(){
 function look(){
     echo "Use the "$bold"ls"$normal" command to look around. Try running "$bold"help"$normal" for more details!" | fold -sw $(checkColumns)
 }
+
 function walk(){
     echo "In Unix, you move around by changing directories using the "$bold"cd"$normal" command. There isn't a sense of north, south, east, west, but the available directories you can go to are listed using "$bold"ls"$normal". To go back a directory (sometimes referred to as 'up' a directory), type "$bold"cd .."$normal | fold -sw $(checkColumns)
 }
@@ -75,17 +81,31 @@ function start(){
 }
 
 function halp(){
-    echo "Welcome to the ponylinux dungeon! Muahahah...ahem. Here are some hints to help you with the basics." | fold -sw $(checkColumns)
+    echo "Welcome to the PonyLinux dungeon... ruins! Muahahah...ahem. Here are some hints to help you with the basics." | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
     echo "If your bottom bar doesn't show up well, type light or dark to toggle it." | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
     echo -e "To move around, use the "$bold"cd"$normal" command, followed by where you want to go. To go back through the door you came from, type:\n\t"$bold"cd .."$normal"\nTo go into a room, let's say through Door_One, type:\n\t"$bold"cd Door_One"$normal | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
     echo -e "To look and see what is inside the room you are in, type "$bold"ls"$normal". To look really closely, type:\n\t"$bold"ls -lah"$normal | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
     echo "If you see a file using ls, you can open it with the "$bold"less"$normal" command, followed by the file name." | fold -sw $(checkColumns)
-    echo -e 'To search for things, use the find command. It wants you to tell it where to search, and what to search for, like so:\n\t'$bold'find . -name "*monster*"'$normal'\nThat command would tell you where all of the monsters are in the dungeon! That is good to know, right?' | fold -sw $(checkColumns)
-    echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal". To get back to the start of the dungeon, type "$bold"escape"$normal"." | fold -sw $(checkColumns)
-    #echo "" | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
+    echo -e 'To search for things, use the find command. It wants you to tell it where to search, and what to search for, like so:\n\t'$bold'find . -name "*monster*"'$normal'\nThat command would tell you where all of the monsters are in the dungeon! That is good to know, right?  I wonder what else you could find...' | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
+    echo -e "If you need to see where you currently are, type in "$bold"pwd"$normal"." | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
+    echo -e "To get back to the start of the dungeon, type "$bold"escape"$normal"." | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
     echo -e "To unlock doors, use the ${b}chmod${r} command. To make it so anyone can open a door, for example, do:${nt}${b}chmod a+x Door_xxx${r}, where the xxx is the actual letters and numbers of the door you are opening." | fold -sw $(checkColumns) 
+    echo "" | fold -sw $(checkColumns)
     echo -e "To be able to see the contents of a dark room, you also use the ${b}chmod${r} command. To make it so anyone can see inside Door_xxx, do:${nt}${b}chmod a+r Door_xxx${r}" | fold -sw $(checkColumns) 
-    #echo -e "(If you meant to invoke the help that comes with Unix, type it with a backslash in the front like so: \\help.)"
+    echo "" | fold -sw $(checkColumns)
+    echo -e "You may also find  ${b}chmod -R${r} to be a useful command, to change permissions recursively - meaning all the way down through all the subdirectories." | fold -sw $(checkColumns) 
+    echo "" | fold -sw $(checkColumns)
+    echo -e "If you get hurt, it may help to "$bold"use"$normal" some of the items you picked up in the kitchen!" | fold -sw $(checkColumns)
+    echo "" | fold -sw $(checkColumns)
+    echo -e "Sometimes it's worth vanquishing an enemy, so it won't attack you a second time - since you are armed with a sword, try some single, simple verbs that might help you!" | fold -sw $(checkColumns)
 }
 
 function attack(){
@@ -93,8 +113,12 @@ function attack(){
 	echo "With a daring charge, you hack through the monster before you, dispatching it with one swing of your weapon. It fades away with an eerie laugh echoing from all around you."
 	echo -e "function monsterrun(){ \necho 'There is a small spot of soot on the floor where once stood a frightful beast.' \n}" > .monster
     else
-	echo "You look around alertly, but there is nothing to attack."	
+	echo "You look around alertly, but there is nothing to attack."
     fi
+}
+
+function quest(){
+    echo "You are looking for the key left behind by the Princess - it has her insignia on it. You hope to "$(tput bold)"find"$(tput sgr0)" it somewhere in this dungeon."
 }
 
 function me(){
@@ -118,60 +142,168 @@ function moneymoneymoney()
     echo "Wow, awesome! You gain $1 gold."
     TREASURE=$((TREASURE + $1))
 }
-	
+
+function ouch()
+{
+    if [[ "$1" != 0 ]]; then
+	re='^[0-9]+$'
+	if [[ "$1" =~ $re ]] ; then
+	    export HEALTH=$((HEALTH - $1))
+	    if [ "$HEALTH" -le 0 ]; then
+		echo "The last thought that goes through your mind before you lose consciousness is a deep sense of self disappointment and failure."
+		pause=0
+		while [ $pause -lt 7 ]; do
+		    sleep 1
+		    echo -n "."
+		    let pause=pause+1
+		done
+		exit 2
+	    fi
+	    echo "Ouch! You lost $1 health!"
+	fi
+    fi
+}
+
+function heal()
+{
+    if [[ "$1" != 0 ]]; then
+	re='^[0-9]+$'
+	if [[ "$1" =~ $re ]] ; then
+	    export HEALTH=$((HEALTH + $1))
+	    if [ "$HEALTH" -ge 100 ]; then
+		echo "You feel as good as new!"
+		export HEALTH=100
+	    fi
+	    echo "Yay! You gain $1 health!"
+	fi
+    fi
+}
+
 function cdp(){
-    if [[ "$1" == "teleport" ]]; then
+    #echo $1
+    if [[ "$1" = "portal" ]]; then
+#    if (( $1 == "*portal*" )); then
 	export SUCCESS=true
 	exit 3
     fi
-    if [[ -f "boulder" ]]; then
-	ponysay -F tom "I'm conflicted."
-	echo "There is a boulder in the way! Can you move it into a different room, turn it into dust, or remove it?"
-	return
-    fi
-    if [[ "$1" == *"Door_002"* ]]; then
-	if [[ ! -f "apple" ]]; then
-	    ponysay -F squirrel "Hey, this door is locked from the inside. I can squeeze in and unlock it if you give me an apple. Just make a file called apple and we have a deal!"
+    #stat $1
+    #\cd $1 2>&1 > $PIPE
+    #result="<$PIPE"; then
+    #if \cd $1 2>&1; then
+    result="$(\cd $1 2>&1)";
+    ec=$?
+    #echo "exit is $ec, result is $result"
+    if [[ -f ".animal" ]]; then
+ 	. .animal
+	animalrun
+	local res=$?
+	if [[ $res -eq 0 ]]; then
 	    return
-	else
-	     ponysay -F squirrel "Yay! Thanks, friend!"
 	fi
     fi
-    if [[ "$1" == *"Door_003"* ]]; then	
-	if [[ ! -f "riddle" ]]; then
-	    ponysay -F owl "WHooo goes there? I'll let you pass if you answer three riddles.  Please put the answers into a file called riddle. Ready? WHAT is your name? What is your quest? WHat is your favorite color? You must label which is which, such as 'name: Owl, color: purple, quest: to watch adventurers suffer! Hahahooohoooo!"
+    if [[ -f ".owl" ]]; then
+	. .owl
+	owlrun
+	local res=$?
+	if [[ $res -eq 0 ]]; then
 	    return
-	else
-	    pass=0
-	    if  ! grep -qi "name" riddle ; then
-		echo "I don't see your name."
-		pass=1
-	    fi
-	    if  ! grep -qi "color" riddle ; then
-		echo "I don't see your favorite color."
-		pass=1
-	    fi
-	    if  ! grep -qi "quest" riddle ; then
-		echo "I don't see your quest."
-		pass=1
-	    fi
-	    if [[ $pass -eq 1 ]]; then return; fi
-	    ponysay -F owl "You may pass."
 	fi
     fi
-    \cd $1
-    if [[ $? -eq 0 ]]; then 
+    if [[ -f ".boulder" ]]; then
+        ponysay -F tom "I'm conflicted."
+        echo "There is a boulder in the way! Can you move it into a different room, turn it into dust, or remove it?"
+        return
+    fi
+    if [[ $ec == 0 ]]; then
+	\cd $1
 	echo "You walk through the door. It creaks as it swings shut."
-	if [[ -e .monster ]]; then 
+	if [[ -e Description ]]; then 
+	    ouchies=$(perl -0777 -ne 'print m/(\d+) damage[ .!]/ ? $1 : 0;' Description 2>/dev/null)	
+	    ouch $ouchies
+	    #echo "found desc"
+	fi
+	if [[ -e .monster ]]; then
 	    . .monster
 	    monsterrun
 	fi
-	if [[ -e "key.txt" ]];then
-	    cat key.txt
-	    cat key
-	    mkdir -p teleport
+        if [[ -e "key" ]];then
+	    . key
+	    keyrun
+	fi
+    elif [[ $result && $result = *"Permission"* ]];then
+    #local lss="$(ls -ld "$1")"
+    #if [ "${lss:5:1}" = "x" ]; then
+	echo "You try the door, but it's locked tight."
+    elif  [[ "$result" && "$result" = *"No such"* ]];then
+	case "$1" in
+	    "back") walk;;
+	    "forward") walk;;
+	    "left") walk;;
+	    "right") walk;;
+	    "n") walk;;
+	    "N") walk;;
+	    "s") walk;;
+	    "S") walk;;
+	    "e") walk;;
+	    "E") walk;;
+	    "w") walk;;
+	    "W") walk;;
+	    *) echo "What door are you trying to open? I can't find that one." ;;
+	esac
+    else
+	echo "Something went wrong, try again. Result is $result, exit code is $ec."
+    fi
+}
+
+function lsp(){
+    result="$(\ls $@ 2>&1)"
+    #echo "$result"
+    if [[ ! "$result" ]]; then
+	testForEmpty="$(\ls -lah $@ 2>&1)"
+	if [[ "$testForEmpty" = *"Permission"* ]];then
+	    echo "You can't look behind locked doors. Maybe try unlocking it first?"
+	else
+	    num=$(echo "$testForEmpty" | wc -l)
+	    if [[ $num > 3 ]]; then
+		echo "There are no doors or obvious items, but maybe there are some secret hiding places in here."
+	    else
+		echo "The room appears empty and bare."
+		#echo " There are $num items."
+	    fi
+	fi
+    elif  [[ "$result" = *"Permission"* ]];then
+	testForEmpty="$(\ls $@ 2>&1)"
+	if [[ ! "$testForEmpty" ]];then
+	    echo "You can't look behind locked doors. Maybe try unlocking it first?"
+	else
+	    echo "It's pitch black, you can't see anything!"
+	fi
+    elif  [[ "$result" = *"No such"* ]];then
+	echo "That place doesn't exist. Where exactly are you trying to look? Make sure you have a space after ls and dash if doing "$bold"ls -lah"$normal"."
+    else
+	#cat Description 2>/dev/null
+	if [[ -e Description ]]; then
+	    fold -sw $(checkColumns) <Description 2>/dev/null
+	    #echo "Checking term... $TERM"
+	fi
+	if [[ $TERM = 'tty' ]]; then
+	    \ls --color=tty $@
+	else
+	    echo "$result"
+	    #\ls $@
 	fi
     fi
+}
+
+function lessp(){
+    if [[ -e "$1" && "$1" == ".treasure" ]]; then
+	. .treasure
+	moneyrun
+	echo -e 'function moneyrun(){\n echo "There is an empty treasure chest in here." \n}' > .treasure
+    else
+	\less $@
+    fi
+
 }
 
 function escape(){
@@ -181,14 +313,17 @@ function escape(){
 	echo "Not sure where to send you. Did you enter the dungeon yet?"
     fi
 }
+
 function guide(){
     hint
 }
+
 function hint(){
-    echo e "You can make chmod work harder for you if you use the -R flag, which will unlock all subdirectories too!"
     echo -e "To unlock doors, use the ${b}chmod${r} command. To make it so anyone can open a door, for example, do:${nt}${b}chmod a+x Door_xxx${r}, where the xxx is the actual letters and numbers of the door you are opening." | fold -sw $(checkColumns) 
     echo -e "To be able to see the contents of a dark room, you also use the ${b}chmod${r} command. To make it so anyone can see inside Door_xxx, do:${nt}${b}chmod a+r Door_xxx${r}" | fold -sw $(checkColumns) 
+#    echo -e "Doors in Unix are selective to WHO is allowed to pass or look around. There are three groups of people - the User, the Group, and Other.\n\tIf you own the directory you are going to (the door you are about to open), then the User permissions apply.\n\tIf you don't own the directory you are going to, but you are a member of the group that the directory belongs to, then the Group permissions apply.\n\tIf you don't own the directory you are going to and don't belong to the directory's group, then the Other permissions apply.\n\nTo figure out who you are and what group you are in, type in the id command. The output shows your username, your user id, and all the groups you belong to and their respective group ids. \nIt is normal to belong to a group that is the same as your username, and to be a part of multiple groups.\nTo figure out who owns the directory you are in or want to go in, type ls -lah. The . directory means the one you are currently in. The .. directory refers to the directory that contains the current one, also called parent directory.\n" | fold -sw $(checkColumns) 
 }
+
 # For Jetstream, use dark!
 dark
 #light

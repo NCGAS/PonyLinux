@@ -1,0 +1,4 @@
+function monsterrun(){
+ponysay -b round -F discordamused "HI AGAIN FRIEND! I'm looking for a very confused Minotaur, have you seen him?"
+echo "AH! A dragon! Thankfully, this one seems friendly enough... maybe too friendly.  This dragon wants to regale you with how he told his buddy to turn left instead of right, or right instead of left? The deliberation goes on for some time, while he blocks your path.  The only thing you lose is your time" | fold -sw $(checkColumns) 
+}
