@@ -95,6 +95,6 @@ Pervasive Technology Institute at Indiana University website: https://pti.iu.edu
  
 ## Follow NCGAS on Social Media! ##
 ![Twitter icon](/Images/twitter-brands.png) <b>Twitter</b> - https://twitter.com/ncgas <br />
-![Youtube icon](/Images/youtube-brands.png) <b>Youtube Video</b> - https://www.youtube.com/watch?v=YRFsbXjR9Jw&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9 <br />
+![Youtube icon](/Images/youtube-brands.png) <b>Youtube Video</b> - https://www.youtube.com/watch?v=EP_mPtvhLGU&list=PLqi-7yMgvZy_qGhVYev1waN00-GJabSG9&index=1 <br />
 ![Github icon](/Images/github-brands.png) <b>GitHub</b> - https://github.com/NCGAS
  
