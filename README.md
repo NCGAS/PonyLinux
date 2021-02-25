@@ -67,6 +67,8 @@ You will need to do the following:
 1. When your instance is available, click on the Web Desktop to the right to bring up a desktop on your new cloud computer.
 1. You should see a pony icon on the desktop. Double click on it to get started!
 
+You can also `git clone https://github.com/NCGAS/PonyLinux` on your computer if you have a terminal program (Mac and Ubuntu users, for instance).  Then just `cd PonyLinux` and finally, `./Ponylinux.sh`.  That will start the game!
+
 ## FAQ ##
 * **Q**: Is PonyLinux a Linux distribution (distro)?
 * **A**: Nope. It's just some shell scripts. But if you crave a Pony-themed operating system, maybe check out PonyOS at https://ponyos.org/.
